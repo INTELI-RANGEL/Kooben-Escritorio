@@ -135,7 +135,8 @@ uses
   UTFrmEntradaGeneral in 'UTFrmEntradaGeneral.pas' {FrmEntradaGeneral},
   UTFrmBuscarEntradaGeneral in 'UTFrmBuscarEntradaGeneral.pas' {FrmBuscarEntradaGeneral},
   UTFrmEntradaGeneralDatos in 'UTFrmEntradaGeneralDatos.pas' {FrmEntradaGeneralDatos},
-  UTFrmEntradaGeneralPartidaDatos in 'UTFrmEntradaGeneralPartidaDatos.pas' {FrmEntradaGeneralPartidaDatos};
+  UTFrmEntradaGeneralPartidaDatos in 'UTFrmEntradaGeneralPartidaDatos.pas' {FrmEntradaGeneralPartidaDatos},
+  UTFrmSelInsumo in 'UTFrmSelInsumo.pas' {FrmSelInsumo};
 
 {$R *.res}
 

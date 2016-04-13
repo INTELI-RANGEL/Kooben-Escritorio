@@ -497,6 +497,7 @@ object FrmBuscarEntradaGeneral: TFrmBuscarEntradaGeneral
     TabOrder = 1
     object tvBuscar: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
+      OnCellDblClick = tvBuscarCellDblClick
       DataController.DataSource = dsBuscarEntradaGeneral
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>

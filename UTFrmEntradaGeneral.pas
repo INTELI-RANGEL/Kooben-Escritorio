@@ -59,24 +59,38 @@ type
     Panel7: TPanel;
     btnCancelar: TAdvGlowButton;
     bntAceptar: TAdvGlowButton;
-    cxGrid1DBTableView1: TcxGridDBTableView;
-    cxGrid1Level1: TcxGridLevel;
-    cxGrid1: TcxGrid;
-    cxGrid1DBTableView1Column1: TcxGridDBColumn;
-    cxGrid1DBTableView1Column2: TcxGridDBColumn;
-    cxGrid1DBTableView1Column3: TcxGridDBColumn;
+    tvPartidas: TcxGridDBTableView;
+    gridPartidasLevel1: TcxGridLevel;
+    gridPartidas: TcxGrid;
+    tvPartidasColumn1: TcxGridDBColumn;
+    tvPartidasColumn2: TcxGridDBColumn;
+    tvPartidasColumn3: TcxGridDBColumn;
     pmPartidas: TJvPopupMenu;
     AgregarPartida1: TMenuItem;
     EditarPartida1: TMenuItem;
     EliminarPartida1: TMenuItem;
+    cdInsumo: TClientDataSet;
+    Panel8: TPanel;
+    IdInsumo: TEdit;
+    Panel10: TPanel;
+    JvLabel6: TJvLabel;
+    Panel11: TPanel;
+    NombreInsumo: TDBText;
+    CodigoInsumo: TDBText;
+    lblGuion: TJvLabel;
+    dsInsumo: TDataSource;
     procedure btnBuscarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure btnNuevoClick(Sender: TObject);
     procedure pnlFirmasResize(Sender: TObject);
     procedure AgregarPartida1Click(Sender: TObject);
+    procedure IdInsumoEnter(Sender: TObject);
+    procedure IdInsumoExit(Sender: TObject);
+    procedure IdInsumoKeyPress(Sender: TObject; var Key: Char);
   private
-    { Private declarations }
+    TextoOriginal: String;
+    function AgregaPartida: LongInt;
   public
     { Public declarations }
   end;
@@ -90,12 +104,13 @@ implementation
 
 uses
   UTFrmBuscarEntradaGeneral, UTFrmEntradaGeneralDatos,
-  UTFrmEntradaGeneralPartidaDatos;
+  UTFrmEntradaGeneralPartidaDatos, UTFrmSelInsumo;
 
 procedure TFrmEntradaGeneral.AgregarPartida1Click(Sender: TObject);
 begin
   Application.CreateForm(TFrmEntradaGeneralPartidaDatos, FrmEntradaGeneralPartidaDatos);
   FrmEntradaGeneralPartidaDatos.dsEntradaGeneralDatosUpt.DataSet := cdEntradaGeneralDatosUpt;
+  FrmEntradaGeneralPartidaDatos.dsInsumo.DataSet := cdInsumo;
   cdEntradaGeneralDatosUpt.Append;
   cdEntradaGeneralDatosUpt.FieldByName('IdRegistroMovimientoGeneralPartida').AsInteger := 0;
   cdEntradaGeneralDatosUpt.FieldByName('IdRegistroMovimientoGeneral').AsInteger := cdEntradaGeneralUpt.FieldByName('IdRegistroMovimientoGeneral').AsInteger;
@@ -124,6 +139,8 @@ begin
         cdEntradaGeneralDatosUpt.Refresh
       else
         cdEntradaGeneralDatosUpt.Open;
+
+      IdInsumo.SetFocus;
     end;
   except
     on e:InteligentException do
@@ -181,7 +198,7 @@ end;
 procedure TFrmEntradaGeneral.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  EliminarConjunto([cdBuscarEntradaGeneral, cdProveedores, cdRecibio, cdAutorizo, cdEntradaGeneralDatosUpt, cdEntradaGeneralUpt]);
+  EliminarConjunto([cdBuscarEntradaGeneral, cdProveedores, cdInsumo, cdRecibio, cdAutorizo, cdEntradaGeneralDatosUpt, cdEntradaGeneralUpt]);
   Action := caFree;
 end;
 
@@ -209,6 +226,9 @@ begin
       if Not CrearConjunto(cdEntradaGeneralDatosUpt, 'cmt_registromovimientogeneralpartida', ccUpdate) then
         raise InteligentException.CreateByCode(5, ['Partidas de Entradas Generales']);
 
+      if Not CrearConjunto(cdInsumo, 'cmt_insumo_find', ccSelect) then
+        raise InteligentException.CreateByCode(5, ['Insumos']);
+
       cdRecibio.Open;
       if cdRecibio.RecordCount = 0 then
         raise InteligentException.CreateByCode(22, ['Usuarios (Recibió)']);
@@ -235,9 +255,108 @@ begin
   end;
 end;
 
+procedure TFrmEntradaGeneral.IdInsumoEnter(Sender: TObject);
+begin
+  IdInsumo.Text := TextoOriginal;
+end;
+
+procedure TFrmEntradaGeneral.IdInsumoExit(Sender: TObject);
+begin
+  TextoOriginal := IdInsumo.Text;
+  if dsInsumo.DataSet.Active and (dsInsumo.Dataset.RecordCount > 0) then
+    IdInsumo.Text := dsInsumo.DataSet.FieldByName('sNombreCorto').AsString + ' - ' + dsInsumo.DataSet.FieldByName('sRazonSocial').AsString;
+end;
+
+procedure TFrmEntradaGeneral.IdInsumoKeyPress(Sender: TObject; var Key: Char);
+var
+  Valor: String;
+  IdRegistroMovimientoGeneralPartida: LongInt;
+begin
+  if Key = #13 then
+  begin
+    try
+      // Verificar por código o parte del texto
+      if Trim(IdInsumo.Text) = '' then
+        Valor := '-1'
+      else
+        Valor := Trim(IdInsumo.Text);
+
+      if Not CargarDatosFiltrados(TClientDataSet(dsInsumo.DataSet), 'Texto', [Valor]) then
+        raise InteligentException.CreateByCode(6, ['Insumos', Valor, 'Texto']);
+      if dsInsumo.DataSet.Active then
+        dsInsumo.DataSet.Refresh
+      else
+        dsInsumo.DataSet.Open;
+
+      if (dsInsumo.DataSet.RecordCount > 1) or ((dsInsumo.DataSet.RecordCount = 1) and (dsInsumo.DataSet.FieldByName('Cta').AsInteger = 0)) then
+      begin
+        // Poner la ventana de selección de datos multiples
+        Application.CreateForm(TFrmSelInsumo, FrmSelInsumo);
+        try
+          FrmSelInsumo.Caption := 'Seleccionar Insumo';
+          FrmSelInsumo.tvInsumos.DataController.DataSource := dsInsumo;
+          FrmSelInsumo.tvInsumos2.DataController.DataSource := dsInsumo;
+          FrmSelInsumo.pTexto := IdInsumo.Text;
+          if FrmSelInsumo.ShowModal = mrOk then
+            IdRegistroMovimientoGeneralPartida := AgregaPartida
+          else
+            dsInsumo.DataSet.Close;
+        finally
+          FrmSelInsumo.Destroy;
+        end;
+      end;
+
+      if (dsInsumo.DataSet.RecordCount = 1) and (dsInsumo.DataSet.FieldByName('Cta').AsInteger = 1) then
+        IdRegistroMovimientoGeneralPartida := AgregaPartida;
+    except
+      on e:InteligentException do
+      begin
+        dsInsumo.DataSet.Close;
+        InteliDialog.ShowModal(e.Title, e.Message, mtError, [mbOk], 0);
+      end;
+
+      on e:Exception do
+      begin
+        dsInsumo.DataSet.Close;
+        InteliDialog.ShowModal(IDTituloError, IDLabelError + e.Message, mtError, [mbOk], 0);
+      end;
+    end;
+  end
+  else
+    dsInsumo.DataSet.Close;
+end;
+
 procedure TFrmEntradaGeneral.pnlFirmasResize(Sender: TObject);
 begin
   pnlElabora.Width := pnlFirmas.Width div 2;
+end;
+
+function TFrmEntradaGeneral.AgregaPartida: LongInt;
+var
+  Resultado: LongInt;
+begin
+  Resultado := -9;
+
+  cdEntradaGeneralDatosUpt.Append;
+  cdEntradaGeneralDatosUpt.FieldByName('IdRegistroMovimientoGeneralPartida').AsInteger := 0;
+  cdEntradaGeneralDatosUpt.FieldByName('IdRegistroMovimientoGeneral').AsInteger := cdEntradaGeneralUpt.FieldByName('IdregistroMovimientoGeneral').AsInteger;
+  cdEntradaGeneralDatosUpt.FieldByName('IdInsumo').AsInteger := cdInsumo.FieldByName('IdInsumo').AsInteger;
+  cdEntradaGeneralDatosUpt.FieldByName('Solicitado').AsFloat := 0.00;
+  cdEntradaGeneralDatosUpt.FieldByName('Registrado').AsFloat := 0.00;
+  cdEntradaGeneralDatosUpt.FieldByName('Surtido').AsFloat := 0.00;
+  cdEntradaGeneralDatosUpt.FieldByName('Precio').AsFloat := 0.00;
+  cdEntradaGeneralDatosUpt.Post;
+  cdEntradaGeneralDatosUpt.ApplyUpdates(-1);
+
+  Resultado := UltimoId;
+  try
+    // Tomar los datos como registro de Edición;
+    if Not CargarDatosFiltrados(cdEntradaGeneralDatosUpt, 'IdRegistroMovimientoGeneralPartida', [Resultado]) then
+      raise InteligentException.CreateByCode(6, ['Partidas de Entrada General', Resultado, 'IdRegistroMovimientoGeneralPartida']);
+    cdEntradaGeneralDatosUpt.Refresh;
+  finally
+    Result := Resultado;
+  end;
 end;
 
 end.

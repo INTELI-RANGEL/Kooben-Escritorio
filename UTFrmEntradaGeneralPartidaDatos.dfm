@@ -24,9 +24,6 @@ object FrmEntradaGeneralPartidaDatos: TFrmEntradaGeneralPartidaDatos
     Padding.Right = 6
     Padding.Bottom = 4
     TabOrder = 0
-    ExplicitLeft = 224
-    ExplicitTop = 144
-    ExplicitWidth = 185
     object btnCancelar: TAdvGlowButton
       Left = 670
       Top = 5
@@ -58,7 +55,6 @@ object FrmEntradaGeneralPartidaDatos: TFrmEntradaGeneralPartidaDatos
       Appearance.ColorMirrorCheckedTo = 16768988
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
-      ExplicitLeft = 516
     end
     object btnAceptar: TAdvGlowButton
       Left = 570
@@ -91,9 +87,6 @@ object FrmEntradaGeneralPartidaDatos: TFrmEntradaGeneralPartidaDatos
       Appearance.ColorMirrorCheckedTo = 16768988
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
-      ExplicitLeft = 280
-      ExplicitTop = 0
-      ExplicitHeight = 41
     end
   end
   object Panel2: TPanel
@@ -106,17 +99,16 @@ object FrmEntradaGeneralPartidaDatos: TFrmEntradaGeneralPartidaDatos
     Padding.Top = 10
     Padding.Right = 6
     TabOrder = 1
-    object Edit1: TEdit
+    object IdInsumo: TEdit
       Left = 56
       Top = 10
       Width = 715
       Height = 21
       Align = alClient
       TabOrder = 0
-      Text = 'IdInsumo'
-      ExplicitLeft = 59
-      ExplicitTop = 4
-      ExplicitHeight = 19
+      OnEnter = IdInsumoEnter
+      OnExit = IdInsumoExit
+      OnKeyPress = IdInsumoKeyPress
     end
     object Panel3: TPanel
       Left = 0
@@ -126,9 +118,6 @@ object FrmEntradaGeneralPartidaDatos: TFrmEntradaGeneralPartidaDatos
       Align = alLeft
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitLeft = 1
-      ExplicitTop = 1
-      ExplicitHeight = 39
       object JvLabel1: TJvLabel
         Left = 12
         Top = 0
@@ -151,38 +140,39 @@ object FrmEntradaGeneralPartidaDatos: TFrmEntradaGeneralPartidaDatos
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitTop = 29
-      object sNombreCorto: TDBText
-        Left = 56
+      object NombreInsumo: TDBText
+        Left = 202
         Top = 6
-        Width = 69
+        Width = 87
         Height = 13
         AutoSize = True
-        DataField = 'sNombreCorto'
+        DataField = 'NombreInsumo'
+        DataSource = dsInsumo
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
         Font.Height = -11
         Font.Name = 'Tahoma'
-        Font.Style = []
+        Font.Style = [fsBold]
         ParentFont = False
       end
-      object sRazonSocial: TDBText
-        Left = 200
+      object CodigoInsumo: TDBText
+        Left = 57
         Top = 6
-        Width = 62
+        Width = 81
         Height = 13
         AutoSize = True
-        DataField = 'sRazonSocial'
+        DataField = 'CodigoInsumo'
+        DataSource = dsInsumo
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
         Font.Height = -11
         Font.Name = 'Tahoma'
-        Font.Style = []
+        Font.Style = [fsBold]
         ParentFont = False
       end
       object lblGuion: TJvLabel
-        Left = 131
-        Top = 3
+        Left = 144
+        Top = 4
         Width = 9
         Height = 19
         Caption = '-'
@@ -203,6 +193,10 @@ object FrmEntradaGeneralPartidaDatos: TFrmEntradaGeneralPartidaDatos
   end
   object dsEntradaGeneralDatosUpt: TDataSource
     Left = 56
+    Top = 248
+  end
+  object dsInsumo: TDataSource
+    Left = 192
     Top = 248
   end
 end

@@ -22,7 +22,6 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
     Height = 129
     Align = alTop
     TabOrder = 0
-    ExplicitTop = 39
     object Panel3: TPanel
       Left = 1
       Top = 1
@@ -31,7 +30,6 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitWidth = 649
       object JvLabel2: TJvLabel
         Left = 3
         Top = 5
@@ -71,8 +69,6 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
       Enabled = False
       Padding.Right = 6
       TabOrder = 1
-      ExplicitWidth = 649
-      ExplicitHeight = 54
       object Panel5: TPanel
         Left = 0
         Top = 0
@@ -81,7 +77,6 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
         Align = alLeft
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitHeight = 102
       end
       object DomicilioEmpresa: TDBMemo
         Left = 65
@@ -104,7 +99,6 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
         ParentFont = False
         ReadOnly = True
         TabOrder = 1
-        ExplicitHeight = 102
       end
     end
     object Panel6: TPanel
@@ -115,8 +109,6 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitTop = 80
-      ExplicitWidth = 649
       object JvLabel3: TJvLabel
         Left = 20
         Top = 6
@@ -346,9 +338,6 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
     Padding.Right = 6
     Padding.Bottom = 4
     TabOrder = 2
-    ExplicitLeft = 1
-    ExplicitTop = 182
-    ExplicitWidth = 649
     object btnCancelar: TAdvGlowButton
       Left = 576
       Top = 5
@@ -381,7 +370,6 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
       Appearance.ColorMirrorCheckedTo = 16768988
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
-      ExplicitLeft = 542
     end
     object bntAceptar: TAdvGlowButton
       Left = 476
@@ -415,69 +403,173 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
       Appearance.ColorMirrorCheckedTo = 16768988
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
-      ExplicitLeft = 442
     end
   end
-  object cxGrid1: TcxGrid
+  object gridPartidas: TcxGrid
     Left = 0
-    Top = 170
+    Top = 229
     Width = 683
-    Height = 190
+    Height = 131
     Align = alClient
     PopupMenu = pmPartidas
     TabOrder = 3
-    ExplicitLeft = 224
-    ExplicitTop = 120
-    ExplicitWidth = 250
-    ExplicitHeight = 200
-    object cxGrid1DBTableView1: TcxGridDBTableView
+    ExplicitTop = 170
+    ExplicitHeight = 190
+    object tvPartidas: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
+      DataController.DataSource = dsEntradaGeneralDatosUpt
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
       DataController.Summary.SummaryGroups = <>
-      object cxGrid1DBTableView1Column1: TcxGridDBColumn
+      object tvPartidasColumn1: TcxGridDBColumn
       end
-      object cxGrid1DBTableView1Column2: TcxGridDBColumn
+      object tvPartidasColumn2: TcxGridDBColumn
       end
-      object cxGrid1DBTableView1Column3: TcxGridDBColumn
+      object tvPartidasColumn3: TcxGridDBColumn
       end
     end
-    object cxGrid1Level1: TcxGridLevel
-      GridView = cxGrid1DBTableView1
+    object gridPartidasLevel1: TcxGridLevel
+      GridView = tvPartidas
+    end
+  end
+  object Panel8: TPanel
+    Left = 0
+    Top = 170
+    Width = 683
+    Height = 59
+    Align = alTop
+    BevelOuter = bvNone
+    Padding.Top = 10
+    Padding.Right = 6
+    TabOrder = 4
+    ExplicitLeft = 8
+    ExplicitTop = 206
+    object IdInsumo: TEdit
+      Left = 56
+      Top = 10
+      Width = 621
+      Height = 21
+      Align = alClient
+      TabOrder = 0
+      OnEnter = IdInsumoEnter
+      OnExit = IdInsumoExit
+      OnKeyPress = IdInsumoKeyPress
+      ExplicitWidth = 715
+    end
+    object Panel10: TPanel
+      Left = 0
+      Top = 10
+      Width = 56
+      Height = 21
+      Align = alLeft
+      BevelOuter = bvNone
+      TabOrder = 1
+      object JvLabel6: TJvLabel
+        Left = 12
+        Top = 0
+        Width = 41
+        Height = 13
+        Caption = 'Insumo:'
+        Transparent = True
+        HotTrackFont.Charset = DEFAULT_CHARSET
+        HotTrackFont.Color = clWindowText
+        HotTrackFont.Height = -11
+        HotTrackFont.Name = 'Tahoma'
+        HotTrackFont.Style = []
+      end
+    end
+    object Panel11: TPanel
+      Left = 0
+      Top = 31
+      Width = 677
+      Height = 28
+      Align = alBottom
+      BevelOuter = bvNone
+      TabOrder = 2
+      ExplicitWidth = 771
+      object NombreInsumo: TDBText
+        Left = 202
+        Top = 6
+        Width = 87
+        Height = 13
+        AutoSize = True
+        DataField = 'NombreInsumo'
+        DataSource = dsEntradaGeneralDatosUpt
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clNavy
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object CodigoInsumo: TDBText
+        Left = 57
+        Top = 6
+        Width = 81
+        Height = 13
+        AutoSize = True
+        DataField = 'CodigoInsumo'
+        DataSource = dsEntradaGeneralDatosUpt
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clNavy
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object lblGuion: TJvLabel
+        Left = 144
+        Top = 4
+        Width = 9
+        Height = 19
+        Caption = '-'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clNavy
+        Font.Height = -16
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = True
+        HotTrackFont.Charset = DEFAULT_CHARSET
+        HotTrackFont.Color = clWindowText
+        HotTrackFont.Height = -16
+        HotTrackFont.Name = 'Tahoma'
+        HotTrackFont.Style = []
+      end
     end
   end
   object cdBuscarEntradaGeneral: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 264
-    Top = 176
+    Left = 320
+    Top = 72
   end
   object cdEntradaGeneralDatosUpt: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 56
-    Top = 264
+    Left = 72
+    Top = 304
   end
   object dsEntradaGeneralDatosUpt: TDataSource
     DataSet = cdEntradaGeneralDatosUpt
-    Left = 56
-    Top = 216
+    Left = 72
+    Top = 256
   end
   object dsEntradaGeneralUpt: TDataSource
     DataSet = cdEntradaGeneralUpt
-    Left = 168
-    Top = 200
+    Left = 200
+    Top = 72
   end
   object cdEntradaGeneralUpt: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 168
-    Top = 248
+    Left = 208
+    Top = 232
   end
   object cdRecibio: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 256
+    Left = 296
     Top = 264
   end
   object cdAutorizo: TClientDataSet
@@ -511,5 +603,16 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
     object EliminarPartida1: TMenuItem
       Caption = '&Eliminar Partida'
     end
+  end
+  object cdInsumo: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 592
+    Top = 120
+  end
+  object dsInsumo: TDataSource
+    DataSet = cdInsumo
+    Left = 424
+    Top = 120
   end
 end
