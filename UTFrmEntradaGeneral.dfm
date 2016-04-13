@@ -99,6 +99,7 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
         ParentFont = False
         ReadOnly = True
         TabOrder = 1
+        ExplicitLeft = 61
       end
     end
     object Panel6: TPanel

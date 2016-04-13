@@ -343,7 +343,7 @@ begin
   cdEntradaGeneralDatosUpt.FieldByName('IdInsumo').AsInteger := cdInsumo.FieldByName('IdInsumo').AsInteger;
   cdEntradaGeneralDatosUpt.FieldByName('Solicitado').AsFloat := 0.00;
   cdEntradaGeneralDatosUpt.FieldByName('Registrado').AsFloat := 0.00;
-  cdEntradaGeneralDatosUpt.FieldByName('Surtido').AsFloat := 0.00;
+  cdEntradaGeneralDatosUpt.FieldByName('Surtido').AsDateTime := Now;
   cdEntradaGeneralDatosUpt.FieldByName('Precio').AsFloat := 0.00;
   cdEntradaGeneralDatosUpt.Post;
   cdEntradaGeneralDatosUpt.ApplyUpdates(-1);
