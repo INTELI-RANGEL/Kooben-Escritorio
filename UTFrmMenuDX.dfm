@@ -1,0 +1,2963 @@
+object FrmMenuDX: TFrmMenuDX
+  Left = 0
+  Top = 0
+  Caption = 'cir'
+  ClientHeight = 538
+  ClientWidth = 1370
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object ProgressBar1: TProgressBar
+    Left = 48
+    Top = 184
+    Width = 577
+    Height = 17
+    TabOrder = 0
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 1370
+    Height = 538
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 1
+    object Panel2: TPanel
+      Left = 0
+      Top = 497
+      Width = 1370
+      Height = 41
+      Align = alBottom
+      Padding.Left = 4
+      Padding.Top = 4
+      Padding.Right = 4
+      Padding.Bottom = 4
+      TabOrder = 0
+      OnDragOver = cxGlobalDragOver
+      object Panel8: TPanel
+        Left = 5
+        Top = 5
+        Width = 470
+        Height = 31
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 0
+        object btnPrevisualizar: TAdvGlowButton
+          Left = 0
+          Top = 0
+          Width = 100
+          Height = 31
+          Align = alLeft
+          Caption = '&Visualizar'
+          ImageIndex = 20
+          Images = ClientModule1.PngImageList1
+          NotesFont.Charset = DEFAULT_CHARSET
+          NotesFont.Color = clWindowText
+          NotesFont.Height = -11
+          NotesFont.Name = 'Tahoma'
+          NotesFont.Style = []
+          TabOrder = 0
+          OnClick = btnPrevisualizarClick
+          Appearance.ColorChecked = 16111818
+          Appearance.ColorCheckedTo = 16367008
+          Appearance.ColorDisabled = 15921906
+          Appearance.ColorDisabledTo = 15921906
+          Appearance.ColorDown = 16111818
+          Appearance.ColorDownTo = 16367008
+          Appearance.ColorHot = 16117985
+          Appearance.ColorHotTo = 16372402
+          Appearance.ColorMirrorHot = 16107693
+          Appearance.ColorMirrorHotTo = 16775412
+          Appearance.ColorMirrorDown = 16102556
+          Appearance.ColorMirrorDownTo = 16768988
+          Appearance.ColorMirrorChecked = 16102556
+          Appearance.ColorMirrorCheckedTo = 16768988
+          Appearance.ColorMirrorDisabled = 11974326
+          Appearance.ColorMirrorDisabledTo = 15921906
+        end
+        object btnModComen: TAdvGlowButton
+          Left = 100
+          Top = 0
+          Width = 100
+          Height = 31
+          Align = alLeft
+          Caption = '&Modificar Comensales'
+          ImageIndex = 4
+          Images = ClientModule1.PngImageList1
+          NotesFont.Charset = DEFAULT_CHARSET
+          NotesFont.Color = clWindowText
+          NotesFont.Height = -11
+          NotesFont.Name = 'Tahoma'
+          NotesFont.Style = []
+          TabOrder = 1
+          OnClick = btnModComenClick
+          Appearance.ColorChecked = 16111818
+          Appearance.ColorCheckedTo = 16367008
+          Appearance.ColorDisabled = 15921906
+          Appearance.ColorDisabledTo = 15921906
+          Appearance.ColorDown = 16111818
+          Appearance.ColorDownTo = 16367008
+          Appearance.ColorHot = 16117985
+          Appearance.ColorHotTo = 16372402
+          Appearance.ColorMirrorHot = 16107693
+          Appearance.ColorMirrorHotTo = 16775412
+          Appearance.ColorMirrorDown = 16102556
+          Appearance.ColorMirrorDownTo = 16768988
+          Appearance.ColorMirrorChecked = 16102556
+          Appearance.ColorMirrorCheckedTo = 16768988
+          Appearance.ColorMirrorDisabled = 11974326
+          Appearance.ColorMirrorDisabledTo = 15921906
+        end
+        object btnGenerarPedido: TAdvGlowButton
+          Left = 200
+          Top = 0
+          Width = 100
+          Height = 31
+          Align = alLeft
+          Caption = '&Generar Pedido'
+          ImageIndex = 19
+          Images = ClientModule1.PngImageList1
+          NotesFont.Charset = DEFAULT_CHARSET
+          NotesFont.Color = clWindowText
+          NotesFont.Height = -11
+          NotesFont.Name = 'Tahoma'
+          NotesFont.Style = []
+          TabOrder = 2
+          OnClick = btnGenerarPedidoClick
+          Appearance.ColorChecked = 16111818
+          Appearance.ColorCheckedTo = 16367008
+          Appearance.ColorDisabled = 15921906
+          Appearance.ColorDisabledTo = 15921906
+          Appearance.ColorDown = 16111818
+          Appearance.ColorDownTo = 16367008
+          Appearance.ColorHot = 16117985
+          Appearance.ColorHotTo = 16372402
+          Appearance.ColorMirrorHot = 16107693
+          Appearance.ColorMirrorHotTo = 16775412
+          Appearance.ColorMirrorDown = 16102556
+          Appearance.ColorMirrorDownTo = 16768988
+          Appearance.ColorMirrorChecked = 16102556
+          Appearance.ColorMirrorCheckedTo = 16768988
+          Appearance.ColorMirrorDisabled = 11974326
+          Appearance.ColorMirrorDisabledTo = 15921906
+        end
+      end
+      object Panel10: TPanel
+        Left = 1141
+        Top = 5
+        Width = 224
+        Height = 31
+        Align = alRight
+        BevelOuter = bvNone
+        TabOrder = 1
+        object btnAceptar: TAdvGlowButton
+          Left = 24
+          Top = 0
+          Width = 100
+          Height = 31
+          Align = alRight
+          Caption = '&Grabar'
+          ImageIndex = 6
+          Images = ClientModule1.ImageList1
+          NotesFont.Charset = DEFAULT_CHARSET
+          NotesFont.Color = clWindowText
+          NotesFont.Height = -11
+          NotesFont.Name = 'Tahoma'
+          NotesFont.Style = []
+          TabOrder = 0
+          OnClick = btnAceptarClick
+          Appearance.ColorChecked = 16111818
+          Appearance.ColorCheckedTo = 16367008
+          Appearance.ColorDisabled = 15921906
+          Appearance.ColorDisabledTo = 15921906
+          Appearance.ColorDown = 16111818
+          Appearance.ColorDownTo = 16367008
+          Appearance.ColorHot = 16117985
+          Appearance.ColorHotTo = 16372402
+          Appearance.ColorMirrorHot = 16107693
+          Appearance.ColorMirrorHotTo = 16775412
+          Appearance.ColorMirrorDown = 16102556
+          Appearance.ColorMirrorDownTo = 16768988
+          Appearance.ColorMirrorChecked = 16102556
+          Appearance.ColorMirrorCheckedTo = 16768988
+          Appearance.ColorMirrorDisabled = 11974326
+          Appearance.ColorMirrorDisabledTo = 15921906
+        end
+        object btnCancelar: TAdvGlowButton
+          Left = 124
+          Top = 0
+          Width = 100
+          Height = 31
+          Align = alRight
+          Caption = '&Cerrar'
+          ImageIndex = 9
+          Images = ClientModule1.PngImageList1
+          NotesFont.Charset = DEFAULT_CHARSET
+          NotesFont.Color = clWindowText
+          NotesFont.Height = -11
+          NotesFont.Name = 'Tahoma'
+          NotesFont.Style = []
+          TabOrder = 1
+          OnClick = btnCancelarClick
+          Appearance.ColorChecked = 16111818
+          Appearance.ColorCheckedTo = 16367008
+          Appearance.ColorDisabled = 15921906
+          Appearance.ColorDisabledTo = 15921906
+          Appearance.ColorDown = 16111818
+          Appearance.ColorDownTo = 16367008
+          Appearance.ColorHot = 16117985
+          Appearance.ColorHotTo = 16372402
+          Appearance.ColorMirrorHot = 16107693
+          Appearance.ColorMirrorHotTo = 16775412
+          Appearance.ColorMirrorDown = 16102556
+          Appearance.ColorMirrorDownTo = 16768988
+          Appearance.ColorMirrorChecked = 16102556
+          Appearance.ColorMirrorCheckedTo = 16768988
+          Appearance.ColorMirrorDisabled = 11974326
+          Appearance.ColorMirrorDisabledTo = 15921906
+        end
+      end
+    end
+    object opMain: TAdvOfficePager
+      Left = 0
+      Top = 0
+      Width = 1370
+      Height = 497
+      Align = alClient
+      ActivePage = opMenu
+      ButtonSettings.CloseButtonPicture.Data = {
+        424DA20400000000000036040000280000000900000009000000010008000000
+        00006C000000C30E0000C30E00000001000000010000427B8400DEEFEF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0001000001010100000100
+        0000000202000100020200000000000202020002020200000000010002020202
+        0200010000000101000202020001010000000100020202020200010000000002
+        0202000202020000000000020200010002020000000001000001010100000100
+        0000}
+      ButtonSettings.PageListButtonPicture.Data = {
+        424DA20400000000000036040000280000000900000009000000010008000000
+        00006C000000C30E0000C30E00000001000000010000427B8400DEEFEF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0001010101000101010100
+        0000010101000200010101000000010100020202000101000000010002020202
+        0200010000000002020200020202000000000002020001000202000000000100
+        0001010100000100000001010101010101010100000001010101010101010100
+        0000}
+      ButtonSettings.ScrollButtonPrevPicture.Data = {
+        424DA20400000000000036040000280000000900000009000000010008000000
+        00006C000000C30E0000C30E00000001000000010000427B8400DEEFEF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0001010101000001010100
+        0000010101000202000101000000010100020202000101000000010002020200
+        0101010000000002020200010101010000000100020202000101010000000101
+        0002020200010100000001010100020200010100000001010101000001010100
+        0000}
+      ButtonSettings.ScrollButtonNextPicture.Data = {
+        424DA20400000000000036040000280000000900000009000000010008000000
+        00006C000000C30E0000C30E00000001000000010000427B8400DEEFEF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0001010000010101010100
+        0000010002020001010101000000010002020200010101000000010100020202
+        0001010000000101010002020200010000000101000202020001010000000100
+        0202020001010100000001000202000101010100000001010000010101010100
+        0000}
+      ButtonSettings.ScrollButtonFirstPicture.Data = {
+        424DC60400000000000036040000280000001000000009000000010008000000
+        000000000000C40E0000C40E00000001000000010000427B84FFDEEFEFFFFFFF
+        FFFF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF01010101010000010101
+        0101000001010101010100020200010101000202000101010100020202000101
+        0002020200010101000202020001010002020200010101000202020001010002
+        0202000101010101000202020001010002020200010101010100020202000101
+        0002020200010101010100020200010101000202000101010101010000010101
+        010100000101}
+      ButtonSettings.ScrollButtonLastPicture.Data = {
+        424DC60400000000000036040000280000001000000009000000010008000000
+        000000000000C40E0000C40E00000001000000010000427B84FFDEEFEFFFFFFF
+        FFFF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+        00FF000000FF000000FF000000FF000000FF000000FF01010000010101010100
+        0001010101010100020200010101000202000101010101000202020001010002
+        0202000101010101000202020001010002020200010101010100020202000101
+        0002020200010101000202020001010002020200010101000202020001010002
+        0202000101010100020200010101000202000101010101010000010101010100
+        000101010101}
+      ButtonSettings.ClosedListButtonPicture.Data = {
+        424DA20400000000000036040000280000000900000009000000010008000000
+        00006C000000C30E0000C30E00000001000000010000427B8400DEEFEF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0001010101000101010100
+        0000010101000200010101000000010100020202000101000000010002020202
+        0200010000000002020200020202000000000002020001000202000000000100
+        0001010100000100000001010101010101010100000001010101010101010100
+        0000}
+      ButtonSettings.CloseButtonHint = 'Close'
+      ButtonSettings.InsertButtonHint = 'Insert new page'
+      ButtonSettings.PageListButtonHint = 'Page List'
+      ButtonSettings.ScrollButtonNextHint = 'Next'
+      ButtonSettings.ScrollButtonPrevHint = 'Previous'
+      ButtonSettings.ScrollButtonFirstHint = 'First'
+      ButtonSettings.ScrollButtonLastHint = 'Last'
+      ButtonSettings.ClosedListButtonHint = 'Closed Pages'
+      ShowShortCutHints = False
+      OnChange = opMainChange
+      TabOrder = 1
+      NextPictureChanged = False
+      PrevPictureChanged = False
+      object opMenu: TAdvOfficePage
+        Left = 1
+        Top = 26
+        Width = 1368
+        Height = 469
+        Caption = 'Men'#250
+        PageAppearance.BorderColor = 14922381
+        PageAppearance.Color = 16445929
+        PageAppearance.ColorTo = 15587527
+        PageAppearance.ColorMirror = 15587527
+        PageAppearance.ColorMirrorTo = 16773863
+        PageAppearance.Gradient = ggVertical
+        PageAppearance.GradientMirror = ggVertical
+        TabAppearance.BorderColor = clNone
+        TabAppearance.BorderColorHot = 15383705
+        TabAppearance.BorderColorSelected = 14922381
+        TabAppearance.BorderColorSelectedHot = 6343929
+        TabAppearance.BorderColorDisabled = clNone
+        TabAppearance.BorderColorDown = clNone
+        TabAppearance.Color = clBtnFace
+        TabAppearance.ColorTo = clWhite
+        TabAppearance.ColorSelected = 16709360
+        TabAppearance.ColorSelectedTo = 16445929
+        TabAppearance.ColorDisabled = clWhite
+        TabAppearance.ColorDisabledTo = clSilver
+        TabAppearance.ColorHot = 14542308
+        TabAppearance.ColorHotTo = 16768709
+        TabAppearance.ColorMirror = clWhite
+        TabAppearance.ColorMirrorTo = clWhite
+        TabAppearance.ColorMirrorHot = 14016477
+        TabAppearance.ColorMirrorHotTo = 10736609
+        TabAppearance.ColorMirrorSelected = 16445929
+        TabAppearance.ColorMirrorSelectedTo = 16181984
+        TabAppearance.ColorMirrorDisabled = clWhite
+        TabAppearance.ColorMirrorDisabledTo = clSilver
+        TabAppearance.Font.Charset = DEFAULT_CHARSET
+        TabAppearance.Font.Color = clWindowText
+        TabAppearance.Font.Height = -11
+        TabAppearance.Font.Name = 'Tahoma'
+        TabAppearance.Font.Style = []
+        TabAppearance.Gradient = ggVertical
+        TabAppearance.GradientMirror = ggVertical
+        TabAppearance.GradientHot = ggRadial
+        TabAppearance.GradientMirrorHot = ggVertical
+        TabAppearance.GradientSelected = ggVertical
+        TabAppearance.GradientMirrorSelected = ggVertical
+        TabAppearance.GradientDisabled = ggVertical
+        TabAppearance.GradientMirrorDisabled = ggVertical
+        TabAppearance.TextColor = 9126421
+        TabAppearance.TextColorHot = 9126421
+        TabAppearance.TextColorSelected = 9126421
+        TabAppearance.TextColorDisabled = clGray
+        TabAppearance.ShadowColor = 15255470
+        TabAppearance.HighLightColor = 16775871
+        TabAppearance.HighLightColorHot = 16643309
+        TabAppearance.HighLightColorSelected = 6540536
+        TabAppearance.HighLightColorSelectedHot = 12451839
+        TabAppearance.HighLightColorDown = 16776144
+        TabAppearance.BackGround.Color = 16767935
+        TabAppearance.BackGround.ColorTo = clNone
+        TabAppearance.BackGround.Direction = gdHorizontal
+        object Splitter1: TSplitter
+          Left = 203
+          Top = 2
+          Height = 465
+          ExplicitLeft = 192
+          ExplicitTop = 160
+          ExplicitHeight = 100
+        end
+        object cxGrid1: TcxGrid
+          Left = 2
+          Top = 2
+          Width = 201
+          Height = 465
+          Align = alLeft
+          TabOrder = 0
+          RootLevelOptions.DetailTabsPosition = dtpTop
+          OnActiveTabChanged = cxGrid1ActiveTabChanged
+          object tvPartidas: TcxGridDBTableView
+            OnDragOver = cxGlobalDragOver
+            OnMouseDown = tvPartidasMouseDown
+            Navigator.Buttons.CustomButtons = <>
+            DataController.DataSource = dsReceta
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            Filtering.ColumnFilteredItemsList = True
+            FilterRow.InfoText = 'Has click para filtrar.'
+            FilterRow.Visible = True
+            FilterRow.ApplyChanges = fracImmediately
+            OptionsData.CancelOnExit = False
+            OptionsData.Deleting = False
+            OptionsData.DeletingConfirmation = False
+            OptionsData.Editing = False
+            OptionsData.Inserting = False
+            OptionsSelection.CellSelect = False
+            OptionsSelection.HideFocusRectOnExit = False
+            OptionsSelection.MultiSelect = True
+            OptionsView.GroupByBox = False
+            object colCodigoReceta: TcxGridDBColumn
+              Caption = 'Codigo Receta'
+              DataBinding.FieldName = 'CodigoReceta'
+            end
+            object colNombreReceta: TcxGridDBColumn
+              Caption = 'Nombre Receta'
+              DataBinding.FieldName = 'NombreReceta'
+            end
+            object colPersonasxReceta: TcxGridDBColumn
+              Caption = 'Personas Receta'
+              DataBinding.FieldName = 'PersonasxReceta'
+            end
+            object colPersonas: TcxGridDBColumn
+              Caption = 'Personas Registro'
+              DataBinding.FieldName = 'Personas'
+            end
+            object colFactorReceta: TcxGridDBColumn
+              Caption = 'Factor Receta'
+              DataBinding.FieldName = 'FactorReceta'
+            end
+          end
+          object tvRecientes: TcxGridDBTableView
+            OnDragOver = cxGlobalDragOver
+            OnMouseDown = tvPartidasMouseDown
+            Navigator.Buttons.CustomButtons = <>
+            DataController.DataSource = dsRecetasRecientes
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            FilterRow.InfoText = 'Has click para filtrar.'
+            FilterRow.Visible = True
+            FilterRow.ApplyChanges = fracImmediately
+            OptionsData.CancelOnExit = False
+            OptionsData.Deleting = False
+            OptionsData.DeletingConfirmation = False
+            OptionsData.Editing = False
+            OptionsData.Inserting = False
+            OptionsView.GroupByBox = False
+            object colCodigoRecetaReciente: TcxGridDBColumn
+              Caption = 'Codigo Receta'
+              DataBinding.FieldName = 'CodigoReceta'
+            end
+            object colNombreRecetaReciente: TcxGridDBColumn
+              Caption = 'Nombre Receta'
+              DataBinding.FieldName = 'NombreReceta'
+            end
+            object colPersonasRecientes: TcxGridDBColumn
+              Caption = 'Personas '
+              DataBinding.FieldName = 'Personas'
+            end
+          end
+          object tvBarras: TcxGridDBTableView
+            OnDragOver = cxGlobalDragOver
+            OnMouseDown = tvPartidasMouseDown
+            Navigator.Buttons.CustomButtons = <>
+            DataController.DataSource = dsBarra
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            object colCodigoBarra: TcxGridDBColumn
+              Caption = 'C'#243'digo'
+              DataBinding.FieldName = 'CodigoReceta'
+            end
+            object colNombreBarra: TcxGridDBColumn
+              Caption = 'Nombre Barra'
+              DataBinding.FieldName = 'NombreReceta'
+            end
+          end
+          object tvConsumibles: TcxGridDBTableView
+            OnDragOver = tvConsumiblesDragOver
+            OnMouseDown = tvConsumiblesMouseDown
+            Navigator.Buttons.CustomButtons = <>
+            DataController.DataSource = dsConsumibles
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            OptionsSelection.CellSelect = False
+            OptionsSelection.HideFocusRectOnExit = False
+            OptionsSelection.MultiSelect = True
+            object ConCodigoReceta: TcxGridDBColumn
+              Caption = 'C'#243'digo'
+              DataBinding.FieldName = 'CodigoReceta'
+            end
+          end
+          object glNivel1: TcxGridLevel
+            Caption = 'Recetas'
+            GridView = tvPartidas
+          end
+          object glNivel2: TcxGridLevel
+            Caption = 'Recientes'
+            GridView = tvRecientes
+          end
+          object glNivelBarras: TcxGridLevel
+            Caption = 'Barras'
+            GridView = tvBarras
+          end
+          object glNivelConsumibles: TcxGridLevel
+            Caption = 'Consumibles'
+            GridView = tvConsumibles
+          end
+        end
+        object Panel11: TPanel
+          Left = 206
+          Top = 2
+          Width = 1160
+          Height = 465
+          Align = alClient
+          BevelOuter = bvNone
+          TabOrder = 1
+          object gCalendario: TcxGrid
+            Left = 0
+            Top = 41
+            Width = 1160
+            Height = 424
+            Align = alClient
+            TabOrder = 0
+            object tvDatos: TcxGridDBTableView
+              OnDblClick = tvDatosDblClick
+              OnDragDrop = tvDatosDragDrop
+              OnDragOver = tvDatosDragOver
+              OnEndDrag = tvDatosEndDrag
+              OnMouseDown = tvDatosMouseDown
+              OnMouseMove = tvDatosMouseMove
+              OnMouseUp = tvDatosMouseUp
+              OnStartDrag = tvDatosStartDrag
+              Navigator.Buttons.CustomButtons = <>
+              OnCustomDrawCell = tvDatosCustomDrawCell
+              DataController.DataSource = dsMenuDatos
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsData.Deleting = False
+              OptionsData.Editing = False
+              OptionsData.Inserting = False
+              OptionsView.CellAutoHeight = True
+              OptionsView.GroupByBox = False
+              OnGroupRowCollapsed = tvDatosGroupRowCollapsed
+            end
+            object gCalendarioLevel1: TcxGridLevel
+              GridView = tvDatos
+            end
+          end
+          object Panel13: TPanel
+            Left = 0
+            Top = 0
+            Width = 1160
+            Height = 41
+            Align = alTop
+            BevelOuter = bvNone
+            TabOrder = 1
+          end
+        end
+      end
+      object opIngredientes: TAdvOfficePage
+        Left = 1
+        Top = 26
+        Width = 1368
+        Height = 469
+        Caption = 'Ingredientes'
+        PageAppearance.BorderColor = 14922381
+        PageAppearance.Color = 16445929
+        PageAppearance.ColorTo = 15587527
+        PageAppearance.ColorMirror = 15587527
+        PageAppearance.ColorMirrorTo = 16773863
+        PageAppearance.Gradient = ggVertical
+        PageAppearance.GradientMirror = ggVertical
+        TabAppearance.BorderColor = clNone
+        TabAppearance.BorderColorHot = 15383705
+        TabAppearance.BorderColorSelected = 14922381
+        TabAppearance.BorderColorSelectedHot = 6343929
+        TabAppearance.BorderColorDisabled = clNone
+        TabAppearance.BorderColorDown = clNone
+        TabAppearance.Color = clBtnFace
+        TabAppearance.ColorTo = clWhite
+        TabAppearance.ColorSelected = 16709360
+        TabAppearance.ColorSelectedTo = 16445929
+        TabAppearance.ColorDisabled = clWhite
+        TabAppearance.ColorDisabledTo = clSilver
+        TabAppearance.ColorHot = 14542308
+        TabAppearance.ColorHotTo = 16768709
+        TabAppearance.ColorMirror = clWhite
+        TabAppearance.ColorMirrorTo = clWhite
+        TabAppearance.ColorMirrorHot = 14016477
+        TabAppearance.ColorMirrorHotTo = 10736609
+        TabAppearance.ColorMirrorSelected = 16445929
+        TabAppearance.ColorMirrorSelectedTo = 16181984
+        TabAppearance.ColorMirrorDisabled = clWhite
+        TabAppearance.ColorMirrorDisabledTo = clSilver
+        TabAppearance.Font.Charset = DEFAULT_CHARSET
+        TabAppearance.Font.Color = clWindowText
+        TabAppearance.Font.Height = -11
+        TabAppearance.Font.Name = 'Tahoma'
+        TabAppearance.Font.Style = []
+        TabAppearance.Gradient = ggVertical
+        TabAppearance.GradientMirror = ggVertical
+        TabAppearance.GradientHot = ggRadial
+        TabAppearance.GradientMirrorHot = ggVertical
+        TabAppearance.GradientSelected = ggVertical
+        TabAppearance.GradientMirrorSelected = ggVertical
+        TabAppearance.GradientDisabled = ggVertical
+        TabAppearance.GradientMirrorDisabled = ggVertical
+        TabAppearance.TextColor = 9126421
+        TabAppearance.TextColorHot = 9126421
+        TabAppearance.TextColorSelected = 9126421
+        TabAppearance.TextColorDisabled = clGray
+        TabAppearance.ShadowColor = 15255470
+        TabAppearance.HighLightColor = 16775871
+        TabAppearance.HighLightColorHot = 16643309
+        TabAppearance.HighLightColorSelected = 6540536
+        TabAppearance.HighLightColorSelectedHot = 12451839
+        TabAppearance.HighLightColorDown = 16776144
+        TabAppearance.BackGround.Color = 16767935
+        TabAppearance.BackGround.ColorTo = clNone
+        TabAppearance.BackGround.Direction = gdHorizontal
+        object cxGrid2: TcxGrid
+          Left = 2
+          Top = 2
+          Width = 1364
+          Height = 465
+          Align = alClient
+          TabOrder = 0
+          object tvExplosion: TcxGridDBTableView
+            Navigator.Buttons.CustomButtons = <>
+            DataController.DataSource = dsExplosion
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            OptionsSelection.CellSelect = False
+            OptionsView.GroupByBox = False
+            object NombreTipoInsumo: TcxGridDBColumn
+              Caption = 'TipoInsumo'
+              DataBinding.FieldName = 'NombreTipoInsumo'
+              Visible = False
+              GroupIndex = 0
+            end
+            object CodigoInsumo: TcxGridDBColumn
+              Caption = 'C'#243'digo'
+              DataBinding.FieldName = 'CodigoInsumo'
+              Width = 80
+            end
+            object NombreInsumo: TcxGridDBColumn
+              Caption = 'Nombre'
+              DataBinding.FieldName = 'NombreInsumo'
+              Width = 200
+            end
+            object DescripcionInsumo: TcxGridDBColumn
+              Caption = 'Descripci'#243'n'
+              DataBinding.FieldName = 'DescripcionInsumo'
+              Width = 300
+            end
+            object Cantidad: TcxGridDBColumn
+              DataBinding.FieldName = 'Cantidad'
+              HeaderAlignmentHorz = taRightJustify
+              Width = 80
+            end
+            object sNombre: TcxGridDBColumn
+              Caption = 'U.M.'
+              DataBinding.FieldName = 'sNombre'
+              HeaderAlignmentHorz = taCenter
+              Options.Editing = False
+              Options.FilteringAddValueItems = False
+              Options.AutoWidthSizable = False
+              Width = 60
+            end
+          end
+          object cxGrid2Level1: TcxGridLevel
+            GridView = tvExplosion
+          end
+        end
+      end
+      object opIngredientesReceta: TAdvOfficePage
+        Left = 1
+        Top = 26
+        Width = 1368
+        Height = 469
+        Caption = 'Ingredientes por Receta'
+        PageAppearance.BorderColor = 14922381
+        PageAppearance.Color = 16445929
+        PageAppearance.ColorTo = 15587527
+        PageAppearance.ColorMirror = 15587527
+        PageAppearance.ColorMirrorTo = 16773863
+        PageAppearance.Gradient = ggVertical
+        PageAppearance.GradientMirror = ggVertical
+        TabAppearance.BorderColor = clNone
+        TabAppearance.BorderColorHot = 15383705
+        TabAppearance.BorderColorSelected = 14922381
+        TabAppearance.BorderColorSelectedHot = 6343929
+        TabAppearance.BorderColorDisabled = clNone
+        TabAppearance.BorderColorDown = clNone
+        TabAppearance.Color = clBtnFace
+        TabAppearance.ColorTo = clWhite
+        TabAppearance.ColorSelected = 16709360
+        TabAppearance.ColorSelectedTo = 16445929
+        TabAppearance.ColorDisabled = clWhite
+        TabAppearance.ColorDisabledTo = clSilver
+        TabAppearance.ColorHot = 14542308
+        TabAppearance.ColorHotTo = 16768709
+        TabAppearance.ColorMirror = clWhite
+        TabAppearance.ColorMirrorTo = clWhite
+        TabAppearance.ColorMirrorHot = 14016477
+        TabAppearance.ColorMirrorHotTo = 10736609
+        TabAppearance.ColorMirrorSelected = 16445929
+        TabAppearance.ColorMirrorSelectedTo = 16181984
+        TabAppearance.ColorMirrorDisabled = clWhite
+        TabAppearance.ColorMirrorDisabledTo = clSilver
+        TabAppearance.Font.Charset = DEFAULT_CHARSET
+        TabAppearance.Font.Color = clWindowText
+        TabAppearance.Font.Height = -11
+        TabAppearance.Font.Name = 'Tahoma'
+        TabAppearance.Font.Style = []
+        TabAppearance.Gradient = ggVertical
+        TabAppearance.GradientMirror = ggVertical
+        TabAppearance.GradientHot = ggRadial
+        TabAppearance.GradientMirrorHot = ggVertical
+        TabAppearance.GradientSelected = ggVertical
+        TabAppearance.GradientMirrorSelected = ggVertical
+        TabAppearance.GradientDisabled = ggVertical
+        TabAppearance.GradientMirrorDisabled = ggVertical
+        TabAppearance.TextColor = 9126421
+        TabAppearance.TextColorHot = 9126421
+        TabAppearance.TextColorSelected = 9126421
+        TabAppearance.TextColorDisabled = clGray
+        TabAppearance.ShadowColor = 15255470
+        TabAppearance.HighLightColor = 16775871
+        TabAppearance.HighLightColorHot = 16643309
+        TabAppearance.HighLightColorSelected = 6540536
+        TabAppearance.HighLightColorSelectedHot = 12451839
+        TabAppearance.HighLightColorDown = 16776144
+        TabAppearance.BackGround.Color = 16767935
+        TabAppearance.BackGround.ColorTo = clNone
+        TabAppearance.BackGround.Direction = gdHorizontal
+        object gridIngredientesxReceta: TcxGrid
+          Left = 2
+          Top = 2
+          Width = 1364
+          Height = 465
+          Align = alClient
+          TabOrder = 0
+          object tvIngredientesxReceta: TcxGridDBTableView
+            Navigator.Buttons.CustomButtons = <>
+            DataController.DataSource = dsExplosionReceta
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            OptionsView.GroupByBox = False
+            OptionsView.GroupRowHeight = 35
+            object rNombreTipoInsumo: TcxGridDBColumn
+              Caption = 'Tipo Insumo'
+              DataBinding.FieldName = 'NombreTipoInsumo'
+              Visible = False
+              GroupIndex = 0
+            end
+            object rNombreInsumo: TcxGridDBColumn
+              Caption = 'Nombre'
+              DataBinding.FieldName = 'NombreInsumo'
+              Visible = False
+              GroupIndex = 1
+            end
+            object rCodigoReceta: TcxGridDBColumn
+              Caption = 'C'#243'digo'
+              DataBinding.FieldName = 'CodigoReceta'
+              Width = 80
+            end
+            object rNombreReceta: TcxGridDBColumn
+              Caption = 'Receta'
+              DataBinding.FieldName = 'NombreReceta'
+              Width = 200
+            end
+            object rTituloPeriodoConsumo: TcxGridDBColumn
+              Caption = 'Periodo Consumo'
+              DataBinding.FieldName = 'TituloPeriodoConsumo'
+              Width = 140
+            end
+            object rFecha: TcxGridDBColumn
+              DataBinding.FieldName = 'Fecha'
+              Width = 70
+            end
+            object rCantidad: TcxGridDBColumn
+              DataBinding.FieldName = 'Cantidad'
+              Width = 70
+            end
+            object rsNombre: TcxGridDBColumn
+              Caption = 'U.M.'
+              DataBinding.FieldName = 'sNombre'
+              Width = 70
+            end
+          end
+          object gridIngredientesxRecetaLevel1: TcxGridLevel
+            GridView = tvIngredientesxReceta
+          end
+        end
+      end
+    end
+  end
+  object Panel3: TPanel
+    Left = 644
+    Top = -19
+    Width = 385
+    Height = 297
+    TabOrder = 2
+    Visible = False
+    object lvPeriodosConsumo: TListView
+      Left = 1
+      Top = 42
+      Width = 383
+      Height = 213
+      Align = alClient
+      Columns = <>
+      TabOrder = 0
+      ViewStyle = vsList
+    end
+    object Panel4: TPanel
+      Left = 1
+      Top = 255
+      Width = 383
+      Height = 41
+      Align = alBottom
+      Padding.Top = 4
+      Padding.Right = 6
+      Padding.Bottom = 4
+      TabOrder = 1
+      object btnSubAceptar: TAdvGlowButton
+        Left = 276
+        Top = 5
+        Width = 100
+        Height = 31
+        Align = alRight
+        Caption = '&Aceptar'
+        Default = True
+        NotesFont.Charset = DEFAULT_CHARSET
+        NotesFont.Color = clWindowText
+        NotesFont.Height = -11
+        NotesFont.Name = 'Tahoma'
+        NotesFont.Style = []
+        TabOrder = 0
+        TabStop = True
+        OnClick = btnSubAceptarClick
+        Appearance.ColorChecked = 16111818
+        Appearance.ColorCheckedTo = 16367008
+        Appearance.ColorDisabled = 15921906
+        Appearance.ColorDisabledTo = 15921906
+        Appearance.ColorDown = 16111818
+        Appearance.ColorDownTo = 16367008
+        Appearance.ColorHot = 16117985
+        Appearance.ColorHotTo = 16372402
+        Appearance.ColorMirrorHot = 16107693
+        Appearance.ColorMirrorHotTo = 16775412
+        Appearance.ColorMirrorDown = 16102556
+        Appearance.ColorMirrorDownTo = 16768988
+        Appearance.ColorMirrorChecked = 16102556
+        Appearance.ColorMirrorCheckedTo = 16768988
+        Appearance.ColorMirrorDisabled = 11974326
+        Appearance.ColorMirrorDisabledTo = 15921906
+      end
+    end
+    object Panel5: TPanel
+      Left = 1
+      Top = 1
+      Width = 383
+      Height = 41
+      Align = alTop
+      TabOrder = 2
+      object JvLabel1: TJvLabel
+        Left = 16
+        Top = 16
+        Width = 35
+        Height = 13
+        Caption = 'Fecha:'
+        Transparent = True
+        HotTrackFont.Charset = DEFAULT_CHARSET
+        HotTrackFont.Color = clWindowText
+        HotTrackFont.Height = -11
+        HotTrackFont.Name = 'Tahoma'
+        HotTrackFont.Style = []
+      end
+      object cbFechas: TComboBox
+        Left = 57
+        Top = 14
+        Width = 256
+        Height = 21
+        Style = csDropDownList
+        TabOrder = 0
+        OnChange = cbFechasChange
+      end
+    end
+  end
+  object pnlQuitar: TPanel
+    Left = 180
+    Top = 408
+    Width = 81
+    Height = 97
+    TabOrder = 3
+    Visible = False
+    object imgQuitar1: TImage
+      Left = 1
+      Top = 1
+      Width = 79
+      Height = 95
+      Align = alClient
+      Picture.Data = {
+        0D546478536D617274496D616765FFD8FFE000104A4649460001010100000000
+        0000FFDB0043000906071313111314131416131517171F18171718181A1A1D1B
+        222018171A1E171D1A181E2A202426251C1A1C223224252D2C2E302F1D1F3338
+        3F2D37282D2E2BFFDB0043010A0A0A0E0D0E1610101A37241E1D2C2C2C2C342C
+        2C2C2D342C2C2C2C2C2C2C2C2C2E2C2C2C2C2C2C2C2C2C2C2C372C2C2C2C2C2C
+        372C2B2C2C2C372B2B372C37FFC00011080078006103012200021101031101FF
+        C4001C0000020301010101000000000000000000000604050703080201FFC400
+        4E1000010302020507050B080807000000000102030400110512062131415107
+        1361718191A1222332B2C11433424352627292A2B1D11524355374A3C2F01683
+        93B3C3D2E1F117253454636473FFC40017010101010100000000000000000000
+        000000010203FFC4001C11010101010003010100000000000000000001110212
+        31412151FFDA000C03010002110311003F00DC68A28A028AE136636CB6A71D5A
+        5B4245D4A51B01DA6B32C6395A2EA94D6171CC950D45E5DD2DA7A40DA7C3B683
+        54AE0ECC6D2485388491B41501F79AC326E13366DCCF9AE149F8964E56FA8EE3
+        DA2B9C8E4E632185BA961C72C8528594495581D400E915719F2867D24C55D993
+        A421992EB71E3A50DDD9732E7708CEA55C0D760427B0D2DB1A54E36A5FE7F88B
+        696D4505C5B4DBED122D7B94A411DB5CF4271D851E008EE2F997EF9941C494DC
+        937B794376CBF452D6191DF5175D8D25C64A9E5D803742866D46DB2FD3AEAC4D
+        69B8269E4C57BDBB0B1048D6424AA3B96EA3993B69E34534A513438036E32EB4
+        4071A72D74DC5C10A492082378AF3DAF089E9755214D25F59B1CC93917A85BC9
+        B5B76DE34EDC90E97308952D1295EE775E5232A5CD57CA808B663AAFD752C595
+        B6D140A2A3428A28A028AA0D34D2C670E8FCF3D751272B6DA7D25ABE48F69DD5
+        90E278DE2B8983CE3BEE28E76B6D6A36E0A5EDFE7655C4B712794FC6512F1866
+        12DE063369054849D4A77CA39567AAC3FDE99F0A5C1429B615E65C23C849F250
+        BE84EEBF46DAC7F0EC323A5C7E13EA00A9414C3E371B1005FF009DF4C6EE32F4
+        764C5C4D8F74C72404C84804A770241DBDE0F5D562FEB64720308F28A00B71D9
+        DB50BF2D3613953E6CEEB0053E159F60F8B48437F99C94CB66DAD974DC81F252
+        BF493DA0D746748DBCD95E42E3ABFF0027A3D8B1ABBED5595D4F425C273A52A0
+        76DC5C1EC351E3416DBF41094750B5764281170410778AFD26AA3E926C6E2B8E
+        3787B335191F6D2557D4B02CAEF15F79C711DF5FA0D0566098ECAC0DF44696B2
+        FC051CA874DC966FB074A775BBAD6B56CCC3C95A52B428292A01495037041170
+        41EAACFE7C46D7179B7941C4AC04E4501E48DB7E26DD94BBC9FE36BC325A70F7
+        D65715E27DCCE1F8B55FDECF41BF7F5EAC58EBCF4D9A8A28A8D3CBFA69894891
+        88C892E92B115F2DF33AFCDB60901607036B93C6DBAD572DE2A8928191432DBD
+        106D6EB1B6A772E386AE3E231E53166B9F4142D7F054A49D8BDDAD25235EDB1E
+        159FCE4A01FCE23B9157FAD63D13D25075771AD4AC7534C988C0616828520745
+        B68E9BD408389CB88327FD531F215E901C2FAFDB55F194E1F7A98CBBF35CF36A
+        FB5F8D4B2B98917314B838B6ACD7EACB7A2662536D61B29599971505FDDF075F
+        55C0EE22AD54CE26C8DAD4E6FA75288FE7AE95663E15EFD0DE078941BF7EAA86
+        C4A759D718CA6BE6E5BA7BAF6A18706B4A9A6BC97E33D10F45CA7B350FBAAD62
+        E99C6F812CA7E924D2A41D30C46D65472F8FFE4AF1B0A95271C6AD9A5E16503E
+        504FE2916ED34D3C4DDFD220E0F226C7ED420FAC6AC20094A429489D0EC36DD8
+        B91F55D02B33337055EB2CBADF55C7AAAB57CE6C1783DF6E9A61ED721D493CE4
+        C8E3FABB1F174D2DE996391E4A1A8CCAC38F29D404AC6A0937B66BF6EEAAEC39
+        B84E92989874994BBDBE114EBE24136ED15A1683F272FAE5352A632DC5699F29
+        A8E8B1255B8AC8E1B7BA9AB39697F939DFD67DF455CD1535B52699E108950643
+        2B4855DB514DC5ECA09252A1D20D79CF465138454B8CE492D1B82D2F6A6C6D61
+        7FC6BD4F586F2751831F952211EF0F1C99B59CB7B24F726FDB48CF5E891266C2
+        52B2CB88B8ABE205C75EE3DD7AFD6B0480B376667367E9149F1AD030899EE92F
+        A1494F9B7B9AB1D608B2485104749EEAACD27C1A1B2B6D2E464152DD4B472F93
+        6CC6D9B570BD5634BED68EB9F17882ADD0E83FC55D3FA3D27FEFD7FDA0FF0035
+        5D2F40A093EF64752D43DB50868861E6488E1A59596F9CF4D56B6609B6DDB735
+        4D57B9A38E7C6E22A1D6E81FC5509CC170D41BBD2CBA7780ACC7C29E7FE16464
+        A4ACB26C05CDDC27DB51307C1E1194EC74474254DE4054A17073A42B7F0BD4C5
+        D29469F0C2B2C286B92B1BD42C074EF3DF6AEF8DE1335C8AE3D232476502E1B4
+        245C9DC09EBE9A7DD2A7BDC2D28A5295655210123C917591C070B9ECA83CA74C
+        0BC31965BF4DC712DE4E2490ABF691E3425FD685C9361C18C221802C56DF38AD
+        5624AC955CF6114DD51B0C8C1A65A6D22C1084A00E00240B78549ACBA0A28A28
+        0AC4B124731A413503573ED21CDBB7656DB58F72A6DF358D61CF6A01E694D1E3
+        749BEBFAE91D956275E955A18BC93E620EC2A6DDFB4A49AF9E520D96D9DE9909
+        3FBD4D72C3FC8C588FD630B4F6A55987AD5FBCA2B999A2B3B752BB968AD39FD8
+        7E411EE577779CB75ECA4583AF185FEC8AF5D34D28512DAB5EAF24DBAC52C619
+        FA655FB2ABD74D121C1724AA3A5247A2AB03D875526E066F89CE3C1C09FAA940
+        A6C6D40A5B4FCF24F85286891BCB96B3BE42AFD8523D9412F949592A8EDDEFCE
+        492A3D484AAD51715643B886151F6DDE0B23E88BFB2BA696AF9CC4A2A3E4B6B7
+        2DF494123C09A95A2ED73DA48D0D568D194B20F150CBFE224F6546A7B8DB28A2
+        8ACBA0A28A280ACBF97A62D162481F112524EADC7A776B02B50A4DE57A073D83
+        CB1624A101C16F98A0AFB81A0CC71358462309CDC5DC9FDA20A478DABB69F377
+        8CE74215E163ECAA7C6A4668B11F1F079A5FD5526F4C7A68DE68EE74A55E2935
+        B71FE2DA239E691F39083F64550E1FFA657FB2ABD74D59E04E6689195C5941FB
+        35590BF4C2FF006457AC9A06C8ECA72A159866CC414EF1AB6D26E8326E1E57CA
+        79C3FBC50F653A0680652BDE4AFB82694793745E3209F84A2AEF5295EDA1F1F0
+        E1E73187F834DB6D8FAB9CF8AAD57FC8EB59F11C55FDD990D0ECDBAFB052E68E
+        B99A44F7CEC2F2BB9361ECA73E4158FCC1E7B5F9F90B56BE8B0BFDFDD52B7CFB
+        6974514565B1451450150F18861E8EF3475871B523EB248F6D4CA283CC302EEE
+        0EA4FC26F3A0F45BCA03EEA7098BE760A5635E6692AEF48155286131274F8322
+        CD879D53AC93A9252BBDADE03B0D5DE158729B88DB0B214A4B796E366FB6DE8B
+        56E3974E7A20E668114F06F2F7123D951E10FF009CABA619F5C57EE83EA84849
+        DA85BA9EE7567DB5D230B62E0FFE9ABFBC14F89F699313772412AF92874F724D
+        2E682A7242649D566CABC0FE15374AE60186BE9DE1A705FE90B7B6A3330D4610
+        690425459C809DC4A2D7F1A1F0B986BC5BC21E78EA2B0B57D651B7DF5B2725B0
+        398C22122C412D6737E2B25C3E2AAC6B49D2046630C67CE3EB2DA0213AF6106E
+        786B17EAB9AF43E1D1836D36D8D41084A7B80159AE9CA45145151A1451450145
+        145051696E89C5C41AE6E422F6F4163529078A4FB36566B2740B1687AA2BCDCD
+        646C439E4AC0E17BDBC7BA8A28966AB178ACF6753D853E9D7B5A0563A4D929A8
+        C31C739EE7BF264DE73216EFCD2FD126E45ADC68A2B5A9E31DCE2D35E0A4B785
+        495EAD61C4940FB49D753E368A6372EC9573501B3B4DF32C0E000FF4A28A9693
+        987DD06E4F62E1D75A6EF4850399F5FA46FB401B878F1A70A28A8D0A28A280A2
+        8A283FFFD9}
+      Stretch = True
+      Visible = False
+      ExplicitLeft = 8
+      ExplicitTop = -8
+      ExplicitWidth = 105
+      ExplicitHeight = 105
+    end
+    object imgQuitar2: TImage
+      Left = 1
+      Top = 1
+      Width = 79
+      Height = 95
+      Align = alClient
+      Picture.Data = {
+        0D546478536D617274496D616765FFD8FFE000104A4649460001010100000000
+        0000FFDB0043000906071413111514131416161515141617181816171C1A1A15
+        17171C181A181417141B1E2820181C251C171721312125292C2E2E2E171F3338
+        332C37282D2E2CFFDB0043010A0A0A0E0D0E1B100F1B2D241C1C2C2C2C2C302C
+        2C2B2C2C2C2C2C2D2C2C2C2C2C2C2C2C2C2C2C2C2C2C2C2C2C2C2C2C2C2C2C2C
+        2C37372B37372C2C2B2B372BFFC000110800AC009803012200021101031101FF
+        C4001C0001000202030100000000000000000000000506040702030801FFC400
+        4A100001030202050706090A0505000000000100020304110512060721314113
+        5161718191A114223252B1C123425362727392A2D1081725354382C2D2E1F015
+        333463B22444545593FFC4001701010101010000000000000000000000000001
+        0203FFC4001E1101010002020203000000000000000000000111120231415121
+        3261FFDA000C03010002110311003F00DE2888808888088BE136DE83EA287ACD
+        2AA2881325540DB6FF00846922DD00DD44CFACCC2DA2FE5911FA373EC082DC8A
+        8326B870906DE50E3D514847786AE3F9E4C27E5DFF00FC64FE541B0115063D71
+        612481E50E17E78A403BF2A908359B85BBFEF231F4AE3DA105B914351696514A
+        2F1D5C0EBFFB8D07B89BA986B81171B41E2107D444404444044440445F1CE001
+        24D80DA49E039C9407380173B00DE4F05AEB4B35C5434976444D54A2FE6C6406
+        02383A5371CFE8872A0EB2F4DE4C4AA4D151C96A56EC7BDBBA523793CEC1B80E
+        2B8E07A2D0C0D0F76CF9CEDAE7757ABD8AC9966F2C15BAC3C6AAFF00CA0CA661
+        B5B2B466B75BAE4F7284AED14ABA8B3EAEAA47DAF6CE5CEB5F786E770CBD4070
+        563AAC7991F990B2EEEF3DBCCA22796A65373B3B56B0C6F51ACD12A766D7B9C7
+        E9380F600B97F84D137E2DFB5C565B707276B9FDC2FE2572761F137D27F7903C
+        02613358261A41BA007B3FAAEB7329B85333B4FF0045261B4E3883DE57DE5E9C
+        701F64AB84CD43BA283853C7E2BA24A184FEC5A3A8B87BD4F1AC83D4FBABADD5
+        70FC99EE1F8A617355B9B0788EE05BD449F6DD7DA1A79E9DC5D4D532444DAF91
+        CE65EDB812D3B7B55879680FC470FEFAD7C3E4FF003877A9886D599866B4B16A
+        6FF31CCA8683B73B45FAB336C56C9D14D72D15510C9AF4B21B6C9082C24DF636
+        516E8F480DEB54F2501F8EE1FDF52C6A9C1A9E5D9CA58F3DB6A9AB539FB7A998
+        F040208208B8236820EE20AE4BCF1AB6D33970BA91475725E91FE8B8EE889DCF
+        07834EE2382F42C6F0E008208201041B820EE20F10B2E8E488880B59EBFF0014
+        961C3036236134C23908F532B9D97A2E5A3FB2B6628BD26C0A3ADA5929A51E6C
+        8DB5F8B5C36B5E3A41B141E5934CEC3E58661F090CD1B4E6037DC02E6F583DEA
+        EB1E242A0091AE0E079B8745B8154BA0C7FC9B94A4A860A8A76C8E6D8EC2DCA4
+        8CCCBEEE7B1EF0B269F00648ECF87558CC7F6521C8F1D17F8FDCB52B9D9ED6C6
+        B401B2C02E896A40DC7C155EAF11ADA716A981D61F188206DDC338BB4AF94FA4
+        D11F4839A7BC778FC15CA6B5392B8BB7B9D6E6BDBD8BA853B79974458AC2EDD2
+        37B4DBDAB2592B4EE703D44144C3E860E61DCB92220222E0F95A37903AC80839
+        A2C3971485BBE46F61BFB160D4692C43D10E71EAB0EF29931530E603BC058B57
+        131ADCC4868E73B944C18955549B53C24F0240CD6EB71B00B25DA3CD61CF88D4
+        869F9261CD21E8D9E8772995D7DB0B0EA0757CC466C90C2D25CF22E18DDBB6DC
+        E6DBBA0ADBDF939E2F3CB4F510484BA281D1F244FC5E533E68C1E206506DC337
+        485A831AD256BA2F27A58F9082FB76DDF27D33EEDBD6BD45A17A31161D48CA78
+        B6DBCE7BF8C921B6679EE000E0000A57489D44451444441E75D69E8A3F0FAE7D
+        5B63E568EA5C5CF16BE47BCDDCD7137CB771BB4F4DB82AEC7A294F56DCF472D8
+        DAE6377A4DE82DBDC758242F41EB428396C26AD99731111781D2CF381ECB2F3A
+        68E6889A9A713C13164AD7B9A41D82E3682D78DAD36239F7F05633592D8714A5
+        F46473C0F8A4E60473657F0EA58951A44DBFFD5D044E278806271E737B11E0A6
+        3FC4B15A5169A2E5E31C48CDB07CE6EDB7490BB6974E68E4D92C2F889DE5A733
+        7C2C7C1567E55DE5B0B92D78EA613C72B9AF03B4DCF82F870AC3DC7CCAD7B3E9
+        C04F882D0ADA061936E962DBC1ED00FB9723A234927A06177D17FE05306CA9B7
+        47E9FE2E2510EB6B87BD7DFF000087FF00650F7395A8EAF62F53EFB93F37B17C
+        9FDF29836550E8FD39F4B128BB1AE3E175C061387B4F9F5CF77D0808F1B956F1
+        ABC8BD4FBEE5CC686D247E9BA26FD277F310983653B94C2E3BD995337366735A
+        3BC58F82EC8348597B52E1F1070E2E06570E9DC3D8AD9930B877C9113BEC003D
+        D6056355E9D51462D142E908DDB32B7BCDCF8219FC4498F14AAD8E91CC6FAAD3
+        9401CD6670EB5CC687D3D2B73D64C39C3371774068377782CC66318A550F8084
+        42C3B9D96DDA1CEDFD602EE87407231F535923A621AE75B6E525A09B3A43B5DB
+        86CD9DA83A341347DB8BE20D0D608E929ACE73765CB6FB1A6C2D7791B7A01DAB
+        D38B4D7E4D5436A6AB9EFE9CD1C76E6E49A5D7EDE5BC16E55974111101111074
+        D6D309237C6EDCF63987A9C083ED5E7DD47FF9B514F28DAD7025A783ACE6BEFD
+        45AD5E885E7DC1ED49A4D56CBF9AF91EEDBB363C893675663DCAC4E5D2CD8DD7
+        454C499096373860BEDB126C2E470E95D15D84412FF9B0B1E79CB45FBF7A85D6
+        AF9F4F25B76773FB1AE16F02AED803F9496178FDA31AF3D4E6DC8F15A7250F11
+        D05A1CAE790E8800497079000E7B1B80A324D59C2F01D1543C020104B5AFB83C
+        6E0B55AB4E5C0D3CE1BB1AE0F1B39AC4FB976E89B3351D273BE260EDDC988B9A
+        A49D58386EAAD9F5447F1AE3F9B375EDE542FF00567F9D6D4C4A80C2402E0E24
+        13B3875FF7C1535CECF8D40D3B841204C436AAF0D5838EFAA16FAB27F8D64D3E
+        ABE31E9D43DDF4581BED2E5B7301646FBB4C633346D7137BEDF56DB163E2F231
+        CF11B630CCAEDA6D627B0704C436AD7945A05422FB1D2169B1BBF71DF6706D87
+        62B1516030C2334703583D6C9FC4556F44DE7CB2B8F0754C8DFB0762D998BD4E
+        78A11B733AC766EB6EB908955B15F172ED81CF0242DCD978865ED99776B72A39
+        2C3DCD6EC61659B6E7710DF61F1553865CF8CD49E1188E21D596FEE2B86B7311
+        7791C3113BE4361F340B9F1CA8B27CB666A4E8792C1E0BEF90BE4EB0E71B7859
+        5ED44E89D0F21434D15AD9208C11CC728BF8DD4B2C3A88888088880B42EB563E
+        434869A5E133231E2E8F6F785BE9694FCA468DC05154B76647C919771B9C8F8F
+        BB23D062699C39A0239D920F007DCA77571559A9A89D7FD9E427A45C7B946E2C
+        F0F898F1B9D63D8E1758BAB1988A0CBC69EA5EDED043BF896DC674CAD2D8BE0D
+        CCE97B7C085F7573393454646F04B7B9F65DBA4EF0E3980D85EE363D2A33570F
+        FD1B18E2C9656F51CD743C2FBA5325DEC6FAAD27BF87878AD73487F4DC5F552A
+        BAE23239CE0E76F2C69549A4FD7517D54BED422E8247325BB363B36CEDE0B2EA
+        0E6AA7741F60B2E14ADBD4B47CF1E1B57541379EF7F439DE37551AF7405F99F2
+        BFE52799FDEB6765B880F3467FE46DED5AC3568DF8167EF9F15B22BE7E4E173F
+        E4A9EFDA039FEF0A785BDB5C686BB94A8A897E52A65703F345F2FB57469D41E5
+        18850D2F07BDAD36DE04AF6B5C7B9B7599AB8A7CB034FCD2EFB457768DC5E51A
+        4F1F340D2E3D39587DEF1DCA5E9A9F67A0911165D044440444405AF35EF87F2B
+        8448EB5CC324720E8DB95C7ECB9CB61A84D37A2E5B0EAA8FD6A79377386923C4
+        20D3D834FCAE1B0BAF7218D07ADBB170D5E3AD2E211733E3907EF07663FF0015
+        1FAB99F3E1F233E4DEE1D84075FBEFDCB2B449F971591BF2D4BE2D216DCBCD4E
+        E383CC6FD2F71517ABAFF4D50DF52B641D966F0EF52B8D8F831D0E1EF50DABE3
+        635ECF5678DFF6C3BF951274B9D7BAE59D11B4782A5D37EBB8BEAA556C73AEAA
+        74DFAEE2FAA91291739A42D9091B083EE5D133B2D3D43B9A179FBAEFC165C123
+        04D778BB6E6FF8AC0D2A95ADA3AC733D1E49D6EEFEA8454F57B1DA067D5DFBCA
+        B1698D51661950E276B99941EBB34287D058ED4EDE88D9E372BBF5A0FB61F1C4
+        37CD344CF6BBDC9E0F2686D3E481A3E6B0770B9F6AE3A8A672F8A5754DAE1AD2
+        1AEE6E51E72FDD61EE592C9792A491FBB2B1EE1D80DBDCB3FF0026FC3F2D1544
+        D620CB386F5B626EC23F7A478EC53935C1B7911165D0444404444042111079A7
+        5790721575D4A4DF23CB6FCFC93DEC27B6EB26924E4F15A33BB3F2B19EEBFB4A
+        CAC761F27D27986E138CC00F9CC07DAD2A3F4B5DC94D0CBB845551BCFD1BDCAD
+        4E9CEFD972C659F06E1CC7D8557B414DAAF106FACD81DF6730FE2569C623D920
+        EBFC5557440DB12A91EB52B4F7382B598B6AAAD38FD3717D548AD4AAD07EBB8B
+        EAA44A45DA8A1CF50D07767DBD436A84D3A223C3AB070F3983BC00AC783FFAAF
+        B4AA5AD092D8754702E99A3AEEF170948F9A2ACB40DFA2C1DCD0B0F596EBD450
+        45C33CB21FDD0CCA7FE4A67018AD1B474FBECA074A3E17188D96D91D38FBEE3F
+        8A523B34D26E4B0D9073B5ACFB445D6C7D4DD172583D30F5DAE93EDB895A935B
+        5556A78A3E2F909EC60DBE2E6AF4068FD17234B044458C70C6C36E76B403E375
+        9AE9C3A4822228D088880888808888344EBC62E4316A1A9B583DA038F3F26FB3
+        BEEBC77A8CD62D2DE090FCD0EFB245FDCAD7F94861B9E8E9E700930CCE61B6E0
+        D95BB49FDE8D83B544BB25750DDAE04BE2B5F9A4CBB5A79B6AD4639772A6E39B
+        948D8F3FB4898E3FBCD04AA8E00DCB8B81EB52C83EC9564C0A99F1D2D3C728B3
+        D9134117BEEBF1EA500F6F278CD3FF00B91CA07712AB13B5B1565A3F4DC1F50F
+        56655E7B7F4CD31E7A793DA529177C27FD577FB152B5A4EFFA46B7E52B1ADF17
+        1F72B8525408EA333B7026FDCA97AC139C51463E3D6877637FA3929160C31B61
+        18EAF1557A1F85C62B1FBC479183BB6F8856B0A0B4630A7C26A1F2DB3CF3BE4D
+        86F6693B05FB4A1101A5F4FE538AD0531199A5EC0E1F35EF19FEEB7C17A4979E
+        B42CB6AF495AF61BB606B882368391A5BBFADC7B97A1566BAF1E844451444440
+        44440444418F5F46C9A37C52B43E37B4B5CD3B883C0AD11A49ABBADC2A575461
+        C5D3D39DAE8ED77B5A2E6CE68F4C0DB670DA2FD6B7FA20F3CE0DAC3A7940135E
+        17F4F9CCEC770ED0A77C9E19E68276BC39D0672DC8E041CE2C735B6FB16C5D22
+        D04A0AD24CF4ED2F3BDEDF31E7ADCDB13DAB5EE23A828B3075356491DAFB2460
+        79BF0B39A596EE2AE58D3D241453B0F79C460A8D9C9B2291AEDBB6E4ECD9DAB1
+        FF003458AB3D0C45A474BE5DDD441013F3578C7FE7B3EDBFF955CA6953F23AE4
+        9E72A2B15C2DB24B04CF796F93B9EE03658E70D1B49DDE88589F9A6C5DDE9620
+        C1D4F93DC17741A867BC8754E205DEB06C65C6DC4091EFD9F65363474629A614
+        90037943DDEAC7E71EAB8D83B4AAFD2CD88634E3151C5C9417CB2484F9B6E67C
+        96E6DB95BB56D8C0B54586D358988CEE1F1A6766E37F4000DF057A8216B1A1AC
+        686B46C0D680001CC00D814B5A9C6456357FA0F061701647E7CAFB72B29162F2
+        37003E2B45CD87B55A9114684444044440444404444044440444404444044440
+        44440444404444044441FFD9}
+      Stretch = True
+      Visible = False
+      ExplicitLeft = -24
+      ExplicitTop = -8
+      ExplicitWidth = 105
+      ExplicitHeight = 105
+    end
+    object imgQuitar3: TImage
+      Left = 1
+      Top = 1
+      Width = 79
+      Height = 95
+      Align = alClient
+      Stretch = True
+      OnDragDrop = imgQuitar3DragDrop
+      OnDragOver = imgQuitar3DragOver
+      ExplicitTop = -24
+    end
+  end
+  object sbComensales: TScrollBox
+    Left = 181
+    Top = 81
+    Width = 921
+    Height = 277
+    TabOrder = 4
+    Visible = False
+    object sgComensales: TJvStringGrid
+      Left = 0
+      Top = 41
+      Width = 917
+      Height = 87
+      Align = alClient
+      FixedCols = 0
+      RowCount = 2
+      Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goEditing]
+      TabOrder = 0
+      Alignment = taLeftJustify
+      FixedFont.Charset = DEFAULT_CHARSET
+      FixedFont.Color = clWindowText
+      FixedFont.Height = -11
+      FixedFont.Name = 'Tahoma'
+      FixedFont.Style = []
+      OnExitCell = sgComensalesExitCell
+      ColWidths = (
+        64
+        64
+        64
+        64
+        64)
+    end
+    object Panel6: TPanel
+      Left = 0
+      Top = 0
+      Width = 917
+      Height = 41
+      Align = alTop
+      TabOrder = 1
+      object JvLabel2: TJvLabel
+        Left = 8
+        Top = 13
+        Width = 339
+        Height = 13
+        Caption = 
+          'Especifique el n'#250'mero de comensales por d'#237'a del peri'#243'do seleccio' +
+          'nado:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlue
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+        HotTrackFont.Charset = DEFAULT_CHARSET
+        HotTrackFont.Color = clWindowText
+        HotTrackFont.Height = -11
+        HotTrackFont.Name = 'Tahoma'
+        HotTrackFont.Style = []
+      end
+    end
+    object Panel7: TPanel
+      Left = 0
+      Top = 232
+      Width = 917
+      Height = 41
+      Align = alBottom
+      Padding.Left = 4
+      Padding.Top = 4
+      Padding.Right = 4
+      Padding.Bottom = 4
+      TabOrder = 2
+      object btnComAceptar: TAdvGlowButton
+        Left = 712
+        Top = 5
+        Width = 100
+        Height = 31
+        Align = alRight
+        Caption = '&Aceptar'
+        ImageIndex = 1
+        Images = ClientModule1.PngImageList1
+        NotesFont.Charset = DEFAULT_CHARSET
+        NotesFont.Color = clWindowText
+        NotesFont.Height = -11
+        NotesFont.Name = 'Tahoma'
+        NotesFont.Style = []
+        TabOrder = 0
+        OnClick = btnComAceptarClick
+        Appearance.ColorChecked = 16111818
+        Appearance.ColorCheckedTo = 16367008
+        Appearance.ColorDisabled = 15921906
+        Appearance.ColorDisabledTo = 15921906
+        Appearance.ColorDown = 16111818
+        Appearance.ColorDownTo = 16367008
+        Appearance.ColorHot = 16117985
+        Appearance.ColorHotTo = 16372402
+        Appearance.ColorMirrorHot = 16107693
+        Appearance.ColorMirrorHotTo = 16775412
+        Appearance.ColorMirrorDown = 16102556
+        Appearance.ColorMirrorDownTo = 16768988
+        Appearance.ColorMirrorChecked = 16102556
+        Appearance.ColorMirrorCheckedTo = 16768988
+        Appearance.ColorMirrorDisabled = 11974326
+        Appearance.ColorMirrorDisabledTo = 15921906
+      end
+      object btComCancel: TAdvGlowButton
+        Left = 812
+        Top = 5
+        Width = 100
+        Height = 31
+        Align = alRight
+        Caption = '&Cancelar'
+        ImageIndex = 9
+        Images = ClientModule1.PngImageList1
+        NotesFont.Charset = DEFAULT_CHARSET
+        NotesFont.Color = clWindowText
+        NotesFont.Height = -11
+        NotesFont.Name = 'Tahoma'
+        NotesFont.Style = []
+        TabOrder = 1
+        OnClick = btComCancelClick
+        Appearance.ColorChecked = 16111818
+        Appearance.ColorCheckedTo = 16367008
+        Appearance.ColorDisabled = 15921906
+        Appearance.ColorDisabledTo = 15921906
+        Appearance.ColorDown = 16111818
+        Appearance.ColorDownTo = 16367008
+        Appearance.ColorHot = 16117985
+        Appearance.ColorHotTo = 16372402
+        Appearance.ColorMirrorHot = 16107693
+        Appearance.ColorMirrorHotTo = 16775412
+        Appearance.ColorMirrorDown = 16102556
+        Appearance.ColorMirrorDownTo = 16768988
+        Appearance.ColorMirrorChecked = 16102556
+        Appearance.ColorMirrorCheckedTo = 16768988
+        Appearance.ColorMirrorDisabled = 11974326
+        Appearance.ColorMirrorDisabledTo = 15921906
+      end
+    end
+    object Panel9: TPanel
+      Left = 0
+      Top = 128
+      Width = 917
+      Height = 104
+      Align = alBottom
+      TabOrder = 3
+      object JvLabel9: TJvLabel
+        Left = 8
+        Top = 33
+        Width = 66
+        Height = 13
+        Caption = 'Comentarios:'
+        Transparent = True
+        HotTrackFont.Charset = DEFAULT_CHARSET
+        HotTrackFont.Color = clWindowText
+        HotTrackFont.Height = -11
+        HotTrackFont.Name = 'Tahoma'
+        HotTrackFont.Style = []
+      end
+      object JvLabel10: TJvLabel
+        Left = 12
+        Top = 8
+        Width = 62
+        Height = 13
+        Caption = 'Localizaci'#243'n:'
+        Transparent = True
+        HotTrackFont.Charset = DEFAULT_CHARSET
+        HotTrackFont.Color = clWindowText
+        HotTrackFont.Height = -11
+        HotTrackFont.Name = 'Tahoma'
+        HotTrackFont.Style = []
+      end
+      object NombreEmbarcacion: TDBText
+        Left = 80
+        Top = 8
+        Width = 116
+        Height = 13
+        AutoSize = True
+        DataField = 'NombreEmbarcacion'
+        DataSource = dsEmbarcacion
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlue
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Comentarios: TDBMemo
+        Left = 80
+        Top = 33
+        Width = 833
+        Height = 65
+        DataField = 'Comentarios'
+        DataSource = dsMenu
+        TabOrder = 0
+      end
+    end
+  end
+  object pnlDetalle: TPanel
+    Left = 970
+    Top = 103
+    Width = 353
+    Height = 236
+    Enabled = False
+    TabOrder = 5
+    Visible = False
+    object JvLabel3: TJvLabel
+      Left = 12
+      Top = 16
+      Width = 172
+      Height = 13
+      Caption = 'Cantidad del ingrediente en receta:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object JvLabel4: TJvLabel
+      Left = 30
+      Top = 43
+      Width = 154
+      Height = 13
+      Caption = 'N'#250'mero de personas en receta:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object JvLabel5: TJvLabel
+      Left = 22
+      Top = 70
+      Width = 162
+      Height = 13
+      Caption = 'Cantidad por Persona en Receta:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object JvLabel6: TJvLabel
+      Left = 35
+      Top = 97
+      Width = 148
+      Height = 13
+      Caption = 'N'#250'mero de Personas en el d'#237'a:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object JvLabel7: TJvLabel
+      Left = 16
+      Top = 124
+      Width = 168
+      Height = 13
+      Caption = 'Cantidad del Ingrediente en el d'#237'a:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object JvLabel8: TJvLabel
+      Left = 17
+      Top = 170
+      Width = 221
+      Height = 13
+      Caption = 'Cantidad de acuerdo a tabla de Ingredientes:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object DBEdit1: TDBEdit
+      Left = 190
+      Top = 16
+      Width = 66
+      Height = 21
+      DataField = 'CantidadxReceta'
+      DataSource = dsExplosionReceta
+      TabOrder = 0
+    end
+    object DBEdit2: TDBEdit
+      Left = 262
+      Top = 16
+      Width = 66
+      Height = 21
+      DataField = 'UnidadxReceta'
+      DataSource = dsExplosionReceta
+      TabOrder = 1
+    end
+    object DBEdit3: TDBEdit
+      Left = 190
+      Top = 43
+      Width = 66
+      Height = 21
+      DataField = 'PersonasxReceta'
+      DataSource = dsExplosionReceta
+      TabOrder = 2
+    end
+    object DBEdit4: TDBEdit
+      Left = 190
+      Top = 97
+      Width = 66
+      Height = 21
+      DataField = 'PersonasxDia'
+      DataSource = dsExplosionReceta
+      TabOrder = 3
+    end
+    object cpReceta: TEdit
+      Left = 190
+      Top = 70
+      Width = 66
+      Height = 21
+      Alignment = taRightJustify
+      TabOrder = 4
+    end
+    object DBEdit6: TDBEdit
+      Left = 262
+      Top = 70
+      Width = 66
+      Height = 21
+      DataField = 'UnidadxReceta'
+      DataSource = dsExplosionReceta
+      TabOrder = 5
+    end
+    object ciDia: TEdit
+      Left = 190
+      Top = 124
+      Width = 66
+      Height = 21
+      Alignment = taRightJustify
+      TabOrder = 6
+    end
+    object DBEdit5: TDBEdit
+      Left = 262
+      Top = 189
+      Width = 66
+      Height = 21
+      DataField = 'sNombre'
+      DataSource = dsExplosionReceta
+      TabOrder = 7
+    end
+    object DBEdit7: TDBEdit
+      Left = 190
+      Top = 189
+      Width = 66
+      Height = 21
+      DataField = 'Cantidad'
+      DataSource = dsExplosionReceta
+      TabOrder = 8
+    end
+    object DBEdit8: TDBEdit
+      Left = 262
+      Top = 124
+      Width = 66
+      Height = 21
+      DataField = 'UnidadxReceta'
+      DataSource = dsExplosionReceta
+      TabOrder = 9
+    end
+  end
+  object cdcmt_Configuracion: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 152
+    Top = 72
+  end
+  object cdMenu: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 392
+    Top = 120
+  end
+  object cdMenuDatosListado: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 536
+    Top = 120
+  end
+  object cdReceta: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 712
+    Top = 184
+  end
+  object dsReceta: TDataSource
+    DataSet = cdReceta
+    Left = 784
+    Top = 184
+  end
+  object cdRecetasRecientes: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 312
+    Top = 344
+  end
+  object dsRecetasRecientes: TDataSource
+    DataSet = cdRecetasRecientes
+    Left = 432
+    Top = 344
+  end
+  object cdRegistroConsumo: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 336
+    Top = 460
+  end
+  object cdRegistroConsumoInsumo: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 416
+    Top = 404
+  end
+  object cdBorrador: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 656
+    Top = 288
+  end
+  object cdIngredientes: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 528
+    Top = 240
+  end
+  object cdExplosion: TClientDataSet
+    Aggregates = <
+      item
+        Active = True
+        AggregateName = 'ImporteCompra'
+        Visible = False
+      end>
+    Params = <>
+    Left = 544
+    Top = 352
+  end
+  object dsExplosion: TDataSource
+    DataSet = cdExplosion
+    Left = 632
+    Top = 352
+  end
+  object cdExplosionReceta: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 544
+    Top = 416
+  end
+  object dsExplosionReceta: TDataSource
+    DataSet = cdExplosionReceta
+    Left = 648
+    Top = 416
+  end
+  object frxMenuPeriodico: TfrxReport
+    Version = '4.10.3'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Por defecto'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 42242.866621099500000000
+    ReportOptions.LastChange = 42307.245596828700000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'begin'
+      ''
+      'end.')
+    OnDblClickObject = frxMenuPeriodicoDblClickObject
+    OnReportPrint = 'no '
+    Left = 776
+    Top = 296
+    Datasets = <
+      item
+        DataSet = ClientModule1.fdsOrganizacion
+        DataSetName = 'fdsOrganizacion'
+      end
+      item
+        DataSet = frxdsEncabMenu
+        DataSetName = 'frxdsEncabMenu'
+      end
+      item
+        DataSet = frxdsMenuDatos
+        DataSetName = 'frxdsMenuDatos'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      Orientation = poLandscape
+      PaperWidth = 279.400000000000000000
+      PaperHeight = 215.900000000000000000
+      PaperSize = 1
+      LeftMargin = 3.000000000000000000
+      RightMargin = 3.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      object MasterData2: TfrxMasterData
+        Height = 90.708720000000000000
+        Top = 313.700990000000000000
+        Width = 1033.323502000000000000
+        Child = frxMenuPeriodico.Child1
+        DataSet = frxdsMenuDatos
+        DataSetName = 'frxdsMenuDatos'
+        KeepChild = True
+        RowCount = 0
+        Stretched = True
+        object Picture1: TfrxPictureView
+          Width = 147.401670000000000000
+          Height = 90.708720000000000000
+          ShowHint = False
+          DataField = 'Imagen1'
+          DataSet = frxdsMenuDatos
+          DataSetName = 'frxdsMenuDatos'
+          Frame.Typ = [ftLeft, ftRight, ftTop]
+          HightQuality = False
+          Transparent = False
+          TransparentColor = clWhite
+        end
+        object Picture2: TfrxPictureView
+          Left = 147.401670000000000000
+          Width = 147.401670000000000000
+          Height = 90.708720000000000000
+          ShowHint = False
+          DataField = 'Imagen2'
+          DataSet = frxdsMenuDatos
+          DataSetName = 'frxdsMenuDatos'
+          Frame.Typ = [ftLeft, ftRight, ftTop]
+          HightQuality = False
+          Transparent = False
+          TransparentColor = clWhite
+        end
+        object Picture3: TfrxPictureView
+          Left = 294.803340000000000000
+          Width = 147.401670000000000000
+          Height = 90.708720000000000000
+          ShowHint = False
+          DataField = 'Imagen3'
+          DataSet = frxdsMenuDatos
+          DataSetName = 'frxdsMenuDatos'
+          Frame.Typ = [ftLeft, ftRight, ftTop]
+          HightQuality = False
+          Transparent = False
+          TransparentColor = clWhite
+        end
+        object Picture4: TfrxPictureView
+          Left = 442.205010000000000000
+          Width = 147.401670000000000000
+          Height = 90.708720000000000000
+          ShowHint = False
+          DataField = 'Imagen4'
+          DataSet = frxdsMenuDatos
+          DataSetName = 'frxdsMenuDatos'
+          Frame.Typ = [ftLeft, ftRight, ftTop]
+          HightQuality = False
+          Transparent = False
+          TransparentColor = clWhite
+        end
+        object Picture5: TfrxPictureView
+          Left = 589.606680000000000000
+          Width = 147.401670000000000000
+          Height = 90.708720000000000000
+          ShowHint = False
+          DataField = 'Imagen5'
+          DataSet = frxdsMenuDatos
+          DataSetName = 'frxdsMenuDatos'
+          Frame.Typ = [ftLeft, ftRight, ftTop]
+          HightQuality = False
+          Transparent = False
+          TransparentColor = clWhite
+        end
+        object Picture6: TfrxPictureView
+          Left = 737.008350000000000000
+          Width = 147.401670000000000000
+          Height = 90.708720000000000000
+          ShowHint = False
+          DataField = 'Imagen6'
+          DataSet = frxdsMenuDatos
+          DataSetName = 'frxdsMenuDatos'
+          Frame.Typ = [ftLeft, ftRight, ftTop]
+          HightQuality = False
+          Transparent = False
+          TransparentColor = clWhite
+        end
+        object Picture7: TfrxPictureView
+          Left = 884.410020000000000000
+          Width = 147.401670000000000000
+          Height = 90.708720000000000000
+          ShowHint = False
+          DataField = 'Imagen7'
+          DataSet = frxdsMenuDatos
+          DataSetName = 'frxdsMenuDatos'
+          Frame.Typ = [ftLeft, ftRight, ftTop]
+          HightQuality = False
+          Transparent = False
+          TransparentColor = clWhite
+        end
+      end
+      object GroupHeader1: TfrxGroupHeader
+        Height = 15.118120000000000000
+        Top = 275.905690000000000000
+        Width = 1033.323502000000000000
+        Condition = 'frxdsMenuDatos."IdPeriodoConsumo"'
+        object Memo1: TfrxMemoView
+          Width = 1031.811690000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          Color = clSilver
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Memo.UTF8W = (
+            '[frxdsMenuDatos."TituloPeriodoConsumo"]')
+          ParentFont = False
+        end
+      end
+      object Child1: TfrxChild
+        Height = 15.118120000000000000
+        Top = 427.086890000000000000
+        Width = 1033.323502000000000000
+        Stretched = True
+        object frxdsMenuDatosDia1: TfrxMemoView
+          Width = 147.401670000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          StretchMode = smMaxHeight
+          DataField = 'Dia1'
+          DataSet = frxdsMenuDatos
+          DataSetName = 'frxdsMenuDatos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -8
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxdsMenuDatos."Dia1"]')
+          ParentFont = False
+        end
+        object Memo8: TfrxMemoView
+          Left = 147.401670000000000000
+          Width = 147.401670000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          StretchMode = smMaxHeight
+          DataField = 'Dia2'
+          DataSet = frxdsMenuDatos
+          DataSetName = 'frxdsMenuDatos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -8
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxdsMenuDatos."Dia2"]')
+          ParentFont = False
+        end
+        object Memo9: TfrxMemoView
+          Left = 294.803340000000000000
+          Width = 147.401670000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          StretchMode = smMaxHeight
+          DataField = 'Dia3'
+          DataSet = frxdsMenuDatos
+          DataSetName = 'frxdsMenuDatos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -8
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxdsMenuDatos."Dia3"]')
+          ParentFont = False
+        end
+        object Memo10: TfrxMemoView
+          Left = 442.205010000000000000
+          Width = 147.401670000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          StretchMode = smMaxHeight
+          DataField = 'Dia4'
+          DataSet = frxdsMenuDatos
+          DataSetName = 'frxdsMenuDatos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -8
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxdsMenuDatos."Dia4"]')
+          ParentFont = False
+        end
+        object Memo11: TfrxMemoView
+          Left = 589.606680000000000000
+          Width = 147.401670000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          StretchMode = smMaxHeight
+          DataField = 'Dia5'
+          DataSet = frxdsMenuDatos
+          DataSetName = 'frxdsMenuDatos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -8
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxdsMenuDatos."Dia5"]')
+          ParentFont = False
+        end
+        object Memo12: TfrxMemoView
+          Left = 737.008350000000000000
+          Width = 147.401670000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          StretchMode = smMaxHeight
+          DataField = 'Dia6'
+          DataSet = frxdsMenuDatos
+          DataSetName = 'frxdsMenuDatos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -8
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxdsMenuDatos."Dia6"]')
+          ParentFont = False
+        end
+        object Memo13: TfrxMemoView
+          Left = 884.410020000000000000
+          Width = 147.401670000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          StretchMode = smMaxHeight
+          DataField = 'Dia7'
+          DataSet = frxdsMenuDatos
+          DataSetName = 'frxdsMenuDatos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -8
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxdsMenuDatos."Dia7"]')
+          ParentFont = False
+        end
+      end
+      object GroupHeader2: TfrxGroupHeader
+        Height = 15.118110240000000000
+        Top = 238.110390000000000000
+        Width = 1033.323502000000000000
+        Condition = 'True'
+        ReprintOnNewPage = True
+        object frxdsEncabMenuReceta1: TfrxMemoView
+          Width = 147.401574800000000000
+          Height = 15.118110240000000000
+          ShowHint = False
+          Color = clSilver
+          DataField = 'Receta1'
+          DataSet = frxdsEncabMenu
+          DataSetName = 'frxdsEncabMenu'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxdsEncabMenu."Receta1"]')
+          ParentFont = False
+        end
+        object Memo2: TfrxMemoView
+          Left = 147.401670000000000000
+          Width = 147.401574800000000000
+          Height = 15.118110240000000000
+          ShowHint = False
+          Color = clSilver
+          DataField = 'Receta2'
+          DataSet = frxdsEncabMenu
+          DataSetName = 'frxdsEncabMenu'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxdsEncabMenu."Receta2"]')
+          ParentFont = False
+        end
+        object Memo3: TfrxMemoView
+          Left = 294.803340000000000000
+          Width = 147.401574800000000000
+          Height = 15.118110240000000000
+          ShowHint = False
+          Color = clSilver
+          DataField = 'Receta3'
+          DataSet = frxdsEncabMenu
+          DataSetName = 'frxdsEncabMenu'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxdsEncabMenu."Receta3"]')
+          ParentFont = False
+        end
+        object Memo5: TfrxMemoView
+          Left = 589.606680000000000000
+          Width = 147.401574800000000000
+          Height = 15.118110240000000000
+          ShowHint = False
+          Color = clSilver
+          DataSet = frxdsEncabMenu
+          DataSetName = 'frxdsEncabMenu'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxdsEncabMenu."Receta5"]')
+          ParentFont = False
+        end
+        object Memo6: TfrxMemoView
+          Left = 737.008350000000000000
+          Width = 147.401574800000000000
+          Height = 15.118110240000000000
+          ShowHint = False
+          Color = clSilver
+          DataSet = frxdsEncabMenu
+          DataSetName = 'frxdsEncabMenu'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxdsEncabMenu."Receta6"]')
+          ParentFont = False
+        end
+        object Memo7: TfrxMemoView
+          Left = 884.410020000000000000
+          Width = 147.401574800000000000
+          Height = 15.118110240000000000
+          ShowHint = False
+          Color = clSilver
+          DataSet = frxdsEncabMenu
+          DataSetName = 'frxdsEncabMenu'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxdsEncabMenu."Receta7"]')
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          Left = 442.205010000000000000
+          Width = 147.401574800000000000
+          Height = 15.118110240000000000
+          ShowHint = False
+          Color = clSilver
+          DataField = 'Receta4'
+          DataSet = frxdsEncabMenu
+          DataSetName = 'frxdsEncabMenu'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxdsEncabMenu."Receta4"]')
+          ParentFont = False
+        end
+      end
+      object PageHeader1: TfrxPageHeader
+        Height = 158.740260000000000000
+        Top = 18.897650000000000000
+        Width = 1033.323502000000000000
+        object Memo14: TfrxMemoView
+          Top = 139.842610000000000000
+          Width = 188.976500000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[fdsOrganizacion."Etiqueta"]')
+          ParentFont = False
+        end
+        object fdsOrganizacionnombreorganizacion: TfrxMemoView
+          Left = 188.976500000000000000
+          Width = 842.835190000000000000
+          Height = 26.456710000000000000
+          ShowHint = False
+          DataField = 'nombreorganizacion'
+          DataSet = ClientModule1.fdsOrganizacion
+          DataSetName = 'fdsOrganizacion'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[fdsOrganizacion."nombreorganizacion"]')
+          ParentFont = False
+        end
+        object fdsOrganizaciontituloorganizacion: TfrxMemoView
+          Left = 188.976500000000000000
+          Top = 26.456710000000000000
+          Width = 842.835190000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'tituloorganizacion'
+          DataSet = ClientModule1.fdsOrganizacion
+          DataSetName = 'fdsOrganizacion'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[fdsOrganizacion."tituloorganizacion"]')
+          ParentFont = False
+        end
+        object Picture8: TfrxPictureView
+          Width = 185.196970000000000000
+          Height = 136.063080000000000000
+          ShowHint = False
+          DataField = 'Imagen'
+          DataSet = ClientModule1.fdsOrganizacion
+          DataSetName = 'fdsOrganizacion'
+          HightQuality = False
+          Transparent = False
+          TransparentColor = clWhite
+        end
+      end
+    end
+  end
+  object frxdsEncabMenu: TfrxDBDataset
+    UserName = 'frxdsEncabMenu'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'Receta1=Receta1'
+      'Receta2=Receta2'
+      'Receta3=Receta3'
+      'Receta4=Receta4'
+      'Receta5=Receta5'
+      'Receta6=Receta6'
+      'Receta7=Receta7'
+      'Receta8=Receta8'
+      'Receta9=Receta9'
+      'Receta10=Receta10'
+      'Receta11=Receta11'
+      'Receta12=Receta12'
+      'Receta13=Receta13'
+      'Receta14=Receta14')
+    DataSet = cdEncabMenu
+    BCDToCurrency = False
+    Left = 464
+    Top = 448
+  end
+  object cdEncabMenu: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 400
+    Top = 456
+    object StringField1: TStringField
+      FieldName = 'Receta1'
+      Size = 2000
+    end
+    object StringField2: TStringField
+      FieldName = 'Receta2'
+      Size = 2000
+    end
+    object StringField3: TStringField
+      FieldName = 'Receta3'
+      Size = 2000
+    end
+    object StringField4: TStringField
+      FieldName = 'Receta4'
+      Size = 2000
+    end
+    object StringField5: TStringField
+      FieldName = 'Receta5'
+      Size = 2000
+    end
+    object StringField6: TStringField
+      FieldName = 'Receta6'
+      Size = 2000
+    end
+    object StringField7: TStringField
+      FieldName = 'Receta7'
+      Size = 2000
+    end
+    object StringField8: TStringField
+      FieldName = 'Receta8'
+      Size = 2000
+    end
+    object StringField9: TStringField
+      FieldName = 'Receta9'
+      Size = 2000
+    end
+    object StringField10: TStringField
+      FieldName = 'Receta10'
+      Size = 2000
+    end
+    object StringField11: TStringField
+      FieldName = 'Receta11'
+      Size = 2000
+    end
+    object StringField12: TStringField
+      FieldName = 'Receta12'
+      Size = 2000
+    end
+    object StringField13: TStringField
+      FieldName = 'Receta13'
+      Size = 2000
+    end
+    object StringField14: TStringField
+      FieldName = 'Receta14'
+      Size = 2000
+    end
+  end
+  object cdMenuDatos: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 200
+    Top = 120
+  end
+  object dsMenuDatos: TDataSource
+    DataSet = cdMenuDatos
+    Left = 120
+    Top = 120
+  end
+  object frxdsMenuDatos: TfrxDBDataset
+    UserName = 'frxdsMenuDatos'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'IdPeriodoConsumo=IdPeriodoConsumo'
+      'TituloPeriodoConsumo=TituloPeriodoConsumo'
+      'Dia1=Dia1'
+      'Dia2=Dia2'
+      'Dia3=Dia3'
+      'Dia4=Dia4'
+      'Dia5=Dia5'
+      'Dia6=Dia6'
+      'Dia7=Dia7'
+      'Dia8=Dia8'
+      'Dia9=Dia9'
+      'Dia10=Dia10'
+      'Dia11=Dia11'
+      'Dia12=Dia12'
+      'Dia13=Dia13'
+      'Dia14=Dia14'
+      'Imagen1=Imagen1'
+      'Imagen2=Imagen2'
+      'Imagen3=Imagen3'
+      'Imagen4=Imagen4'
+      'Imagen5=Imagen5'
+      'Imagen6=Imagen6'
+      'Imagen7=Imagen7'
+      'Imagen8=Imagen8'
+      'Imagen9=Imagen9'
+      'Imagen10=Imagen10'
+      'Imagen11=Imagen11'
+      'Imagen12=Imagen12'
+      'Imagen13=Imagen13'
+      'Imagen14=Imagen14'
+      '')
+    DataSet = cdMenuDatos
+    BCDToCurrency = False
+    Left = 288
+    Top = 120
+  end
+  object cdRecetaImagen: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 40
+    Top = 168
+  end
+  object frxdsExplosion: TfrxDBDataset
+    UserName = 'frxdsExplosion'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'IdTipoInsumo=IdTipoInsumo'
+      'CodigoTipoInsumo=CodigoTipoInsumo'
+      'NombreTipoInsumo=NombreTipoInsumo'
+      'IdReceta=IdReceta'
+      'CodigoReceta=CodigoReceta'
+      'NombreReceta=NombreReceta'
+      'Fecha=Fecha'
+      'TituloPeriodoConsumo=TituloPeriodoConsumo'
+      'DescripcionPeriodoConsumo=DescripcionPeriodoConsumo'
+      'PersonasxDia=PersonasxDia'
+      'PersonasxReceta=PersonasxReceta'
+      'CantidadxReceta=CantidadxReceta'
+      'IdUnidadxReceta=IdUnidadxReceta'
+      'UnidadxReceta=UnidadxReceta'
+      'IdInsumo=IdInsumo'
+      'CodigoInsumo=CodigoInsumo'
+      'NombreInsumo=NombreInsumo'
+      'DescripcionInsumo=DescripcionInsumo'
+      'Calorias=Calorias'
+      'Grasas=Grasas'
+      'HidratosCarbono=HidratosCarbono'
+      'IndiceGlucemico=IndiceGlucemico'
+      'Proteinas=Proteinas'
+      'Cantidad=Cantidad'
+      'iIdUnidad=iIdUnidad'
+      'sCodigo=sCodigo'
+      'sNombre=sNombre'
+      'PrecioCompra=PrecioCompra'
+      'ImporteCompra=ImporteCompra')
+    DataSet = cdExplosion
+    BCDToCurrency = False
+    Left = 704
+    Top = 352
+  end
+  object frxdsExplosionReceta: TfrxDBDataset
+    UserName = 'frxdsExplosionReceta'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'IdTipoInsumo=IdTipoInsumo'
+      'CodigoTipoInsumo=CodigoTipoInsumo'
+      'NombreTipoInsumo=NombreTipoInsumo'
+      'IdReceta=IdReceta'
+      'CodigoReceta=CodigoReceta'
+      'NombreReceta=NombreReceta'
+      'Fecha=Fecha'
+      'TituloPeriodoConsumo=TituloPeriodoConsumo'
+      'DescripcionPeriodoConsumo=DescripcionPeriodoConsumo'
+      'PersonasxDia=PersonasxDia'
+      'PersonasxReceta=PersonasxReceta'
+      'CantidadxReceta=CantidadxReceta'
+      'IdUnidadxReceta=IdUnidadxReceta'
+      'UnidadxReceta=UnidadxReceta'
+      'IdInsumo=IdInsumo'
+      'CodigoInsumo=CodigoInsumo'
+      'NombreInsumo=NombreInsumo'
+      'DescripcionInsumo=DescripcionInsumo'
+      'Calorias=Calorias'
+      'Grasas=Grasas'
+      'HidratosCarbono=HidratosCarbono'
+      'IndiceGlucemico=IndiceGlucemico'
+      'Proteinas=Proteinas'
+      'Cantidad=Cantidad'
+      'iIdUnidad=iIdUnidad'
+      'sCodigo=sCodigo'
+      'sNombre=sNombre')
+    DataSet = cdExplosionReceta
+    BCDToCurrency = False
+    Left = 616
+    Top = 472
+  end
+  object cdBarra: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 768
+    Top = 256
+  end
+  object dsBarra: TDataSource
+    DataSet = cdBarra
+    Left = 856
+    Top = 256
+  end
+  object dsMenu: TDataSource
+    DataSet = cdMenu
+    Left = 456
+    Top = 120
+  end
+  object dsEmbarcacion: TDataSource
+    DataSet = ClientModule1.cdEmbarcacion
+    Left = 288
+    Top = 240
+  end
+  object cdConsumibles: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 344
+    Top = 224
+  end
+  object dsConsumibles: TDataSource
+    DataSet = cdConsumibles
+    Left = 424
+    Top = 224
+  end
+  object cdRenglonesMenu: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 328
+    Top = 288
+  end
+  object RepReceta: TfrxReport
+    Version = '4.10.3'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Por defecto'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 42242.866621099500000000
+    ReportOptions.LastChange = 42383.959855219910000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      '  '
+      'end.')
+    OnReportPrint = 'no '
+    Left = 144
+    Top = 192
+    Datasets = <
+      item
+        DataSet = ClientModule1.fdsOrganizacion
+        DataSetName = 'fdsOrganizacion'
+      end
+      item
+        DataSet = frxdsExplosion
+        DataSetName = 'frxdsExplosion'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 215.900000000000000000
+      PaperHeight = 279.400000000000000000
+      PaperSize = 1
+      LeftMargin = 3.000000000000000000
+      RightMargin = 3.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      object PageHeader1: TfrxPageHeader
+        Height = 113.385900000000000000
+        Top = 18.897650000000000000
+        Width = 793.323347000000000000
+        object Memo14: TfrxMemoView
+          Top = 94.488249999999990000
+          Width = 124.724490000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[fdsOrganizacion."Etiqueta"]')
+          ParentFont = False
+        end
+        object fdsOrganizacionnombreorganizacion: TfrxMemoView
+          Left = 128.504020000000000000
+          Width = 661.417750000000000000
+          Height = 26.456710000000000000
+          ShowHint = False
+          DataField = 'nombreorganizacion'
+          DataSet = ClientModule1.fdsOrganizacion
+          DataSetName = 'fdsOrganizacion'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[fdsOrganizacion."nombreorganizacion"]')
+          ParentFont = False
+        end
+        object fdsOrganizaciontituloorganizacion: TfrxMemoView
+          Left = 128.504020000000000000
+          Top = 26.456710000000000000
+          Width = 661.417750000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'tituloorganizacion'
+          DataSet = ClientModule1.fdsOrganizacion
+          DataSetName = 'fdsOrganizacion'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[fdsOrganizacion."tituloorganizacion"]')
+          ParentFont = False
+        end
+        object Picture8: TfrxPictureView
+          Width = 124.724490000000000000
+          Height = 94.488250000000000000
+          ShowHint = False
+          DataField = 'Imagen'
+          DataSet = ClientModule1.fdsOrganizacion
+          DataSetName = 'fdsOrganizacion'
+          HightQuality = False
+          Transparent = False
+          TransparentColor = clWhite
+        end
+        object Memo6: TfrxMemoView
+          Left = 128.504020000000000000
+          Top = 71.811070000000000000
+          Width = 661.417750000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clNone
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Color = clNone
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'EXPLOSI'#211'N DE INSUMOS')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
+      object MasterData1: TfrxMasterData
+        Height = 15.118120000000000000
+        Top = 253.228510000000000000
+        Width = 793.323347000000000000
+        DataSet = frxdsExplosion
+        DataSetName = 'frxdsExplosion'
+        RowCount = 0
+        Stretched = True
+        object frxdsExplosionCodigoReceta: TfrxMemoView
+          Left = 34.015770000000000000
+          Width = 117.165430000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          StretchMode = smMaxHeight
+          DataField = 'CodigoInsumo'
+          DataSet = frxdsExplosion
+          DataSetName = 'frxdsExplosion'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxdsExplosion."CodigoInsumo"]')
+          ParentFont = False
+        end
+        object frxdsExplosionNombreReceta: TfrxMemoView
+          Left = 151.181200000000000000
+          Width = 487.559370000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          StretchMode = smMaxHeight
+          DataField = 'NombreInsumo'
+          DataSet = frxdsExplosion
+          DataSetName = 'frxdsExplosion'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxdsExplosion."NombreInsumo"]')
+          ParentFont = False
+        end
+        object frxdsExplosionCantidad: TfrxMemoView
+          Left = 638.740570000000000000
+          Width = 79.370130000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          StretchMode = smMaxHeight
+          DataField = 'Cantidad'
+          DataSet = frxdsExplosion
+          DataSetName = 'frxdsExplosion'
+          DisplayFormat.FormatStr = '%2.6n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftRight, ftBottom]
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxdsExplosion."Cantidad"]')
+          ParentFont = False
+        end
+        object frxdsExplosionsNombre: TfrxMemoView
+          Left = 718.110700000000000000
+          Width = 71.811070000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          StretchMode = smMaxHeight
+          DataField = 'sNombre'
+          DataSet = frxdsExplosion
+          DataSetName = 'frxdsExplosion'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftRight, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxdsExplosion."sNombre"]')
+          ParentFont = False
+        end
+        object Memo1: TfrxMemoView
+          Width = 34.015770000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          StretchMode = smMaxHeight
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlue
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftBottom]
+          ParentFont = False
+        end
+      end
+      object GroupHeader1: TfrxGroupHeader
+        Height = 37.795300000000000000
+        Top = 192.756030000000000000
+        Width = 793.323347000000000000
+        Condition = 'frxdsExplosion."IdTipoInsumo"'
+        ReprintOnNewPage = True
+        object Memo5: TfrxMemoView
+          Left = 718.110700000000000000
+          Top = 18.897650000000000000
+          Width = 71.811070000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Color = clSilver
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlue
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'U.M.')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo4: TfrxMemoView
+          Left = 638.740570000000000000
+          Top = 18.897650000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Color = clSilver
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlue
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Cantidad')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo3: TfrxMemoView
+          Left = 151.181200000000000000
+          Top = 18.897650000000000000
+          Width = 487.559370000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Color = clSilver
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlue
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Ingrediente')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo2: TfrxMemoView
+          Top = 18.897650000000000000
+          Width = 151.181200000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Color = clSilver
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlue
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'C'#243'digo')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object frxdsExplosionNombreTipoInsumo: TfrxMemoView
+          Width = 789.921770000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Color = clSilver
+          DataSet = frxdsExplosion
+          DataSetName = 'frxdsExplosion'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlue
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Memo.UTF8W = (
+            ' [frxdsExplosion."NombreTipoInsumo"]')
+          ParentFont = False
+        end
+      end
+    end
+  end
+  object fdsReceta: TfrxDBDataset
+    UserName = 'fdsReceta'
+    CloseDataSource = False
+    DataSet = cdReceta
+    BCDToCurrency = False
+    Left = 224
+    Top = 192
+  end
+  object cdContrato: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 568
+    Top = 48
+  end
+  object MsgBorrado: TJvBalloonHint
+    DefaultHeader = 'Eliminaci'#243'n de Pedido'
+    Left = 472
+    Top = 296
+  end
+end

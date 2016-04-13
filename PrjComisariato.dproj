@@ -1,0 +1,491 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{781C63E7-A0A5-4813-B6D7-E1249A0BEE1A}</ProjectGuid>
+			<MainSource>PrjComisariato.dpr</MainSource>
+			<ProjectVersion>12.2</ProjectVersion>
+			<Base>True</Base>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<Platform>Win32</Platform>
+			<AppType>Application</AppType>
+			<FrameworkType>VCL</FrameworkType>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UsePackage>vclx;vcl;vclimg;dbrtl;Rave90VCL;bdertl;VclSmp;rtl;svnui;svn;TeeUI;TeeDB;Tee;vclactnband;vcldb;vcldbx;vcltouch;xmlrtl;dsnap;dsnapcon;vclib;ibxpress;adortl;IndyCore;IndySystem;IndyProtocols;inet;intrawebdb_110_150;Intraweb_110_150;vclie;websnap;webdsnap;inetdb;inetdbbde;inetdbxpress;soaprtl;vclribbon;dbexpress;DbxCommonDriver;DataSnapIndy10ServerTransport;DataSnapProviderClient;DbxClientDriver;DataSnapClient;dbxcds;DataSnapServer;AzureCloud;DBXInterBaseDriver;DBXMySQLDriver;DBXFirebirdDriver;DBXSybaseASEDriver;DBXSybaseASADriver;DBXOracleDriver;DBXMSSQLDriver;DBXInformixDriver;DBXDb2Driver;NxCommonRun_xe;NxCommonDsgn_xe;NxGridRun_xe;NxGridDsgn_xe;NxDBGridRun_xe;NxDBGridDsgn_xe;NxInspectorRun_xe;NxInspectorDsgn_xe;NxCollectionRun_xe;NxCollectionDsgn_xe;NxSheetRun_xe;NxAddonsRun_xe;frx15;frxADO15;frxBDE15;frxcs15;frxDB15;frxDBX15;frxe15;frxIBX15;frxTee15;fs15;fsADO15;fsBDE15;fsDB15;fsIBX15;fsTee15;PngComponents;RtmRxCtl150;RtmRxDB150;RtmRxBDE150;tmsd2011;tmsexd2011;tmswizd2011;tmsxlsd2011;OverbyteIcsDXeRun;ZComponent;ZDbc;ZPlain;ZCore;ZParseSql;JclDeveloperTools;Jcl;JclVcl;JclContainers;JvCore;JvCmp;JvSystem;JvStdCtrls;JvControls;JvCustom;JvPageComps;JvAppFrm;JvNet;JvXPCtrls;JvDocking;JvWizards;JvDB;JvDlgs;JvBDE;JvMM;JvTimeFramework;JvCrypt;JvHMI;JvPascalInterpreter;JvManagedThreads;JvPrintPreview;JvRuntimeDesign;JvPluginSystem;JvBands;dxCoreRS15;cxLibraryRS15;dxGDIPlusRS15;dxThemeRS15;cxPageControlRS15;dxServerModeRS15;cxDataRS15;dxDBXServerModeRS15;dxADOServerModeRS15;cxEditorsRS15;dxWizardControlRS15;cxBarEditItemRS15;dxBarRS15;dxComnRS15;dxBarExtDBItemsRS15;dxBarExtItemsRS15;dxBarDBNavRS15;dxRibbonRS15;dxTabbedMDIRS15;dxDockingRS15;dxLayoutControlRS15;cxSchedulerRS15;cxExportRS15;cxTreeListRS15;cxGridRS15;cxVerticalGridRS15;dxmdsRS15;dxSpellCheckerRS15;cxSpreadSheetRS15;dxTileControlRS15;dxNavBarRS15;dxSkinsCoreRS15;dxSkinBlackRS15;dxSkinBlueprintRS15;dxSkinBlueRS15;dxSkinCaramelRS15;dxSkinCoffeeRS15;dxSkinDarkRoomRS15;dxSkinDarkSideRS15;dxSkinDevExpressDarkStyleRS15;dxSkinDevExpressStyleRS15;dxSkinFoggyRS15;dxSkinGlassOceansRS15;dxSkinHighContrastRS15;dxSkiniMaginaryRS15;dxSkinLilianRS15;dxSkinLiquidSkyRS15;dxSkinLondonLiquidSkyRS15;dxSkinMcSkinRS15;dxSkinMetropolisDarkRS15;dxSkinMetropolisRS15;dxSkinMoneyTwinsRS15;dxSkinOffice2007BlackRS15;dxSkinOffice2007BlueRS15;dxSkinOffice2007GreenRS15;dxSkinOffice2007PinkRS15;dxSkinOffice2007SilverRS15;dxSkinOffice2010BlackRS15;dxSkinOffice2010BlueRS15;dxSkinOffice2010SilverRS15;dxSkinOffice2013DarkGrayRS15;dxSkinOffice2013LightGrayRS15;dxSkinOffice2013WhiteRS15;dxSkinPumpkinRS15;dxSkinSevenClassicRS15;dxSkinSevenRS15;dxSkinSharpPlusRS15;dxSkinSharpRS15;dxSkinSilverRS15;dxSkinSpringTimeRS15;dxSkinStardustRS15;dxSkinSummer2008RS15;dxSkinTheAsphaltWorldRS15;dxSkinValentineRS15;dxSkinVS2010RS15;dxSkinWhiteprintRS15;dxSkinXmas2008BlueRS15;dxPSCoreRS15;dxPSTeeChartRS15;dxPSLnksRS15;dxPSDBTeeChartRS15;dxPScxPCProdRS15;cxPivotGridRS15;cxPivotGridOLAPRS15;dxdbtrRS15;dxtrmdRS15;dxorgcRS15;dxdborRS15;dxFlowChartRS15;dxMapControlRS15;dxSpreadSheetRS15;dxGaugeControlRS15;cxSchedulerRibbonStyleEventEditorRS15;cxSchedulerGridRS15;cxSchedulerTreeBrowserRS15;cxTreeListdxBarPopupMenuRS15;dxSkinscxPCPainterRS15;dxSkinscxSchedulerPainterRS15;dxSkinsdxBarPainterRS15;dxSkinsdxNavBarPainterRS15;dxSkinsdxRibbonPainterRS15;dxSkinsdxDLPainterRS15;dxPScxCommonRS15;dxPScxExtCommonRS15;dxPSdxLCLnkRS15;dxPScxPivotGridLnkRS15;dxPScxSchedulerLnkRS15;dxPScxSSLnkRS15;dxPScxTLLnkRS15;dxPScxVGridLnkRS15;dxPSdxDBOCLnkRS15;dxPSdxOCLnkRS15;dxPSdxDBTVLnkRS15;dxPSdxFCLnkRS15;dxPScxGridLnkRS15;dxPSdxSpreadSheetLnkRS15;dxPsPrVwAdvRS15;dxPSPrVwRibbonRS15;cxPivotGridChartRS15;CodeSiteExpressVcl</DCC_UsePackage>
+			<DCC_K>false</DCC_K>
+			<DCC_F>false</DCC_F>
+			<DCC_DcuOutput>.\$(Config)\$(Platform)</DCC_DcuOutput>
+			<DCC_ExeOutput>.\$(Config)\$(Platform)</DCC_ExeOutput>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_E>false</DCC_E>
+			<DCC_N>false</DCC_N>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_S>false</DCC_S>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+			<DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+			<DCC_Optimize>false</DCC_Optimize>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="PrjComisariato.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="ClientClassesUnit1.pas"/>
+			<DCCReference Include="ClientModuleUnit1.pas">
+				<Form>ClientModule1</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UTFrmRecetas.pas">
+				<Form>FrmRecetas</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmCatalogo.pas">
+				<Form>FrmCatalogo</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmInsumos.pas">
+				<Form>FrmInsumos</Form>
+			</DCCReference>
+			<DCCReference Include="ExportaExcel.pas"/>
+			<DCCReference Include="frm_SelectSheet.pas">
+				<Form>frmSelectSheet</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmSelFormato.pas">
+				<Form>FrmSelFormato</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmDatosInsumo.pas">
+				<Form>FrmDatosInsumo</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmTiposInsumo.pas">
+				<Form>FrmTiposInsumo</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmDatosTiposInsumo.pas">
+				<Form>FrmDatosTiposInsumo</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmUnidades.pas">
+				<Form>FrmUnidades</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmDatosUnidades.pas">
+				<Form>FrmDatosUnidades</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmPrecioInsumo.pas">
+				<Form>FrmPrecioInsumo</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmEmbarcaciones.pas">
+				<Form>FrmEmbarcaciones</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmDatosEmbarcacion.pas">
+				<Form>FrmDatosEmbarcacion</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmComisaria.pas">
+				<Form>FrmComisaria</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmNuevaComisaria.pas">
+				<Form>FrmNuevaComisaria</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmRecetario.pas">
+				<Form>FrmRecetario</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmTiposReceta.pas">
+				<Form>FrmTiposReceta</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmTiposRecetaDatos.pas">
+				<Form>FrmTiposRecetaDatos</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmBuscarRegistroConsumo.pas">
+				<Form>FrmBuscarRegistroConsumo</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmNuevaReceta.pas">
+				<Form>FrmNuevaReceta</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmRecetaInsumo.pas">
+				<Form>FrmRecetaInsumo</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmConversion.pas">
+				<Form>FrmConversion</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmConversionDatos.pas">
+				<Form>FrmConversionDatos</Form>
+			</DCCReference>
+			<DCCReference Include="frm_ReporteAnalisis.pas">
+				<Form>frmReporteAnalisis</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmPeriodosConsumo.pas">
+				<Form>FrmPeriodosConsumo</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmDatosPeriodoConsumo.pas">
+				<Form>FrmDatosPeriodoConsumo</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmRegistroPeriodoConsumoDatos.pas">
+				<Form>FrmRegistroPeriodoConsumoDatos</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmRegistroPeriodoConsumo.pas">
+				<Form>FrmRegistroPeriodoConsumo</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmRegistroPeriodoConsumoRecetas.pas">
+				<Form>FrmRegistroPeriodoConsumoRecetas</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmBuscarReceta.pas">
+				<Form>FrmBuscarReceta</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmImprimeRecetas.pas">
+				<Form>FrmImprimeRecetas</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmInsumosPosPeriodo.pas">
+				<Form>FrmInsumosPorPeriodos</Form>
+			</DCCReference>
+			<DCCReference Include="UFrame.pas">
+				<Form>TMSFrame1</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="Unit2.pas">
+				<Form>Form2</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmMarcas.pas">
+				<Form>FrmMarcas</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmDatosMarca.pas">
+				<Form>FrmDatosMarca</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmPresentaciones.pas">
+				<Form>FrmPresentaciones</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmDatosPresentacion.pas">
+				<Form>FrmDatosPresentacion</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmSelMarcas.pas">
+				<Form>FrmSelMarcas</Form>
+			</DCCReference>
+			<DCCReference Include="UTfrmSelUnidades.pas">
+				<Form>FrmSelUnidades</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmSelPresentacion.pas">
+				<Form>FrmSelPresentacion</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmConsultaPreciosxInsumo.pas">
+				<Form>FrmConsultaPreciosxInsumo</Form>
+			</DCCReference>
+			<DCCReference Include="GENERALES\frm_BasesDatosServidor.pas">
+				<Form>frmBasesDatosServidor</Form>
+			</DCCReference>
+			<DCCReference Include="GENERALES\UTFrmArbolAccesos.pas">
+				<Form>FrmArbolAccesos</Form>
+			</DCCReference>
+			<DCCReference Include="GENERALES\UTFrmDatosOrganigrama.pas">
+				<Form>FrmDatosOrganigrama</Form>
+			</DCCReference>
+			<DCCReference Include="GENERALES\Frm_Conectando.pas">
+				<Form>FrmConectando</Form>
+			</DCCReference>
+			<DCCReference Include="GENERALES\frm_Login.pas">
+				<Form>frmLogin</Form>
+			</DCCReference>
+			<DCCReference Include="GENERALES\Frm_SelDatabase.pas">
+				<Form>FrmSelDataBase</Form>
+			</DCCReference>
+			<DCCReference Include="GENERALES\UTFrmEsquema.pas">
+				<Form>FrmEsquema</Form>
+			</DCCReference>
+			<DCCReference Include="GENERALES\UFrmParamsConfig.pas">
+				<Form>FrmParamsConfig</Form>
+			</DCCReference>
+			<DCCReference Include="GENERALES\UTFrmMuestraAccesos.pas">
+				<Form>FrmMuestraAccesos</Form>
+			</DCCReference>
+			<DCCReference Include="GENERALES\UfrmAutentic.pas">
+				<Form>frmAutentic</Form>
+			</DCCReference>
+			<DCCReference Include="GENERALES\UInteliDialog.pas">
+				<Form>InteliDialog</Form>
+			</DCCReference>
+			<DCCReference Include="GENERALES\Comunes Intelicode\URegistro.pas"/>
+			<DCCReference Include="GENERALES\UEstructuraDatos.pas"/>
+			<DCCReference Include="GENERALES\Comunes Intelicode\InterClases.pas"/>
+			<DCCReference Include="GENERALES\UInfoPanel.pas">
+				<Form>InfoPanel</Form>
+			</DCCReference>
+			<DCCReference Include="GENERALES\Comunes Intelicode\ExBar.pas"/>
+			<DCCReference Include="GENERALES\xDatabase.pas"/>
+			<DCCReference Include="GENERALES\Comunes Intelicode\UControlExcepciones.pas"/>
+			<DCCReference Include="GENERALES\UTFrmSeleccion.pas">
+				<Form>FrmSeleccion</Form>
+			</DCCReference>
+			<DCCReference Include="GENERALES\UTFrmDatosNiveles.pas">
+				<Form>FrmDatosNiveles</Form>
+			</DCCReference>
+			<DCCReference Include="GENERALES\UTFrmCargaImagen.pas">
+				<Form>FrmCargaImagen</Form>
+			</DCCReference>
+			<DCCReference Include="GENERALES\TMSFrame.pas"/>
+			<DCCReference Include="UTFrmRangoConsumos.pas">
+				<Form>FrmRangoConsumos</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmBuscarSolicitud.pas">
+				<Form>FrmBuscarSolicitud</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmSolicitudDatos.pas">
+				<Form>FrmSolicitudDatos</Form>
+			</DCCReference>
+			<DCCReference Include="GENERALES\UTFrmCMTConfiguracion.pas">
+				<Form>FrmCMTConfiguracion</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmMenu.pas">
+				<Form>FrmMenu</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmBuscarMenu.pas">
+				<Form>FrmBuscarMenu</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmMenuDatos.pas">
+				<Form>FrmMenuDatos</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmSelPeriodoMenu.pas">
+				<Form>FrmSelPeriodoMenu</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmCiudad.pas">
+				<Form>FrmCiudad</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmEstado.pas">
+				<Form>FrmEstado</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmPais.pas">
+				<Form>FrmPais</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmDatosCatalogo.pas">
+				<Form>FrmDatosCatalogo</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmDatosCiudad.pas">
+				<Form>FrmDatosCiudad</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmDatosEstado.pas">
+				<Form>FrmDatosEstado</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmDatosPais.pas">
+				<Form>FrmDatosPais</Form>
+			</DCCReference>
+			<DCCReference Include="UDatosOrganizacion.pas">
+				<Form>FrmDatosOrganizacion</Form>
+			</DCCReference>
+			<DCCReference Include="UFrmOrganizacion.pas">
+				<Form>FrmOrganizacion</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmMenuDX.pas">
+				<Form>FrmMenuDX</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmEstadoMenu.pas">
+				<Form>FrmEstadoMenu</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmReportesIngredientes.pas">
+				<Form>FrmReportesIngredientes</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmGraficaConsumos.pas">
+				<Form>FrmGraficaConsumos</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmInsumoPedido.pas">
+				<Form>FrmInsumoPedido</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmNuevoConsumible.pas">
+				<Form>FrmNuevoConsumible</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmConsumible.pas">
+				<Form>FrmConsumible</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmSolicitudes.pas">
+				<Form>FrmSolicitudes</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmBuscarConsumo.pas">
+				<Form>FrmBuscarConsumo</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmSeleccionarMenu.pas">
+				<Form>FrmSeleccionarMenu</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmEntradasAlmacen.pas">
+				<Form>FrmEntradasAlmacen</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmRegistroExistencia.pas">
+				<Form>FrmRegistroExistencia</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmBuscarExistencia.pas">
+				<Form>FrmBuscarExistencia</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmSeleccionarInsumo.pas">
+				<Form>FrmSeleccionarInsumo</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmEntradasAlmacenDX.pas">
+				<Form>FrmEntradasAlmacenDX</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmSalidasAlmacen.pas">
+				<Form>FrmSalidasAlmacen</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmEstadoInventarios.pas">
+				<Form>FrmEstadoInventarios</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmBuscarMovimiento.pas">
+				<Form>FrmBuscarMovimiento</Form>
+			</DCCReference>
+			<DCCReference Include="GENERALES\UTFrmOrganizacion.pas"/>
+			<DCCReference Include="UTFrmConsultarExistencias.pas">
+				<Form>FrmConsultarExistencias</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmConsultaPrecios.pas">
+				<Form>FrmConsultaPrecios</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmPrecioBajo.pas">
+				<Form>FrmPrecioBajo</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmEspecificarSolicitud.pas">
+				<Form>FrmEspecificarSolicitud</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmContratos.pas">
+				<Form>FrmContratos</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmDatosContrato.pas">
+				<Form>FrmDatosContrato</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmErrorIntegracionPrecios.pas">
+				<Form>FrmErrorIntegracionPrecios</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmStock.pas">
+				<Form>FrmStock</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmUsuarioPermisos.pas">
+				<Form>FrmUsuarioPermisos</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmUsuario.pas">
+				<Form>FrmUsuario</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmRolPermisos.pas">
+				<Form>FrmRolPermisos</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmRol.pas">
+				<Form>FrmRol</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmComparaPrecios.pas">
+				<Form>FrmComparaPrecios</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmAlmacenes.pas">
+				<Form>FrmAlmacenes</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmDatosAlmacen.pas">
+				<Form>FrmDatosAlmacen</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmIVA.pas">
+				<Form>FrmIVA</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmDatosIVA.pas">
+				<Form>FrmDatosIVA</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmTiposImpuesto.pas">
+				<Form>FrmTiposImpuesto</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmDatosTiposImpuesto.pas">
+				<Form>FrmDatosTiposImpuesto</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmImpuestoxInsumo.pas">
+				<Form>FrmImpuestoxInsumo</Form>
+			</DCCReference>
+			<DCCReference Include="UtFrmAgregarTipoInsumo.pas">
+				<Form>FrmAgregarTipoInsumo</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmCotizacion.pas">
+				<Form>FrmCotizacion</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmBuscarCotizacion.pas">
+				<Form>FrmBuscarCotizacion</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmCotizacionDatos.pas">
+				<Form>FrmCotizacionDatos</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmSeleccionarCliente.pas">
+				<Form>FrmSeleccionarCliente</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmEntradaGeneral.pas">
+				<Form>FrmEntradaGeneral</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmBuscarEntradaGeneral.pas">
+				<Form>FrmBuscarEntradaGeneral</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmEntradaGeneralDatos.pas">
+				<Form>FrmEntradaGeneralDatos</Form>
+			</DCCReference>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')" Project="$(BDS)\Bin\CodeGear.Delphi.Targets"/>
+		<Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\8.0\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\8.0\UserTools.proj"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">2058</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Source>
+						<Source Name="MainSource">PrjComisariato.dpr</Source>
+					</Source>
+					<Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\dcloffice2k150.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\dclofficexp150.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+					</Excluded_Packages>
+				</Delphi.Personality>
+				<Platforms>
+					<Platform value="Win32">True</Platform>
+				</Platforms>
+				<DataSnapProxyLookup>
+					<ClientClassesUnit1>{816A1E3C-ADAA-45D9-9CE7-EDD6F0C36C07}</ClientClassesUnit1>
+				</DataSnapProxyLookup>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

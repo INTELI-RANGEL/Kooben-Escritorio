@@ -1,0 +1,277 @@
+object FrmSeleccionarInsumo: TFrmSeleccionarInsumo
+  Left = 0
+  Top = 0
+  Caption = 'Seleccionar Insumo'
+  ClientHeight = 243
+  ClientWidth = 527
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesigned
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnlDetalle: TPanel
+    Left = 188
+    Top = 0
+    Width = 339
+    Height = 243
+    Align = alRight
+    BevelOuter = bvNone
+    TabOrder = 0
+    object JvLabel1: TJvLabel
+      Left = 32
+      Top = 11
+      Width = 39
+      Height = 13
+      Caption = 'C'#243'digo:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object JvLabel2: TJvLabel
+      Left = 32
+      Top = 41
+      Width = 43
+      Height = 13
+      Caption = 'Nombre:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object JvLabel3: TJvLabel
+      Left = 32
+      Top = 68
+      Width = 60
+      Height = 13
+      Caption = 'Descripci'#243'n:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object DBEdit1: TDBEdit
+      Left = 96
+      Top = 11
+      Width = 121
+      Height = 21
+      DataField = 'CodigoInsumo'
+      DataSource = dsInsumo
+      TabOrder = 0
+    end
+    object DBEdit2: TDBEdit
+      Left = 96
+      Top = 41
+      Width = 121
+      Height = 21
+      DataField = 'NombreInsumo'
+      DataSource = dsInsumo
+      TabOrder = 1
+    end
+    object DBMemo1: TDBMemo
+      Left = 96
+      Top = 68
+      Width = 233
+      Height = 89
+      DataField = 'DescripcionInsumo'
+      DataSource = dsInsumo
+      TabOrder = 2
+    end
+    object Panel4: TPanel
+      Left = 0
+      Top = 202
+      Width = 339
+      Height = 41
+      Align = alBottom
+      Padding.Top = 4
+      Padding.Right = 6
+      Padding.Bottom = 4
+      TabOrder = 3
+      object btnAceptar: TAdvGlowButton
+        Left = 132
+        Top = 5
+        Width = 100
+        Height = 31
+        Align = alRight
+        Caption = '&Aceptar'
+        ImageIndex = 1
+        Images = ClientModule1.PngImageList1
+        ModalResult = 1
+        NotesFont.Charset = DEFAULT_CHARSET
+        NotesFont.Color = clWindowText
+        NotesFont.Height = -11
+        NotesFont.Name = 'Tahoma'
+        NotesFont.Style = []
+        TabOrder = 0
+        Appearance.ColorChecked = 16111818
+        Appearance.ColorCheckedTo = 16367008
+        Appearance.ColorDisabled = 15921906
+        Appearance.ColorDisabledTo = 15921906
+        Appearance.ColorDown = 16111818
+        Appearance.ColorDownTo = 16367008
+        Appearance.ColorHot = 16117985
+        Appearance.ColorHotTo = 16372402
+        Appearance.ColorMirrorHot = 16107693
+        Appearance.ColorMirrorHotTo = 16775412
+        Appearance.ColorMirrorDown = 16102556
+        Appearance.ColorMirrorDownTo = 16768988
+        Appearance.ColorMirrorChecked = 16102556
+        Appearance.ColorMirrorCheckedTo = 16768988
+        Appearance.ColorMirrorDisabled = 11974326
+        Appearance.ColorMirrorDisabledTo = 15921906
+      end
+      object btnCancelar: TAdvGlowButton
+        Left = 232
+        Top = 5
+        Width = 100
+        Height = 31
+        Align = alRight
+        Cancel = True
+        Caption = '&Cancelar'
+        ImageIndex = 8
+        Images = ClientModule1.PngImageList1
+        ModalResult = 2
+        NotesFont.Charset = DEFAULT_CHARSET
+        NotesFont.Color = clWindowText
+        NotesFont.Height = -11
+        NotesFont.Name = 'Tahoma'
+        NotesFont.Style = []
+        TabOrder = 1
+        Appearance.ColorChecked = 16111818
+        Appearance.ColorCheckedTo = 16367008
+        Appearance.ColorDisabled = 15921906
+        Appearance.ColorDisabledTo = 15921906
+        Appearance.ColorDown = 16111818
+        Appearance.ColorDownTo = 16367008
+        Appearance.ColorHot = 16117985
+        Appearance.ColorHotTo = 16372402
+        Appearance.ColorMirrorHot = 16107693
+        Appearance.ColorMirrorHotTo = 16775412
+        Appearance.ColorMirrorDown = 16102556
+        Appearance.ColorMirrorDownTo = 16768988
+        Appearance.ColorMirrorChecked = 16102556
+        Appearance.ColorMirrorCheckedTo = 16768988
+        Appearance.ColorMirrorDisabled = 11974326
+        Appearance.ColorMirrorDisabledTo = 15921906
+      end
+    end
+  end
+  object pnlDatos: TPanel
+    Left = 0
+    Top = 0
+    Width = 188
+    Height = 243
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 1
+    ExplicitWidth = 185
+    object cxGrid1: TcxGrid
+      Left = 0
+      Top = 32
+      Width = 188
+      Height = 211
+      Align = alClient
+      TabOrder = 0
+      ExplicitWidth = 185
+      object tvInsumo: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        DataController.DataSource = dsInsumo
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsView.GroupByBox = False
+        object NombreTipoInsumo: TcxGridDBColumn
+          Caption = 'Tipo Insumo'
+          DataBinding.FieldName = 'NombreTipoInsumo'
+          Visible = False
+          GroupIndex = 0
+        end
+        object CodigoInsumo: TcxGridDBColumn
+          DataBinding.FieldName = 'CodigoInsumo'
+        end
+        object NombreInsumo: TcxGridDBColumn
+          Caption = 'Nombre'
+          DataBinding.FieldName = 'NombreInsumo'
+        end
+      end
+      object cxGrid1Level1: TcxGridLevel
+        GridView = tvInsumo
+      end
+    end
+    object Panel3: TPanel
+      Left = 0
+      Top = 0
+      Width = 188
+      Height = 32
+      Align = alTop
+      BevelOuter = bvNone
+      TabOrder = 1
+      ExplicitWidth = 185
+      object Panel5: TPanel
+        Left = 49
+        Top = 0
+        Width = 139
+        Height = 32
+        Align = alClient
+        BevelOuter = bvNone
+        Padding.Top = 5
+        Padding.Right = 3
+        Padding.Bottom = 6
+        TabOrder = 0
+        ExplicitWidth = 136
+        object edtBuscar: TEdit
+          Left = 0
+          Top = 5
+          Width = 136
+          Height = 21
+          Align = alClient
+          TabOrder = 0
+          OnKeyDown = edtBuscarKeyDown
+          ExplicitWidth = 133
+        end
+      end
+      object Panel6: TPanel
+        Left = 0
+        Top = 0
+        Width = 49
+        Height = 32
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 1
+        object JvLabel4: TJvLabel
+          Left = 8
+          Top = 8
+          Width = 38
+          Height = 13
+          Caption = 'Buscar:'
+          Transparent = True
+          HotTrackFont.Charset = DEFAULT_CHARSET
+          HotTrackFont.Color = clWindowText
+          HotTrackFont.Height = -11
+          HotTrackFont.Name = 'Tahoma'
+          HotTrackFont.Style = []
+        end
+      end
+    end
+  end
+  object dsInsumo: TDataSource
+    Left = 472
+    Top = 8
+  end
+end

@@ -1,0 +1,399 @@
+object FrmPrecioInsumo: TFrmPrecioInsumo
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'Precios por Insumo'
+  ClientHeight = 297
+  ClientWidth = 431
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object gbDatosInsumo: TGroupBox
+    Left = 0
+    Top = 0
+    Width = 431
+    Height = 75
+    Align = alTop
+    TabOrder = 0
+    object JvLabel3: TJvLabel
+      Left = 11
+      Top = 54
+      Width = 26
+      Height = 13
+      Caption = 'Tipo:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object JvLabel2: TJvLabel
+      Left = 11
+      Top = 31
+      Width = 43
+      Height = 13
+      Caption = 'Nombre:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object JvLabel1: TJvLabel
+      Left = 11
+      Top = 8
+      Width = 39
+      Height = 13
+      Caption = 'Codigo:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object CodigoInsumo: TDBText
+      Left = 60
+      Top = 8
+      Width = 396
+      Height = 17
+      DataField = 'CodigoInsumo'
+      DataSource = dsInsumo
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlue
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object NombreInsumo: TDBText
+      Left = 60
+      Top = 31
+      Width = 396
+      Height = 17
+      DataField = 'NombreInsumo'
+      DataSource = dsInsumo
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlue
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object NombreTipoInsumo: TDBText
+      Left = 60
+      Top = 54
+      Width = 396
+      Height = 17
+      DataField = 'NombreTipoInsumo'
+      DataSource = dsInsumo
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlue
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+  end
+  object pnlBotones: TPanel
+    Left = 0
+    Top = 256
+    Width = 431
+    Height = 41
+    Align = alBottom
+    TabOrder = 1
+    object btnAceptar: TAdvGlowButton
+      Left = 195
+      Top = 6
+      Width = 100
+      Height = 25
+      Caption = '&Aceptar'
+      ImageIndex = 1
+      Images = ClientModule1.PngImageList1
+      NotesFont.Charset = DEFAULT_CHARSET
+      NotesFont.Color = clWindowText
+      NotesFont.Height = -11
+      NotesFont.Name = 'Tahoma'
+      NotesFont.Style = []
+      TabOrder = 0
+      TabStop = True
+      OnClick = btnAceptarClick
+      Appearance.ColorChecked = 16111818
+      Appearance.ColorCheckedTo = 16367008
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 16111818
+      Appearance.ColorDownTo = 16367008
+      Appearance.ColorHot = 16117985
+      Appearance.ColorHotTo = 16372402
+      Appearance.ColorMirrorHot = 16107693
+      Appearance.ColorMirrorHotTo = 16775412
+      Appearance.ColorMirrorDown = 16102556
+      Appearance.ColorMirrorDownTo = 16768988
+      Appearance.ColorMirrorChecked = 16102556
+      Appearance.ColorMirrorCheckedTo = 16768988
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+    end
+    object btnCancelar: TAdvGlowButton
+      Left = 301
+      Top = 6
+      Width = 100
+      Height = 25
+      Cancel = True
+      Caption = '&Cancelar'
+      ImageIndex = 8
+      Images = ClientModule1.PngImageList1
+      ModalResult = 2
+      NotesFont.Charset = DEFAULT_CHARSET
+      NotesFont.Color = clWindowText
+      NotesFont.Height = -11
+      NotesFont.Name = 'Tahoma'
+      NotesFont.Style = []
+      TabOrder = 1
+      TabStop = True
+      OnClick = btnCancelarClick
+      Appearance.ColorChecked = 16111818
+      Appearance.ColorCheckedTo = 16367008
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 16111818
+      Appearance.ColorDownTo = 16367008
+      Appearance.ColorHot = 16117985
+      Appearance.ColorHotTo = 16372402
+      Appearance.ColorMirrorHot = 16107693
+      Appearance.ColorMirrorHotTo = 16775412
+      Appearance.ColorMirrorDown = 16102556
+      Appearance.ColorMirrorDownTo = 16768988
+      Appearance.ColorMirrorChecked = 16102556
+      Appearance.ColorMirrorCheckedTo = 16768988
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+    end
+  end
+  object GroupBox1: TGroupBox
+    Left = 0
+    Top = 75
+    Width = 431
+    Height = 181
+    Margins.Bottom = 1
+    Align = alClient
+    Ctl3D = True
+    DoubleBuffered = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentCtl3D = False
+    ParentDoubleBuffered = False
+    ParentFont = False
+    TabOrder = 2
+    Touch.ParentTabletOptions = False
+    Touch.TabletOptions = [toPressAndHold]
+    object JvLabel10: TJvLabel
+      Left = 56
+      Top = 16
+      Width = 56
+      Height = 13
+      Caption = 'Proveedor:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object JvLabel8: TJvLabel
+      Left = 77
+      Top = 43
+      Width = 35
+      Height = 13
+      Caption = 'Marca:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object JvLabel9: TJvLabel
+      Left = 44
+      Top = 70
+      Width = 68
+      Height = 13
+      Caption = 'Presentaci'#243'n:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object JvLabel4: TJvLabel
+      Left = 37
+      Top = 97
+      Width = 75
+      Height = 13
+      Caption = 'Precio Compra:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object JvLabel5: TJvLabel
+      Left = 46
+      Top = 123
+      Width = 66
+      Height = 13
+      Caption = 'Precio Venta:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object JvLabel6: TJvLabel
+      Left = 12
+      Top = 150
+      Width = 100
+      Height = 13
+      Caption = 'Fecha de Aplicaci'#243'n:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object IdMarca: TDBLookupComboBox
+      Left = 118
+      Top = 43
+      Width = 300
+      Height = 21
+      DataField = 'IdMarca'
+      DataSource = dsInsumoPrecio
+      KeyField = 'IdMarca'
+      ListField = 'TituloMarca'
+      ListSource = dsMarcaxInsumo
+      TabOrder = 1
+    end
+    object IdPresentacion: TDBLookupComboBox
+      Left = 118
+      Top = 70
+      Width = 300
+      Height = 21
+      DataField = 'IdPresentacion'
+      DataSource = dsInsumoPrecio
+      KeyField = 'IdPresentacion'
+      ListField = 'TituloPresentacion'
+      ListSource = dsPresentacionxUnidad
+      TabOrder = 2
+    end
+    object PrecioCompra: TcxDBCurrencyEdit
+      Left = 118
+      Top = 97
+      DataBinding.DataField = 'PrecioCompra'
+      DataBinding.DataSource = dsInsumoPrecio
+      TabOrder = 3
+      Width = 100
+    end
+    object PrecioVenta: TcxDBCurrencyEdit
+      Left = 118
+      Top = 123
+      DataBinding.DataField = 'PrecioVenta'
+      DataBinding.DataSource = dsInsumoPrecio
+      TabOrder = 4
+      Width = 100
+    end
+    object Aplicacion: TcxDBDateEdit
+      Left = 118
+      Top = 150
+      DataBinding.DataField = 'Aplicacion'
+      DataBinding.DataSource = dsInsumoPrecio
+      TabOrder = 5
+      Width = 300
+    end
+    object IdEmpresa: TDBLookupComboBox
+      Left = 118
+      Top = 16
+      Width = 300
+      Height = 21
+      DataField = 'iIdEmpresa'
+      DataSource = dsInsumoPrecio
+      KeyField = 'iIdEmpresa'
+      ListField = 'sNombreCorto'
+      ListSource = dsProveedorxInsumo
+      TabOrder = 0
+    end
+  end
+  object dsInsumo: TDataSource
+    Left = 368
+    Top = 16
+  end
+  object cdInsumoPrecio: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 184
+    Top = 8
+  end
+  object dsInsumoPrecio: TDataSource
+    DataSet = cdInsumoPrecio
+    Left = 304
+    Top = 8
+  end
+  object cdAplicacion: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 352
+    Top = 168
+  end
+  object dsMarcaxInsumo: TDataSource
+    Left = 248
+    Top = 32
+  end
+  object dsPresentacionxInsumo: TDataSource
+    Left = 268
+    Top = 152
+  end
+  object dsProveedorxInsumo: TDataSource
+    Left = 328
+    Top = 64
+  end
+  object dsUnidades: TDataSource
+    DataSet = ClientModule1.cdUnidades
+    Left = 40
+    Top = 304
+  end
+  object dsPresentacionxUnidad: TDataSource
+    Left = 264
+    Top = 216
+  end
+  object cdSKU: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 144
+    Top = 240
+  end
+  object cdRegistroSKU: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 32
+    Top = 224
+  end
+end

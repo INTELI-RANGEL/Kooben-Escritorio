@@ -1,0 +1,359 @@
+object FrmRegistroPeriodoConsumoRecetas: TFrmRegistroPeriodoConsumoRecetas
+  Left = 0
+  Top = 0
+  Caption = 'FrmRegistroPeriodoConsumoRecetas'
+  ClientHeight = 456
+  ClientWidth = 569
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 569
+    Height = 97
+    Align = alTop
+    Enabled = False
+    TabOrder = 0
+    object JvLabel2: TJvLabel
+      Left = 16
+      Top = 15
+      Width = 35
+      Height = 13
+      Caption = 'Fecha:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object JvLabel7: TJvLabel
+      Left = 17
+      Top = 47
+      Width = 103
+      Height = 13
+      Caption = 'N'#250'mero Comensales:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object Fecha: TDBEdit
+      Left = 62
+      Top = 15
+      Width = 67
+      Height = 21
+      DataField = 'Fecha'
+      DataSource = dsRegistroConsumo
+      TabOrder = 0
+    end
+    object Personas: TDBEdit
+      Left = 126
+      Top = 47
+      Width = 67
+      Height = 21
+      DataField = 'Personas'
+      DataSource = dsRegistroConsumo
+      TabOrder = 1
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 256
+    Width = 569
+    Height = 159
+    Align = alBottom
+    TabOrder = 1
+    object JvLabel3: TJvLabel
+      Left = 16
+      Top = 16
+      Width = 40
+      Height = 13
+      Caption = 'Receta:'
+      Transparent = True
+      HotTrackFont.Charset = DEFAULT_CHARSET
+      HotTrackFont.Color = clWindowText
+      HotTrackFont.Height = -11
+      HotTrackFont.Name = 'Tahoma'
+      HotTrackFont.Style = []
+    end
+    object IdReceta: TDBLookupComboBox
+      Left = 62
+      Top = 16
+      Width = 427
+      Height = 21
+      DataField = 'IdReceta'
+      DataSource = dsRegistroConsumoInsumo
+      KeyField = 'IdReceta'
+      ListField = 'NombreReceta'
+      ListSource = dsReceta
+      TabOrder = 0
+      OnKeyDown = IdRecetaKeyDown
+    end
+    object GroupBox1: TGroupBox
+      Left = 1
+      Top = 52
+      Width = 567
+      Height = 106
+      Align = alBottom
+      Caption = 'Datos de la Receta'
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGray
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+      object JvLabel4: TJvLabel
+        Left = 15
+        Top = 49
+        Width = 39
+        Height = 13
+        Caption = 'C'#243'digo:'
+        Transparent = True
+        HotTrackFont.Charset = DEFAULT_CHARSET
+        HotTrackFont.Color = clWindowText
+        HotTrackFont.Height = -11
+        HotTrackFont.Name = 'Tahoma'
+        HotTrackFont.Style = []
+      end
+      object JvLabel5: TJvLabel
+        Left = 15
+        Top = 76
+        Width = 60
+        Height = 13
+        Caption = 'Descripcion:'
+        Transparent = True
+        HotTrackFont.Charset = DEFAULT_CHARSET
+        HotTrackFont.Color = clWindowText
+        HotTrackFont.Height = -11
+        HotTrackFont.Name = 'Tahoma'
+        HotTrackFont.Style = []
+      end
+      object JvLabel6: TJvLabel
+        Left = 15
+        Top = 22
+        Width = 63
+        Height = 13
+        Caption = 'Tipo Receta:'
+        Transparent = True
+        HotTrackFont.Charset = DEFAULT_CHARSET
+        HotTrackFont.Color = clWindowText
+        HotTrackFont.Height = -11
+        HotTrackFont.Name = 'Tahoma'
+        HotTrackFont.Style = []
+      end
+      object DBEdit1: TDBEdit
+        Left = 60
+        Top = 49
+        Width = 121
+        Height = 21
+        DataField = 'CodigoReceta'
+        DataSource = dsReceta
+        TabOrder = 0
+      end
+      object DBEdit2: TDBEdit
+        Left = 196
+        Top = 49
+        Width = 356
+        Height = 21
+        DataField = 'NombreReceta'
+        DataSource = dsReceta
+        TabOrder = 1
+      end
+      object DBEdit3: TDBEdit
+        Left = 81
+        Top = 76
+        Width = 471
+        Height = 21
+        DataField = 'DescripcionReceta'
+        DataSource = dsReceta
+        TabOrder = 2
+      end
+      object DBEdit4: TDBEdit
+        Left = 81
+        Top = 22
+        Width = 121
+        Height = 21
+        DataField = 'CodigoTipoReceta'
+        DataSource = dsReceta
+        TabOrder = 3
+      end
+      object DBEdit5: TDBEdit
+        Left = 208
+        Top = 22
+        Width = 344
+        Height = 21
+        DataField = 'NombreTipoReceta'
+        DataSource = dsReceta
+        TabOrder = 4
+      end
+    end
+  end
+  object Panel3: TPanel
+    Left = 0
+    Top = 415
+    Width = 569
+    Height = 41
+    Align = alBottom
+    Padding.Top = 5
+    Padding.Right = 10
+    Padding.Bottom = 5
+    TabOrder = 2
+    object btnNuevo: TAdvGlowButton
+      Left = 309
+      Top = 6
+      Width = 83
+      Height = 29
+      Align = alRight
+      Caption = '&Nuevo'
+      NotesFont.Charset = DEFAULT_CHARSET
+      NotesFont.Color = clWindowText
+      NotesFont.Height = -11
+      NotesFont.Name = 'Tahoma'
+      NotesFont.Style = []
+      TabOrder = 0
+      OnClick = btnNuevoClick
+      Appearance.ColorChecked = 16111818
+      Appearance.ColorCheckedTo = 16367008
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 16111818
+      Appearance.ColorDownTo = 16367008
+      Appearance.ColorHot = 16117985
+      Appearance.ColorHotTo = 16372402
+      Appearance.ColorMirrorHot = 16107693
+      Appearance.ColorMirrorHotTo = 16775412
+      Appearance.ColorMirrorDown = 16102556
+      Appearance.ColorMirrorDownTo = 16768988
+      Appearance.ColorMirrorChecked = 16102556
+      Appearance.ColorMirrorCheckedTo = 16768988
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+    end
+    object btnAceptar: TAdvGlowButton
+      Left = 392
+      Top = 6
+      Width = 83
+      Height = 29
+      Align = alRight
+      Caption = '&Aceptar'
+      NotesFont.Charset = DEFAULT_CHARSET
+      NotesFont.Color = clWindowText
+      NotesFont.Height = -11
+      NotesFont.Name = 'Tahoma'
+      NotesFont.Style = []
+      TabOrder = 1
+      OnClick = btnAceptarClick
+      Appearance.ColorChecked = 16111818
+      Appearance.ColorCheckedTo = 16367008
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 16111818
+      Appearance.ColorDownTo = 16367008
+      Appearance.ColorHot = 16117985
+      Appearance.ColorHotTo = 16372402
+      Appearance.ColorMirrorHot = 16107693
+      Appearance.ColorMirrorHotTo = 16775412
+      Appearance.ColorMirrorDown = 16102556
+      Appearance.ColorMirrorDownTo = 16768988
+      Appearance.ColorMirrorChecked = 16102556
+      Appearance.ColorMirrorCheckedTo = 16768988
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+    end
+    object btnTerminar: TAdvGlowButton
+      Left = 475
+      Top = 6
+      Width = 83
+      Height = 29
+      Align = alRight
+      Caption = '&Terminar'
+      NotesFont.Charset = DEFAULT_CHARSET
+      NotesFont.Color = clWindowText
+      NotesFont.Height = -11
+      NotesFont.Name = 'Tahoma'
+      NotesFont.Style = []
+      TabOrder = 2
+      OnClick = btnTerminarClick
+      Appearance.ColorChecked = 16111818
+      Appearance.ColorCheckedTo = 16367008
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 16111818
+      Appearance.ColorDownTo = 16367008
+      Appearance.ColorHot = 16117985
+      Appearance.ColorHotTo = 16372402
+      Appearance.ColorMirrorHot = 16107693
+      Appearance.ColorMirrorHotTo = 16775412
+      Appearance.ColorMirrorDown = 16102556
+      Appearance.ColorMirrorDownTo = 16768988
+      Appearance.ColorMirrorChecked = 16102556
+      Appearance.ColorMirrorCheckedTo = 16768988
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+    end
+  end
+  object cxGrid1: TcxGrid
+    Left = 0
+    Top = 97
+    Width = 569
+    Height = 159
+    Align = alClient
+    TabOrder = 3
+    object cxGrid1DBTableView1: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      DataController.DataSource = dsRecetaInsumoLista
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+    end
+    object cxGrid1Level1: TcxGridLevel
+      GridView = cxGrid1DBTableView1
+    end
+  end
+  object dsRegistroConsumo: TDataSource
+    Left = 56
+    Top = 96
+  end
+  object dsRegistroConsumoInsumo: TDataSource
+    Left = 56
+    Top = 144
+  end
+  object dsReceta: TDataSource
+    Left = 160
+    Top = 104
+  end
+  object dsRecetaInsumoLista: TDataSource
+    Left = 440
+    Top = 88
+  end
+  object Aviso: TJvBalloonHint
+    UseBalloonAsApplicationHint = True
+    Left = 48
+    Top = 192
+  end
+  object cdBuscarInsumo: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 288
+    Top = 296
+  end
+  object dsBuscarInsumo: TDataSource
+    DataSet = cdBuscarInsumo
+    Left = 376
+    Top = 296
+  end
+end
