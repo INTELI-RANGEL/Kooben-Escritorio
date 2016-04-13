@@ -182,6 +182,9 @@ begin
       if Not CrearConjunto(cdCotizacionUpt, 'cmt_cotizacion', ccUpdate) then
         raise InteligentException.CreateByCode(5, ['*Cotizaciones']);
 
+      if Not CrearConjunto(cdCotizacionDatosUpt, 'cmt_cotizaciondatos', ccUpdate) then
+        raise InteligentException.CreateByCode(5, ['Partidas de Cotización']);
+
       cdElabora.Open;
       if cdElabora.RecordCount = 0 then
         raise InteligentException.CreateByCode(22, ['Usuarios (Elabora)']);
@@ -189,7 +192,6 @@ begin
       cdAutoriza.Open;
       if cdAutoriza.RecordCount = 0 then
         raise InteligentException.CreateByCode(22, ['Usuarios (Autoriza)']);
-
     finally
       Screen.Cursor := LocCursor;
     end;

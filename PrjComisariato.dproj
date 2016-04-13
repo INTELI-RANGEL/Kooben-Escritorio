@@ -425,6 +425,9 @@
 			<DCCReference Include="UTFrmEntradaGeneralDatos.pas">
 				<Form>FrmEntradaGeneralDatos</Form>
 			</DCCReference>
+			<DCCReference Include="UTFrmEntradaGeneralPartidaDatos.pas">
+				<Form>FrmEntradaGeneralPartidaDatos</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

@@ -5,7 +5,24 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, AdvGlowButton, StdCtrls, JvExControls, JvLabel, ExtCtrls, URegistro,
-  UInteliDialog, ClientModuleUnit1, DB, DBClient, DBCtrls;
+  UInteliDialog, ClientModuleUnit1, DB, DBClient, DBCtrls, cxGraphics,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, dxSkinsCore,
+  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
+  dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
+  dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, dxSkinscxPCPainter, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, cxNavigator, cxDBData, cxGridLevel, cxClasses,
+  cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGrid, Menus, JvMenus;
 
 type
   TFrmEntradaGeneral = class(TForm)
@@ -39,11 +56,25 @@ type
     Panel9: TPanel;
     NombreRecibio: TDBText;
     JvLabel5: TJvLabel;
+    Panel7: TPanel;
+    btnCancelar: TAdvGlowButton;
+    bntAceptar: TAdvGlowButton;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1Column1: TcxGridDBColumn;
+    cxGrid1DBTableView1Column2: TcxGridDBColumn;
+    cxGrid1DBTableView1Column3: TcxGridDBColumn;
+    pmPartidas: TJvPopupMenu;
+    AgregarPartida1: TMenuItem;
+    EditarPartida1: TMenuItem;
+    EliminarPartida1: TMenuItem;
     procedure btnBuscarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure btnNuevoClick(Sender: TObject);
     procedure pnlFirmasResize(Sender: TObject);
+    procedure AgregarPartida1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -58,7 +89,18 @@ implementation
 {$R *.dfm}
 
 uses
-  UTFrmBuscarEntradaGeneral, UTFrmEntradaGeneralDatos;
+  UTFrmBuscarEntradaGeneral, UTFrmEntradaGeneralDatos,
+  UTFrmEntradaGeneralPartidaDatos;
+
+procedure TFrmEntradaGeneral.AgregarPartida1Click(Sender: TObject);
+begin
+  Application.CreateForm(TFrmEntradaGeneralPartidaDatos, FrmEntradaGeneralPartidaDatos);
+  FrmEntradaGeneralPartidaDatos.dsEntradaGeneralDatosUpt.DataSet := cdEntradaGeneralDatosUpt;
+  cdEntradaGeneralDatosUpt.Append;
+  cdEntradaGeneralDatosUpt.FieldByName('IdRegistroMovimientoGeneralPartida').AsInteger := 0;
+  cdEntradaGeneralDatosUpt.FieldByName('IdRegistroMovimientoGeneral').AsInteger := cdEntradaGeneralUpt.FieldByName('IdRegistroMovimientoGeneral').AsInteger;
+  FrmEntradaGeneralPartidaDatos.ShowModal;
+end;
 
 procedure TFrmEntradaGeneral.btnBuscarClick(Sender: TObject);
 begin
@@ -67,8 +109,16 @@ begin
     FrmBuscarEntradaGeneral.dsBuscarEntradaGeneral.DataSet := cdBuscarEntradaGeneral;
     if FrmBuscarEntradaGeneral.ShowModal = mrOk then
     begin
-      if Not CargarDatosFiltrados(cdEntradaGeneralDatosUpt, 'IdEntradaGeneral', [cdBuscarEntradaGeneral.FieldByName('IdEntradaGeneral').AsInteger]) then
-        raise InteligentException.CreateByCode(6, ['Entradas Alamcén General', cdBuscarEntradaGeneral.FieldByName('IdEntradaGeneral').AsInteger, 'Id. Entrada General']);
+      if Not CargarDatosFiltrados(cdEntradaGeneralUpt, 'IdRegistroMovimientoGeneral', [cdBuscarEntradaGeneral.FieldByName('IdRegistroMovimientoGeneral').AsInteger]) then
+        raise InteligentException.CreateByCode(6, ['Entradas al Almacén General', cdBuscarEntradaGeneral.FieldByName('IdEntradaGeneral').AsInteger, 'Id. Entrada General']);
+
+      if Not CargarDatosFiltrados(cdEntradaGeneralDatosUpt, 'IdRegistroMovimientoGeneral', [cdBuscarEntradaGeneral.FieldByName('IdRegistroMovimientoGeneral').AsInteger]) then
+        raise InteligentException.CreateByCode(6, ['Partidas de Entradas al Almacén General', cdBuscarEntradaGeneral.FieldByName('IdEntradaGeneral').AsInteger, 'Id. Entrada General']);
+
+      if cdEntradaGeneralUpt.Active then
+        cdEntradaGeneralUpt.Refresh
+      else
+        cdEntradaGeneralUpt.Open;
 
       if cdEntradaGeneralDatosUpt.Active then
         cdEntradaGeneralDatosUpt.Refresh
@@ -155,6 +205,9 @@ begin
 
       if Not CrearConjunto(cdEntradaGeneralUpt, 'cmt_registromovimientogeneral', ccUpdate) then
         raise InteligentException.CreateByCode(5, ['*Entradas Almacén General']);
+
+      if Not CrearConjunto(cdEntradaGeneralDatosUpt, 'cmt_registromovimientogeneralpartida', ccUpdate) then
+        raise InteligentException.CreateByCode(5, ['Partidas de Entradas Generales']);
 
       cdRecibio.Open;
       if cdRecibio.RecordCount = 0 then

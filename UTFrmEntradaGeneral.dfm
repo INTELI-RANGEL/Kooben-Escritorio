@@ -335,6 +335,117 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
       Appearance.ColorMirrorDisabledTo = 15921906
     end
   end
+  object Panel7: TPanel
+    Left = 0
+    Top = 360
+    Width = 683
+    Height = 41
+    Align = alBottom
+    Padding.Left = 6
+    Padding.Top = 4
+    Padding.Right = 6
+    Padding.Bottom = 4
+    TabOrder = 2
+    ExplicitLeft = 1
+    ExplicitTop = 182
+    ExplicitWidth = 649
+    object btnCancelar: TAdvGlowButton
+      Left = 576
+      Top = 5
+      Width = 100
+      Height = 31
+      Align = alRight
+      Caption = '&Cancelar'
+      ImageIndex = 8
+      Images = ClientModule1.PngImageList1
+      ModalResult = 2
+      NotesFont.Charset = DEFAULT_CHARSET
+      NotesFont.Color = clWindowText
+      NotesFont.Height = -11
+      NotesFont.Name = 'Tahoma'
+      NotesFont.Style = []
+      TabOrder = 0
+      Appearance.ColorChecked = 16111818
+      Appearance.ColorCheckedTo = 16367008
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 16111818
+      Appearance.ColorDownTo = 16367008
+      Appearance.ColorHot = 16117985
+      Appearance.ColorHotTo = 16372402
+      Appearance.ColorMirrorHot = 16107693
+      Appearance.ColorMirrorHotTo = 16775412
+      Appearance.ColorMirrorDown = 16102556
+      Appearance.ColorMirrorDownTo = 16768988
+      Appearance.ColorMirrorChecked = 16102556
+      Appearance.ColorMirrorCheckedTo = 16768988
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+      ExplicitLeft = 542
+    end
+    object bntAceptar: TAdvGlowButton
+      Left = 476
+      Top = 5
+      Width = 100
+      Height = 31
+      Align = alRight
+      Caption = '&Aceptar'
+      ImageIndex = 1
+      Images = ClientModule1.PngImageList1
+      ModalResult = 1
+      NotesFont.Charset = DEFAULT_CHARSET
+      NotesFont.Color = clWindowText
+      NotesFont.Height = -11
+      NotesFont.Name = 'Tahoma'
+      NotesFont.Style = []
+      TabOrder = 1
+      Appearance.ColorChecked = 16111818
+      Appearance.ColorCheckedTo = 16367008
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 16111818
+      Appearance.ColorDownTo = 16367008
+      Appearance.ColorHot = 16117985
+      Appearance.ColorHotTo = 16372402
+      Appearance.ColorMirrorHot = 16107693
+      Appearance.ColorMirrorHotTo = 16775412
+      Appearance.ColorMirrorDown = 16102556
+      Appearance.ColorMirrorDownTo = 16768988
+      Appearance.ColorMirrorChecked = 16102556
+      Appearance.ColorMirrorCheckedTo = 16768988
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+      ExplicitLeft = 442
+    end
+  end
+  object cxGrid1: TcxGrid
+    Left = 0
+    Top = 170
+    Width = 683
+    Height = 190
+    Align = alClient
+    PopupMenu = pmPartidas
+    TabOrder = 3
+    ExplicitLeft = 224
+    ExplicitTop = 120
+    ExplicitWidth = 250
+    ExplicitHeight = 200
+    object cxGrid1DBTableView1: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      object cxGrid1DBTableView1Column1: TcxGridDBColumn
+      end
+      object cxGrid1DBTableView1Column2: TcxGridDBColumn
+      end
+      object cxGrid1DBTableView1Column3: TcxGridDBColumn
+      end
+    end
+    object cxGrid1Level1: TcxGridLevel
+      GridView = cxGrid1DBTableView1
+    end
+  end
   object cdBuscarEntradaGeneral: TClientDataSet
     Aggregates = <>
     Params = <>
@@ -380,5 +491,25 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
     Params = <>
     Left = 360
     Top = 184
+  end
+  object pmPartidas: TJvPopupMenu
+    ImageMargin.Left = 0
+    ImageMargin.Top = 0
+    ImageMargin.Right = 0
+    ImageMargin.Bottom = 0
+    ImageSize.Height = 0
+    ImageSize.Width = 0
+    Left = 488
+    Top = 184
+    object AgregarPartida1: TMenuItem
+      Caption = '&Agregar Partida'
+      OnClick = AgregarPartida1Click
+    end
+    object EditarPartida1: TMenuItem
+      Caption = '&Editar Partida'
+    end
+    object EliminarPartida1: TMenuItem
+      Caption = '&Eliminar Partida'
+    end
   end
 end

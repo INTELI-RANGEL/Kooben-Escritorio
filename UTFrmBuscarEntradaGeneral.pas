@@ -22,7 +22,7 @@ uses
   cxNavigator, DB, cxDBData, cxGridLevel, cxGridCustomTableView, DBClient,
   cxGridTableView, cxGridDBTableView, cxClasses, cxGridCustomView, cxGrid,
   AdvGlowButton, StdCtrls, AdvPicture, JvExControls, JvLabel, ExtCtrls,
-  URegistro, UInteliDialog, ClientModuleUnit1;
+  URegistro, UInteliDialog, ClientModuleUnit1, cxCalendar;
 
 type
   TFrmBuscarEntradaGeneral = class(TForm)
@@ -35,17 +35,18 @@ type
     btnBuscar: TAdvGlowButton;
     cxGrid1: TcxGrid;
     tvBuscar: TcxGridDBTableView;
-    ColCodigoCotizacion: TcxGridDBColumn;
+    ColCodigoRegistroMovimientoGeneral: TcxGridDBColumn;
     ColsRazonSocial: TcxGridDBColumn;
-    ColFecha: TcxGridDBColumn;
-    ColNombreElabora: TcxGridDBColumn;
-    ColNombreAutoriza: TcxGridDBColumn;
+    ColAplicacion: TcxGridDBColumn;
+    ColNombreAutorizo: TcxGridDBColumn;
+    ColNombreRecibio: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
     Panel2: TPanel;
     btnCancelar: TAdvGlowButton;
     btnAceptar: TAdvGlowButton;
     cdAnios: TClientDataSet;
     dsBuscarEntradaGeneral: TDataSource;
+    ColReferencia: TcxGridDBColumn;
     procedure AnioChange(Sender: TObject);
     procedure cbMesChange(Sender: TObject);
     procedure btnBuscarClick(Sender: TObject);

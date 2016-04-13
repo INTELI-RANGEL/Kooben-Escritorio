@@ -134,7 +134,8 @@ uses
   UTFrmSeleccionarCliente in 'UTFrmSeleccionarCliente.pas' {FrmSeleccionarCliente},
   UTFrmEntradaGeneral in 'UTFrmEntradaGeneral.pas' {FrmEntradaGeneral},
   UTFrmBuscarEntradaGeneral in 'UTFrmBuscarEntradaGeneral.pas' {FrmBuscarEntradaGeneral},
-  UTFrmEntradaGeneralDatos in 'UTFrmEntradaGeneralDatos.pas' {FrmEntradaGeneralDatos};
+  UTFrmEntradaGeneralDatos in 'UTFrmEntradaGeneralDatos.pas' {FrmEntradaGeneralDatos},
+  UTFrmEntradaGeneralPartidaDatos in 'UTFrmEntradaGeneralPartidaDatos.pas' {FrmEntradaGeneralPartidaDatos};
 
 {$R *.res}
 

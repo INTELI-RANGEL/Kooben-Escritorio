@@ -456,7 +456,7 @@ object FrmBuscarEntradaGeneral: TFrmBuscarEntradaGeneral
         'DICIEMBRE')
     end
     object btnBuscar: TAdvGlowButton
-      Left = 328
+      Left = 324
       Top = 9
       Width = 65
       Height = 24
@@ -497,6 +497,7 @@ object FrmBuscarEntradaGeneral: TFrmBuscarEntradaGeneral
     TabOrder = 1
     object tvBuscar: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
+      DataController.DataSource = dsBuscarEntradaGeneral
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
       DataController.Summary.SummaryGroups = <>
@@ -507,24 +508,28 @@ object FrmBuscarEntradaGeneral: TFrmBuscarEntradaGeneral
       OptionsData.Inserting = False
       OptionsSelection.CellSelect = False
       OptionsView.GroupByBox = False
-      object ColCodigoCotizacion: TcxGridDBColumn
-        Caption = 'C'#243'digo Cotizaci'#243'n'
-        DataBinding.FieldName = 'CodigoCotizacion'
+      object ColCodigoRegistroMovimientoGeneral: TcxGridDBColumn
+        Caption = 'C'#243'digo Entrada'
+        DataBinding.FieldName = 'CodigoRegistroMovimientoGeneral'
       end
       object ColsRazonSocial: TcxGridDBColumn
-        Caption = 'Cliente'
+        Caption = 'Proveedor'
         DataBinding.FieldName = 'sRazonSocial'
       end
-      object ColFecha: TcxGridDBColumn
-        DataBinding.FieldName = 'Fecha'
+      object ColAplicacion: TcxGridDBColumn
+        DataBinding.FieldName = 'Aplicacion'
+        PropertiesClassName = 'TcxDateEditProperties'
       end
-      object ColNombreElabora: TcxGridDBColumn
-        Caption = 'Elabora'
-        DataBinding.FieldName = 'NombreElabora'
+      object ColReferencia: TcxGridDBColumn
+        DataBinding.FieldName = 'Referencia'
       end
-      object ColNombreAutoriza: TcxGridDBColumn
-        Caption = 'Autoriza'
-        DataBinding.FieldName = 'NombreAutoriza'
+      object ColNombreAutorizo: TcxGridDBColumn
+        Caption = 'Autoriz'#243
+        DataBinding.FieldName = 'NombreAutorizo'
+      end
+      object ColNombreRecibio: TcxGridDBColumn
+        Caption = 'Recibi'#243
+        DataBinding.FieldName = 'NombreRecibio'
       end
     end
     object cxGrid1Level1: TcxGridLevel
