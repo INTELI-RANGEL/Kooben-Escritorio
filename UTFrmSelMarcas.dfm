@@ -27,7 +27,7 @@ object FrmSelMarcas: TFrmSelMarcas
     Indent = 19
     ReadOnly = True
     TabOrder = 0
-    LineColor = 13158600
+    LineColor = clScrollBar
     Checkboxes = True
     CheckBoxOptions.Style = cbsNone
   end

@@ -101,7 +101,11 @@ begin
         if NecesitaGrabar then
         begin
           case InteliDialog.ShowModal('Grabar captura', 'Los datos capturados no han sido grabados.' + #10 + #10 + '¿Desea grabarlos en este momento?', mtConfirmation, [mbYes, mbNo, mbCancel], 0) of
-            mrYes: begin TClientDataSet(dsEntradaGeneralUpt.DataSet).Post; TClientDataSet(dsEntradaGeneralUpt.DataSet).ApplyUpdates(-1); end;
+            mrYes:
+            begin
+              TClientDataSet(dsEntradaGeneralUpt.DataSet).Post;
+              TClientDataSet(dsEntradaGeneralUpt.DataSet).ApplyUpdates(-1);
+            end;
             mrNo: dsEntradaGeneralUpt.DataSet.Cancel;
             mrCancel: cClose := False;
           end;

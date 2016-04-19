@@ -49,39 +49,46 @@ begin
 
     Try
       Modificado := False;
-      for i := 0 to ctvPresentaciones.Items.Count -1 do
+      if ctvPresentaciones.Checkboxes then
       begin
-        IdPresentacion := Integer(ctvPresentaciones.Items.Item[i].Data);
+        for i := 0 to ctvPresentaciones.Items.Count -1 do
+        begin
+          IdPresentacion := Integer(ctvPresentaciones.Items.Item[i].Data);
 
-        if ctvPresentaciones.Checked[ctvPresentaciones.Items.Item[i]] then
-        begin
-          // Verificar si el nodo existe en la tabla (si no es asi crearlo)
-          if not dsPresentacionxInsumo.DataSet.Locate('IdPresentacion', IdPresentacion, []) then
+          if ctvPresentaciones.Checked[ctvPresentaciones.Items.Item[i]] then
           begin
-            // Crear nuevo registro de presentacion
-            dsPresentacionxInsumo.DataSet.Append;
-            dsPresentacionxInsumo.DataSet.FieldByName('IdPresentacionxInsumo').AsInteger := 0;
-            dsPresentacionxInsumo.DataSet.FieldByName('IdPresentacion').AsInteger := IdPresentacion;
-            dsPresentacionxInsumo.DataSet.FieldByName('IdInsumo').AsInteger := IdInsumo;
-            dsPresentacionxInsumo.DataSet.Post;
-            Modificado := True;
-            //TClientDataSet(dsPresentacionxInsumo.DataSet).ApplyUpdates(-1);
-          end;
-        end
-        else
-        begin
-          // Verificar si el nodo existe en la tabla (si es asi eliminarlo)
-          if dsPresentacionxInsumo.DataSet.Locate('IdPresentacion', IdPresentacion, []) then
+            // Verificar si el nodo existe en la tabla (si no es asi crearlo)
+            if not dsPresentacionxInsumo.DataSet.Locate('IdPresentacion', IdPresentacion, []) then
+            begin
+              // Crear nuevo registro de presentacion
+              dsPresentacionxInsumo.DataSet.Append;
+              dsPresentacionxInsumo.DataSet.FieldByName('IdPresentacionxInsumo').AsInteger := 0;
+              dsPresentacionxInsumo.DataSet.FieldByName('IdPresentacion').AsInteger := IdPresentacion;
+              dsPresentacionxInsumo.DataSet.FieldByName('IdInsumo').AsInteger := IdInsumo;
+              dsPresentacionxInsumo.DataSet.Post;
+              Modificado := True;
+              //TClientDataSet(dsPresentacionxInsumo.DataSet).ApplyUpdates(-1);
+            end;
+          end
+          else
           begin
-            // Eliminar el registro de la tabla
-            dsPresentacionxInsumo.DataSet.Delete;
-            Modificado := True;
+            // Verificar si el nodo existe en la tabla (si es asi eliminarlo)
+            if dsPresentacionxInsumo.DataSet.Locate('IdPresentacion', IdPresentacion, []) then
+            begin
+              // Eliminar el registro de la tabla
+              dsPresentacionxInsumo.DataSet.Delete;
+              Modificado := True;
+            end;
           end;
         end;
-      end;
 
-      if Modificado then
-        TClientDataSet(dsPresentacionxInsumo.DataSet).ApplyUpdates(-1);
+        if Modificado then
+          TClientDataSet(dsPresentacionxInsumo.DataSet).ApplyUpdates(-1);
+      end
+      else
+      begin
+        dsPresentacion.dataset.Locate('IdPresentacion', integer(ctvPresentaciones.Items.Item[ctvPresentaciones.ItemIndex].Data), []);
+      end;
     Except
       Resultado := mrAbort;
     End;

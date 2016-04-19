@@ -52,38 +52,46 @@ begin
     Resultado := mrOk;
 
     Try
-      for i := 0 to ctvMarcas.Items.Count -1 do
+      if ctvMarcas.Checkboxes then
       begin
-        IdMarca := Integer(ctvMarcas.Items.Item[i].Data);
 
-        if ctvMarcas.Checked[ctvMarcas.Items.Item[i]] then
+        for i := 0 to ctvMarcas.Items.Count -1 do
         begin
-          // Verificar si el nodo existe en la tabla (si no es asi crearlo)
-          if not dsMarcaxInsumo.DataSet.Locate('IdMarca', IdMarca, []) then
+          IdMarca := Integer(ctvMarcas.Items.Item[i].Data);
+
+          if ctvMarcas.Checked[ctvMarcas.Items.Item[i]] then
           begin
-            // Crear nuevo registro de marca
-            dsMarcaxInsumo.DataSet.Append;
-            dsMarcaxInsumo.DataSet.FieldByName('IdMarcaxInsumo').AsInteger := 0;
-            dsMarcaxInsumo.DataSet.FieldByName('IdMarca').AsInteger := IdMarca;
-            dsMarcaxInsumo.DataSet.FieldByName('IdInsumo').AsInteger := IdInsumo;
-            dsMarcaxInsumo.DataSet.Post;
-            TClientDataSet(dsMarcaxInsumo.DataSet).ApplyUpdates(-1);
-          end;
-        end
-        else
-        begin
-          // Verificar si el nodo existe en la tabla (si es asi eliminarlo)
-          if dsMarcaxInsumo.DataSet.Locate('IdMarca', IdMarca, []) then
-          begin
-            // Eliminar el registro de la tabla
-            try
-              dsMarcaxInsumo.DataSet.Delete;
+            // Verificar si el nodo existe en la tabla (si no es asi crearlo)
+            if not dsMarcaxInsumo.DataSet.Locate('IdMarca', IdMarca, []) then
+            begin
+              // Crear nuevo registro de marca
+              dsMarcaxInsumo.DataSet.Append;
+              dsMarcaxInsumo.DataSet.FieldByName('IdMarcaxInsumo').AsInteger := 0;
+              dsMarcaxInsumo.DataSet.FieldByName('IdMarca').AsInteger := IdMarca;
+              dsMarcaxInsumo.DataSet.FieldByName('IdInsumo').AsInteger := IdInsumo;
+              dsMarcaxInsumo.DataSet.Post;
               TClientDataSet(dsMarcaxInsumo.DataSet).ApplyUpdates(-1);
-            except
-              ;   // Si no se puede eliminar el registro es por cuestiones de integridad de datos entonces deberemos evitar que se genere el error
+            end;
+          end
+          else
+          begin
+            // Verificar si el nodo existe en la tabla (si es asi eliminarlo)
+            if dsMarcaxInsumo.DataSet.Locate('IdMarca', IdMarca, []) then
+            begin
+              // Eliminar el registro de la tabla
+              try
+                dsMarcaxInsumo.DataSet.Delete;
+                TClientDataSet(dsMarcaxInsumo.DataSet).ApplyUpdates(-1);
+              except
+                ;   // Si no se puede eliminar el registro es por cuestiones de integridad de datos entonces deberemos evitar que se genere el error
+              end;
             end;
           end;
         end;
+      end
+      else
+      begin
+        dsmarca.dataset.Locate('idMarca', integer(ctvMarcas.Items.Item[ctvMarcas.ItemIndex].Data), []);
       end;
     Except
       on e:Exception do
