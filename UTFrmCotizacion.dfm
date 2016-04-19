@@ -129,11 +129,12 @@ object FrmCotizacion: TFrmCotizacion
     TabOrder = 1
     object Splitter1: TSplitter
       Left = 1
-      Top = 129
+      Top = 188
       Width = 651
       Height = 3
       Cursor = crVSplit
       Align = alTop
+      ExplicitTop = 129
       ExplicitWidth = 227
     end
     object pnlGenerales: TPanel
@@ -348,14 +349,14 @@ object FrmCotizacion: TFrmCotizacion
     end
     object pnlPartidas: TPanel
       Left = 1
-      Top = 132
+      Top = 191
       Width = 651
-      Height = 224
+      Height = 165
       Align = alClient
       TabOrder = 1
       object Panel7: TPanel
         Left = 1
-        Top = 182
+        Top = 123
         Width = 649
         Height = 41
         Align = alBottom
@@ -431,26 +432,155 @@ object FrmCotizacion: TFrmCotizacion
           Appearance.ColorMirrorDisabledTo = 15921906
         end
       end
-      object cxGrid1: TcxGrid
+      object gridPartidas: TcxGrid
         Left = 1
         Top = 1
         Width = 649
-        Height = 181
+        Height = 122
         Align = alClient
         TabOrder = 1
+        ExplicitLeft = 2
+        ExplicitTop = 0
         object tvDatos: TcxGridDBTableView
+          PopupMenu = pmPartidas
+          OnKeyDown = tvDatosKeyDown
           Navigator.Buttons.CustomButtons = <>
+          OnCellDblClick = tvDatosCellDblClick
+          DataController.DataSource = dsCotizacionDatosUpt
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
-          object ColPartida: TcxGridDBColumn
-            DataBinding.FieldName = 'Partida'
+          OptionsData.CancelOnExit = False
+          OptionsData.Deleting = False
+          OptionsData.DeletingConfirmation = False
+          OptionsData.Editing = False
+          OptionsData.Inserting = False
+          object ColhCodigoInsumo: TcxGridDBColumn
+            Caption = 'C'#243'digo'
+            DataBinding.FieldName = 'hCodigoInsumo'
           end
-          object tvDatosColumn2: TcxGridDBColumn
+          object ColhNombreInsumo: TcxGridDBColumn
+            Caption = 'Nombre'
+            DataBinding.FieldName = 'hNombreInsumo'
+          end
+          object ColCantidad: TcxGridDBColumn
+            DataBinding.FieldName = 'Cantidad'
+            PropertiesClassName = 'TcxCalcEditProperties'
+            Properties.DisplayFormat = ',0.00'
+          end
+          object ColPrecio: TcxGridDBColumn
+            DataBinding.FieldName = 'Precio'
+            PropertiesClassName = 'TcxCalcEditProperties'
+            Properties.DisplayFormat = ',0.00'
+          end
+          object ColCosto: TcxGridDBColumn
+            DataBinding.FieldName = 'Costo'
+            PropertiesClassName = 'TcxCalcEditProperties'
+            Properties.DisplayFormat = ',0.00'
           end
         end
-        object cxGrid1Level1: TcxGridLevel
+        object gridPartidasLevel1: TcxGridLevel
           GridView = tvDatos
+        end
+      end
+    end
+    object Panel8: TPanel
+      Left = 1
+      Top = 129
+      Width = 651
+      Height = 59
+      Align = alTop
+      BevelOuter = bvNone
+      Padding.Top = 10
+      Padding.Right = 6
+      TabOrder = 2
+      object IdInsumo: TEdit
+        Left = 56
+        Top = 10
+        Width = 589
+        Height = 21
+        Align = alClient
+        TabOrder = 0
+        OnEnter = IdInsumoEnter
+        OnExit = IdInsumoExit
+        OnKeyPress = IdInsumoKeyPress
+      end
+      object Panel10: TPanel
+        Left = 0
+        Top = 10
+        Width = 56
+        Height = 21
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 1
+        object JvLabel6: TJvLabel
+          Left = 12
+          Top = 0
+          Width = 41
+          Height = 13
+          Caption = 'Insumo:'
+          Transparent = True
+          HotTrackFont.Charset = DEFAULT_CHARSET
+          HotTrackFont.Color = clWindowText
+          HotTrackFont.Height = -11
+          HotTrackFont.Name = 'Tahoma'
+          HotTrackFont.Style = []
+        end
+      end
+      object Panel11: TPanel
+        Left = 0
+        Top = 31
+        Width = 645
+        Height = 28
+        Align = alBottom
+        BevelOuter = bvNone
+        TabOrder = 2
+        object NombreInsumo: TDBText
+          Left = 202
+          Top = 6
+          Width = 87
+          Height = 13
+          AutoSize = True
+          DataField = 'NombreInsumo'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clNavy
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object CodigoInsumo: TDBText
+          Left = 57
+          Top = 6
+          Width = 81
+          Height = 13
+          AutoSize = True
+          DataField = 'CodigoInsumo'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clNavy
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblGuion: TJvLabel
+          Left = 144
+          Top = 4
+          Width = 9
+          Height = 19
+          Caption = '-'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clNavy
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Transparent = True
+          HotTrackFont.Charset = DEFAULT_CHARSET
+          HotTrackFont.Color = clWindowText
+          HotTrackFont.Height = -16
+          HotTrackFont.Name = 'Tahoma'
+          HotTrackFont.Style = []
         end
       end
     end
@@ -458,20 +588,20 @@ object FrmCotizacion: TFrmCotizacion
   object cdBuscarCotizacion: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 264
-    Top = 176
+    Left = 376
+    Top = 48
   end
   object cdCotizacionUpt: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 168
-    Top = 248
+    Left = 184
+    Top = 120
   end
   object cdClientes: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 360
-    Top = 184
+    Left = 456
+    Top = 48
   end
   object cdElabora: TClientDataSet
     Aggregates = <>
@@ -487,18 +617,61 @@ object FrmCotizacion: TFrmCotizacion
   end
   object dsCotizacionUpt: TDataSource
     DataSet = cdCotizacionUpt
-    Left = 168
-    Top = 200
+    Left = 184
+    Top = 72
   end
   object cdCotizacionDatosUpt: TClientDataSet
     Aggregates = <>
     Params = <>
     Left = 56
-    Top = 264
+    Top = 312
   end
   object dsCotizacionDatosUpt: TDataSource
     DataSet = cdCotizacionDatosUpt
     Left = 56
-    Top = 216
+    Top = 264
+  end
+  object dsInsumo: TDataSource
+    DataSet = cdInsumo
+    Left = 592
+    Top = 56
+  end
+  object cdInsumo: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 592
+    Top = 120
+  end
+  object cdMarca: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 328
+    Top = 104
+  end
+  object cdPresentacion: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 424
+    Top = 104
+  end
+  object cdExistenciasGenerales: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 328
+    Top = 328
+  end
+  object pmPartidas: TAdvPopupMenu
+    OnPopup = pmPartidasPopup
+    Version = '2.5.3.4'
+    Left = 416
+    Top = 192
+    object EditarPartida1: TMenuItem
+      Caption = 'Editar Partida'
+      OnClick = EditarPartida1Click
+    end
+    object EliminarPartida1: TMenuItem
+      Caption = 'Eliminar Partida'
+      OnClick = EliminarPartida1Click
+    end
   end
 end

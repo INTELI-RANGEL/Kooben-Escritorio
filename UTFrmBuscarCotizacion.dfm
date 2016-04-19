@@ -579,6 +579,7 @@ object FrmBuscarCotizacion: TFrmBuscarCotizacion
     TabOrder = 2
     object tvBuscar: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
+      OnCellDblClick = tvBuscarCellDblClick
       DataController.DataSource = dsBuscarCotizacion
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>

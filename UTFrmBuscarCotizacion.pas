@@ -51,6 +51,9 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure AnioChange(Sender: TObject);
     procedure cbMesChange(Sender: TObject);
+    procedure tvBuscarCellDblClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
   private
     procedure AbrirDatos;
   public
@@ -155,6 +158,9 @@ begin
         Anio.Items.Add(cdAnios.FieldByName('Anio').AsString);
         cdAnios.Next;
       end;
+
+      if Anio.Items.IndexOf(IntToStr(YearOf(Now))) >= 0 then
+        Anio.ItemIndex := Anio.Items.IndexOf(IntToStr(YearOf(Now)));
     finally
       Screen.Cursor := LocCursor;
     end;
@@ -171,6 +177,13 @@ begin
       PostMessage(Self.Handle, WM_CLOSE, 0, 0);
     end;
   end;
+end;
+
+procedure TFrmBuscarCotizacion.tvBuscarCellDblClick(
+  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
+  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+begin
+  btnAceptar.Click;
 end;
 
 procedure TFrmBuscarCotizacion.AbrirDatos;

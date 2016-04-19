@@ -191,7 +191,7 @@ object Form2: TForm2
         Progress.ShowBorder = False
         Progress.Stacked = False
         Style = psTime
-        Text = '08:21:31 '
+        Text = '09:27:00 '
         TimeFormat = 'hh:mm:ss AMPM'
         Width = 61
       end

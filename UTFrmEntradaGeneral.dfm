@@ -99,7 +99,6 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
         ParentFont = False
         ReadOnly = True
         TabOrder = 1
-        ExplicitLeft = 61
       end
     end
     object Panel6: TPanel
@@ -414,8 +413,6 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
     Align = alClient
     PopupMenu = pmPartidas
     TabOrder = 3
-    ExplicitTop = 170
-    ExplicitHeight = 190
     object tvPartidas: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = dsEntradaGeneralDatosUpt
@@ -443,8 +440,6 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
     Padding.Top = 10
     Padding.Right = 6
     TabOrder = 4
-    ExplicitLeft = 8
-    ExplicitTop = 206
     object IdInsumo: TEdit
       Left = 56
       Top = 10
@@ -455,7 +450,6 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
       OnEnter = IdInsumoEnter
       OnExit = IdInsumoExit
       OnKeyPress = IdInsumoKeyPress
-      ExplicitWidth = 715
     end
     object Panel10: TPanel
       Left = 0
@@ -487,7 +481,6 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitWidth = 771
       object NombreInsumo: TDBText
         Left = 202
         Top = 6
@@ -542,8 +535,8 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
   object cdBuscarEntradaGeneral: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 320
-    Top = 72
+    Left = 448
+    Top = 96
   end
   object cdEntradaGeneralDatosUpt: TClientDataSet
     Aggregates = <>
@@ -564,8 +557,8 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
   object cdEntradaGeneralUpt: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 208
-    Top = 232
+    Left = 320
+    Top = 72
   end
   object cdRecibio: TClientDataSet
     Aggregates = <>
@@ -613,7 +606,7 @@ object FrmEntradaGeneral: TFrmEntradaGeneral
   end
   object dsInsumo: TDataSource
     DataSet = cdInsumo
-    Left = 424
-    Top = 120
+    Left = 592
+    Top = 56
   end
 end

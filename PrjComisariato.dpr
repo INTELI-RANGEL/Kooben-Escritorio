@@ -136,7 +136,8 @@ uses
   UTFrmBuscarEntradaGeneral in 'UTFrmBuscarEntradaGeneral.pas' {FrmBuscarEntradaGeneral},
   UTFrmEntradaGeneralDatos in 'UTFrmEntradaGeneralDatos.pas' {FrmEntradaGeneralDatos},
   UTFrmEntradaGeneralPartidaDatos in 'UTFrmEntradaGeneralPartidaDatos.pas' {FrmEntradaGeneralPartidaDatos},
-  UTFrmSelInsumo in 'UTFrmSelInsumo.pas' {FrmSelInsumo};
+  UTFrmSelInsumo in 'UTFrmSelInsumo.pas' {FrmSelInsumo},
+  UTFrmEditarCotizacionPartida in 'UTFrmEditarCotizacionPartida.pas' {FrmEditarCotizacionPartida};
 
 {$R *.res}
 
