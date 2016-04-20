@@ -92,6 +92,7 @@ type
     ColCosto: TcxGridDBColumn;
     repCotizacion: TfrxReport;
     frxCotizacionDatosUpt: TfrxDBDataset;
+    ColPrecioU: TcxGridDBColumn;
     procedure btnBuscarClick(Sender: TObject);
     procedure btnNuevoClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

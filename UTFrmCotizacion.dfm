@@ -482,6 +482,7 @@ object FrmCotizacion: TFrmCotizacion
             Properties.DisplayFormat = ',0.00'
           end
           object ColCostoI: TcxGridDBColumn
+            Caption = 'Costo Inicial'
             DataBinding.FieldName = 'CostoI'
             PropertiesClassName = 'TcxCalcEditProperties'
             Properties.DisplayFormat = ',0.00'
@@ -492,6 +493,10 @@ object FrmCotizacion: TFrmCotizacion
           end
           object ColUtilidad: TcxGridDBColumn
             DataBinding.FieldName = 'Utilidad'
+          end
+          object ColPrecioU: TcxGridDBColumn
+            Caption = 'Precio Unitario'
+            DataBinding.FieldName = 'PrecioU'
           end
           object ColCosto: TcxGridDBColumn
             DataBinding.FieldName = 'Costo'
