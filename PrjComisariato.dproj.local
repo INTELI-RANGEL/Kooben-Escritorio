@@ -397,12 +397,12 @@
     <Transaction>2016/04/11 21:53:40.000.590,=C:\Users\Personal\Documents\SVN\comisariato\Unit1.pas</Transaction>
     <Transaction>2016/04/11 21:54:18.000.130,C:\Users\Personal\Documents\SVN\comisariato\Unit1.dfm=C:\Users\Personal\Documents\SVN\comisariato\UTFrmEntradaGeneralDatos.dfm</Transaction>
     <Transaction>2016/04/11 21:54:18.000.130,C:\Users\Personal\Documents\SVN\comisariato\Unit1.pas=C:\Users\Personal\Documents\SVN\comisariato\UTFrmEntradaGeneralDatos.pas</Transaction>
-    <Transaction>2016/04/13 15:53:56.624,=C:\Users\Personal\Documents\SVN\Kooben_git\Unit1.pas</Transaction>
-    <Transaction>2016/04/13 15:54:19.978,C:\Users\Personal\Documents\SVN\Kooben_git\UTFrmSelInsumo.pas=C:\Users\Personal\Documents\SVN\Kooben_git\Unit1.pas</Transaction>
-    <Transaction>2016/04/13 15:54:19.978,C:\Users\Personal\Documents\SVN\Kooben_git\UTFrmSelInsumo.dfm=C:\Users\Personal\Documents\SVN\Kooben_git\Unit1.dfm</Transaction>
-    <Transaction>2016/04/14 12:26:38.396,=C:\Users\Personal\Documents\SVN\Kooben_git\Unit1.pas</Transaction>
-    <Transaction>2016/04/14 12:27:21.593,C:\Users\Personal\Documents\SVN\Kooben_git\UTFrmEditarCotizacionPartida.dfm=C:\Users\Personal\Documents\SVN\Kooben_git\Unit1.dfm</Transaction>
-    <Transaction>2016/04/14 12:27:21.593,C:\Users\Personal\Documents\SVN\Kooben_git\UTFrmEditarCotizacionPartida.pas=C:\Users\Personal\Documents\SVN\Kooben_git\Unit1.pas</Transaction>
+    <Transaction>2016/04/13 15:53:56.000.624,=C:\Users\Personal\Documents\SVN\Kooben_git\Unit1.pas</Transaction>
+    <Transaction>2016/04/13 15:54:19.000.978,C:\Users\Personal\Documents\SVN\Kooben_git\UTFrmSelInsumo.pas=C:\Users\Personal\Documents\SVN\Kooben_git\Unit1.pas</Transaction>
+    <Transaction>2016/04/13 15:54:19.000.978,C:\Users\Personal\Documents\SVN\Kooben_git\UTFrmSelInsumo.dfm=C:\Users\Personal\Documents\SVN\Kooben_git\Unit1.dfm</Transaction>
+    <Transaction>2016/04/14 12:26:38.000.396,=C:\Users\Personal\Documents\SVN\Kooben_git\Unit1.pas</Transaction>
+    <Transaction>2016/04/14 12:27:21.000.593,C:\Users\Personal\Documents\SVN\Kooben_git\UTFrmEditarCotizacionPartida.dfm=C:\Users\Personal\Documents\SVN\Kooben_git\Unit1.dfm</Transaction>
+    <Transaction>2016/04/14 12:27:21.000.593,C:\Users\Personal\Documents\SVN\Kooben_git\UTFrmEditarCotizacionPartida.pas=C:\Users\Personal\Documents\SVN\Kooben_git\Unit1.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="GENERALES"/>
