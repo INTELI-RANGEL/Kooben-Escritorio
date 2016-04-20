@@ -49,9 +49,10 @@ object FrmSelPresentacion: TFrmSelPresentacion
     Indent = 19
     ReadOnly = True
     TabOrder = 1
-    LineColor = 13158600
+    LineColor = clScrollBar
     Checkboxes = True
     CheckBoxOptions.Style = cbsNone
+    ExplicitTop = 40
   end
   object Panel2: TPanel
     Left = 0
@@ -135,8 +136,6 @@ object FrmSelPresentacion: TFrmSelPresentacion
       Appearance.ColorMirrorCheckedTo = 16768988
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
-      ExplicitLeft = 521
-      ExplicitTop = 6
     end
     object btnCancelar: TAdvGlowButton
       Left = 627

@@ -4,9 +4,8 @@ inherited FrmDatosInsumo: TFrmDatosInsumo
   ClientHeight = 459
   ClientWidth = 421
   Position = poScreenCenter
-  ExplicitTop = -24
   ExplicitWidth = 427
-  ExplicitHeight = 487
+  ExplicitHeight = 488
   PixelsPerInch = 96
   TextHeight = 13
   object JvLabel8: TJvLabel [0]
@@ -200,7 +199,6 @@ inherited FrmDatosInsumo: TFrmDatosInsumo
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 3
-      ExplicitHeight = 321
       object JvLabel2: TJvLabel
         Left = 9
         Top = 0

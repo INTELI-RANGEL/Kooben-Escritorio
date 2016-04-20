@@ -195,8 +195,6 @@ object FrmEntradaGeneralDatos: TFrmEntradaGeneralDatos
     Padding.Right = 6
     Padding.Bottom = 4
     TabOrder = 7
-    ExplicitTop = 178
-    ExplicitWidth = 488
     object btnOk: TAdvGlowButton
       Left = 306
       Top = 5
@@ -230,7 +228,6 @@ object FrmEntradaGeneralDatos: TFrmEntradaGeneralDatos
       Appearance.ColorMirrorCheckedTo = 16768988
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
-      ExplicitLeft = 281
     end
     object btnCancelar: TAdvGlowButton
       Left = 406
@@ -266,7 +263,6 @@ object FrmEntradaGeneralDatos: TFrmEntradaGeneralDatos
       Appearance.ColorMirrorCheckedTo = 16768988
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
-      ExplicitLeft = 381
     end
   end
   object Referencia: TDBEdit
