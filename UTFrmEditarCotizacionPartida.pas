@@ -75,6 +75,7 @@ type
     procedure IdPresentacionCloseUp(Sender: TObject);
     procedure IdMarcaCloseUp(Sender: TObject);
     procedure rgPreciosClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     TextoOriginal: String;
     procedure CambiaCosto;
@@ -171,6 +172,12 @@ begin
     dsInsumo.DataSet.Close;
 end;
 
+procedure TFrmEditarCotizacionPartida.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Action := caFree;
+end;
+
 procedure TFrmEditarCotizacionPartida.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 var
@@ -215,6 +222,18 @@ begin
       begin
         Obj := Costo;
         raise InteligentException.CreateByCode(18, ['Costo']);
+      end;
+
+      // Verificar que no se repita la misma partida en esta cotización
+      if Not CargarDatosFiltrados(TClientDataSet(dsCotizacionDatos.DataSet), 'IdCotizacion,IdInsumo,IdPresentacion,IdMarca', [dsCotizacionDatos.DataSet.FieldByName('IdCotizacion').AsInteger, dsCotizacionDatos.DataSet.FieldByName('IdInsumo').AsInteger, dsPresentacion.DataSet.FieldByName('IdPresentacion').AsInteger, dsMarca.DataSet.FieldByName('IdMarca').AsInteger]) then
+        raise InteligentException.CreateByCode(16, ['Partidas de Cotizacion']);
+
+      try
+        if CuantosRegistros(TClientDataSet(dsCotizacionDatos.DataSet)) > 0 then
+          raise InteligentException.CreateByCode(17, ['Partidas de Cotizacion', dsCotizacionDatos.DataSet.FieldByName('hNombreInsumo').AsString + ', Marca: ' + dsMarca.DataSet.FieldByName('TituloMarca').AsString + ', Presentación: ' + dsPresentacion.DataSet.FieldByName('TituloPresentacion').AsString]);
+      finally
+        if Not CargarDatosFiltrados(TClientDataSet(dsCotizacionDatos.DataSet), 'IdCotizacion,IdInsumo,IdPresentacion,IdMarca', [dsCotizacionDatos.DataSet.FieldByName('IdCotizacion').AsInteger, dsCotizacionDatos.DataSet.FieldByName('IdInsumo').AsInteger, dsPresentacion.DataSet.FieldByName('IdPresentacion').AsInteger, dsMarca.DataSet.FieldByName('IdMarca').AsInteger]) then
+          raise InteligentException.CreateByCode(16, ['Partidas de Cotizacion']);
       end;
 
       CanClose := True;

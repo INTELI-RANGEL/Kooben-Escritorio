@@ -291,7 +291,7 @@ procedure TFrmCotizacion.IdInsumoExit(Sender: TObject);
 begin
   TextoOriginal := IdInsumo.Text;
   if dsInsumo.DataSet.Active and (dsInsumo.Dataset.RecordCount > 0) then
-    IdInsumo.Text := dsInsumo.DataSet.FieldByName('sNombreCorto').AsString + ' - ' + dsInsumo.DataSet.FieldByName('sRazonSocial').AsString;
+    IdInsumo.Text := dsInsumo.DataSet.FieldByName('CodigoInsumo').AsString + ' - ' + dsInsumo.DataSet.FieldByName('NombreInsumo').AsString;
 end;
 
 procedure TFrmCotizacion.IdInsumoKeyPress(Sender: TObject; var Key: Char);
@@ -315,48 +315,67 @@ begin
       else
         dsInsumo.DataSet.Open;
 
-      if (dsInsumo.DataSet.RecordCount > 1) or ((dsInsumo.DataSet.RecordCount = 1) and (dsInsumo.DataSet.FieldByName('Cta').AsInteger = 0)) then
-      begin
-        // Poner la ventana de selección de datos multiples
-        Application.CreateForm(TFrmSelInsumo, FrmSelInsumo);
-        try
-          FrmSelInsumo.Caption := 'Seleccionar Insumo';
-          FrmSelInsumo.tvInsumos.DataController.DataSource := dsInsumo;
-          FrmSelInsumo.tvInsumos2.DataController.DataSource := dsInsumo;
-          FrmSelInsumo.pTexto := IdInsumo.Text;
-          if FrmSelInsumo.ShowModal = mrOk then
-            IdRegistroMovimientoGeneralPartida := AgregaPartida
-          else
-            dsInsumo.DataSet.Close;
-        finally
-          FrmSelInsumo.Destroy;
+      IniciarTransaccion;
+      try
+        if (dsInsumo.DataSet.RecordCount > 1) or ((dsInsumo.DataSet.RecordCount = 1) and (dsInsumo.DataSet.FieldByName('Cta').AsInteger = 0)) then
+        begin
+          // Poner la ventana de selección de datos multiples
+          Application.CreateForm(TFrmSelInsumo, FrmSelInsumo);
+          try
+            FrmSelInsumo.Caption := 'Seleccionar Insumo';
+            FrmSelInsumo.tvInsumos.DataController.DataSource := dsInsumo;
+            FrmSelInsumo.tvInsumos2.DataController.DataSource := dsInsumo;
+            FrmSelInsumo.pTexto := IdInsumo.Text;
+            if FrmSelInsumo.ShowModal = mrOk then
+              IdRegistroMovimientoGeneralPartida := AgregaPartida
+            else
+              dsInsumo.DataSet.Close;
+          finally
+            FrmSelInsumo.Destroy;
+          end;
         end;
+
+        if (dsInsumo.DataSet.RecordCount = 1) and (dsInsumo.DataSet.FieldByName('Cta').AsInteger = 1) then
+          IdRegistroMovimientoGeneralPartida := AgregaPartida;
+
+        if Not cdMarca.Active then
+          cdMarca.Open;
+
+        if Not cdPresentacion.Active then
+          cdPresentacion.Open;
+
+        if Not cdCotizacionDatosUpt.Locate('IdCotizacionDatos', IdRegistroMovimientoGeneralPartida, []) then
+          raise InteligentException.CreateByCode(1, ['No existe el registro que aparentemente se acaba de dar de alta en el sistema.']);
+
+        cdCotizacionDatosUpt.Edit;
+
+        Application.CreateForm(TFrmEditarCotizacionPartida, FrmEditarCotizacionPartida);
+        FrmEditarCotizacionPartida.dsCotizacionDatos.DataSet := cdCotizacionDatosUpt;
+        FrmEditarCotizacionPartida.IdxColumn := 0;
+        FrmEditarCotizacionPartida.dsInsumo.DataSet := cdInsumo;
+        FrmEditarCotizacionPartida.dsCotizacionDatos.DataSet := cdCotizacionDatosUpt;
+        FrmEditarCotizacionPartida.dsPresentacion.DataSet := cdPresentacion;
+        FrmEditarCotizacionPartida.dsMarca.DataSet := cdMarca;
+        FrmEditarCotizacionPartida.dsExistenciasGenerales.DataSet := cdExistenciasGenerales;
+        FrmEditarCotizacionPartida.CodigoInsumo.Text := cdInsumo.FieldByName('CodigoInsumo').AsString;
+        if FrmEditarCotizacionPartida.ShowModal = mrOk then
+        begin
+          cdCotizacionDatosUpt.Post;
+          TClientDataSet(cdCotizacionDatosUpt).ApplyUpdates(-1);
+          ConcretarTransaccion;
+        end
+        else
+        begin
+          cdCotizacionDatosUpt.Cancel;
+          CancelarTransaccion;
+          cdCotizacionDatosUpt.Refresh;
+        end;
+      except
+        cdCotizacionDatosUpt.Cancel;
+        CancelarTransaccion;
+        cdCotizacionDatosUpt.Refresh;
+        raise;
       end;
-
-      if (dsInsumo.DataSet.RecordCount = 1) and (dsInsumo.DataSet.FieldByName('Cta').AsInteger = 1) then
-        IdRegistroMovimientoGeneralPartida := AgregaPartida;
-
-      if Not cdMarca.Active then
-        cdMarca.Open;
-
-      if Not cdPresentacion.Active then
-        cdPresentacion.Open;
-
-      if Not cdCotizacionDatosUpt.Locate('IdCotizacionDatos', IdRegistroMovimientoGeneralPartida, []) then
-        raise InteligentException.CreateByCode(1, ['No existe el registro que aparentemente se acaba de dar de alta en el sistema.']);
-
-      cdCotizacionDatosUpt.Edit;
-
-      Application.CreateForm(TFrmEditarCotizacionPartida, FrmEditarCotizacionPartida);
-      FrmEditarCotizacionPartida.dsCotizacionDatos.DataSet := cdCotizacionDatosUpt;
-      FrmEditarCotizacionPartida.IdxColumn := 0;
-      FrmEditarCotizacionPartida.dsInsumo.DataSet := cdInsumo;
-      FrmEditarCotizacionPartida.dsCotizacionDatos.DataSet := cdCotizacionDatosUpt;
-      FrmEditarCotizacionPartida.dsPresentacion.DataSet := cdPresentacion;
-      FrmEditarCotizacionPartida.dsMarca.DataSet := cdMarca;
-      FrmEditarCotizacionPartida.dsExistenciasGenerales.DataSet := cdExistenciasGenerales;
-      FrmEditarCotizacionPartida.CodigoInsumo.Text := cdInsumo.FieldByName('CodigoInsumo').AsString;
-      FrmEditarCotizacionPartida.ShowModal;
     except
       on e:InteligentException do
       begin

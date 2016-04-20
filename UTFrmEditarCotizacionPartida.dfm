@@ -12,6 +12,7 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
+  OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   PixelsPerInch = 96
