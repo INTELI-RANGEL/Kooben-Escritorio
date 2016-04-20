@@ -138,7 +138,6 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
     Padding.Right = 6
     Padding.Bottom = 4
     TabOrder = 7
-    ExplicitTop = 122
     object btnAceptar: TAdvGlowButton
       Left = 599
       Top = 5

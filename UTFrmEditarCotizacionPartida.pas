@@ -348,10 +348,17 @@ begin
 end;
 
 procedure TFrmEditarCotizacionPartida.CambiaCosto;
+var
+  fCosto: Extended;
 begin
   CostoI.Value := Round(Cantidad.Value * Precio.Value * 100) / 100;
   Utilidad.Value := Round(CostoI.Value * pUtilidad.Value) / 100;
-  Costo.Value := CostoI.Value + Utilidad.Value;
+  fCosto := CostoI.Value + Utilidad.Value;
+  if Cantidad.Value = 0 then
+    dsCotizacionDatos.DataSet.FieldByName('PrecioU').AsFloat := 0
+  else
+    dsCotizacionDatos.DataSet.FieldByName('PrecioU').AsFloat := Round((fCosto / Cantidad.Value) * 100) / 100;
+  Costo.Value := dsCotizacionDatos.DataSet.FieldByName('PrecioU').AsFloat * Cantidad.Value;
 end;
 
 procedure TFrmEditarCotizacionPartida.CargarPrecios;

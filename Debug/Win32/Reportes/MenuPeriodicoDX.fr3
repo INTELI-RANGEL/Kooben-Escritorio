@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="4.10.3" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Por defecto" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="42243.5213215162" ReportOptions.Description.Text="" ReportOptions.LastChange="42243.522068669" ScriptLanguage="PascalScript" ScriptText.Text="&#13;&#10;begin&#13;&#10;&#13;&#10;end." PropData="044C65667403A00103546F7003B8010844617461736574730101064620446174615365743D22436C69656E744D6F64756C65312E6664734F7267616E697A6163696F6E2220446174615365744E616D653D226664734F7267616E697A6163696F6E220000095661726961626C65730100055374796C650100">
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" PaperWidth="216" PaperHeight="279" PaperSize="1" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxPageHeader Name="PageHeader1" Height="170.07885" Left="0" Top="18.89765" Width="740.78788">
+      <TfrxPictureView Name="Picture1" Left="7.55906" Top="3.77953" Width="94.48825" Height="83.14966" ShowHint="False" DataField="Imagen" DataSet="ClientModule1.fdsOrganizacion" DataSetName="fdsOrganizacion" HightQuality="False" Transparent="False" TransparentColor="16777215"/>
+    </TfrxPageHeader>
+  </TfrxReportPage>
+</TfrxReport>

@@ -1,7 +1,7 @@
 object FrmCotizacion: TFrmCotizacion
   Left = 0
   Top = 0
-  Caption = 'FrmCotizacion'
+  Caption = 'Cotizaci'#243'n'
   ClientHeight = 398
   ClientWidth = 653
   Color = clBtnFace
@@ -11,6 +11,7 @@ object FrmCotizacion: TFrmCotizacion
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesigned
   ShowHint = True
   OnClose = FormClose
   OnShow = FormShow
@@ -365,16 +366,18 @@ object FrmCotizacion: TFrmCotizacion
         Padding.Right = 6
         Padding.Bottom = 4
         TabOrder = 0
-        object btnCancelar: TAdvGlowButton
+        ExplicitLeft = 0
+        ExplicitTop = 129
+        object bntAceptar: TAdvGlowButton
           Left = 542
           Top = 5
           Width = 100
           Height = 31
           Align = alRight
-          Caption = '&Cancelar'
-          ImageIndex = 8
+          Caption = '&Aceptar'
+          ImageIndex = 1
           Images = ClientModule1.PngImageList1
-          ModalResult = 2
+          ModalResult = 1
           NotesFont.Charset = DEFAULT_CHARSET
           NotesFont.Color = clWindowText
           NotesFont.Height = -11
@@ -397,14 +400,15 @@ object FrmCotizacion: TFrmCotizacion
           Appearance.ColorMirrorCheckedTo = 16768988
           Appearance.ColorMirrorDisabled = 11974326
           Appearance.ColorMirrorDisabledTo = 15921906
+          ExplicitLeft = 442
         end
-        object bntAceptar: TAdvGlowButton
-          Left = 442
+        object AdvGlowButton1: TAdvGlowButton
+          Left = 7
           Top = 5
           Width = 100
           Height = 31
-          Align = alRight
-          Caption = '&Aceptar'
+          Align = alLeft
+          Caption = '&Imprimir'
           ImageIndex = 1
           Images = ClientModule1.PngImageList1
           ModalResult = 1
@@ -414,6 +418,7 @@ object FrmCotizacion: TFrmCotizacion
           NotesFont.Name = 'Tahoma'
           NotesFont.Style = []
           TabOrder = 1
+          OnClick = AdvGlowButton1Click
           Appearance.ColorChecked = 16111818
           Appearance.ColorCheckedTo = 16367008
           Appearance.ColorDisabled = 15921906
@@ -430,6 +435,8 @@ object FrmCotizacion: TFrmCotizacion
           Appearance.ColorMirrorCheckedTo = 16768988
           Appearance.ColorMirrorDisabled = 11974326
           Appearance.ColorMirrorDisabledTo = 15921906
+          ExplicitLeft = 436
+          ExplicitTop = 6
         end
       end
       object gridPartidas: TcxGrid
@@ -439,8 +446,6 @@ object FrmCotizacion: TFrmCotizacion
         Height = 122
         Align = alClient
         TabOrder = 1
-        ExplicitLeft = 2
-        ExplicitTop = 0
         object tvDatos: TcxGridDBTableView
           PopupMenu = pmPartidas
           OnKeyDown = tvDatosKeyDown
@@ -468,15 +473,28 @@ object FrmCotizacion: TFrmCotizacion
             PropertiesClassName = 'TcxCalcEditProperties'
             Properties.DisplayFormat = ',0.00'
           end
+          object ColhTituloPresentacion: TcxGridDBColumn
+            DataBinding.FieldName = 'hTituloPresentacion'
+          end
           object ColPrecio: TcxGridDBColumn
             DataBinding.FieldName = 'Precio'
             PropertiesClassName = 'TcxCalcEditProperties'
             Properties.DisplayFormat = ',0.00'
           end
-          object ColCosto: TcxGridDBColumn
-            DataBinding.FieldName = 'Costo'
+          object ColCostoI: TcxGridDBColumn
+            DataBinding.FieldName = 'CostoI'
             PropertiesClassName = 'TcxCalcEditProperties'
             Properties.DisplayFormat = ',0.00'
+          end
+          object ColpUtilidad: TcxGridDBColumn
+            Caption = '% Utilidad'
+            DataBinding.FieldName = 'pUtilidad'
+          end
+          object ColUtilidad: TcxGridDBColumn
+            DataBinding.FieldName = 'Utilidad'
+          end
+          object ColCosto: TcxGridDBColumn
+            DataBinding.FieldName = 'Costo'
           end
         end
         object gridPartidasLevel1: TcxGridLevel
@@ -664,7 +682,7 @@ object FrmCotizacion: TFrmCotizacion
     OnPopup = pmPartidasPopup
     Version = '2.5.3.4'
     Left = 416
-    Top = 192
+    Top = 184
     object EditarPartida1: TMenuItem
       Caption = 'Editar Partida'
       OnClick = EditarPartida1Click
@@ -673,5 +691,423 @@ object FrmCotizacion: TFrmCotizacion
       Caption = 'Eliminar Partida'
       OnClick = EliminarPartida1Click
     end
+  end
+  object repCotizacion: TfrxReport
+    Version = '4.10.3'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Por defecto'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 42394.546894826400000000
+    ReportOptions.LastChange = 42479.939289583300000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 552
+    Top = 184
+    Datasets = <
+      item
+        DataSet = ClientModule1.fdsOrganizacion
+        DataSetName = 'fdsOrganizacion'
+      end
+      item
+        DataSet = frxCotizacionDatosUpt
+        DataSetName = 'frxCotizacionDatosUpt'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      PaperWidth = 215.900000000000000000
+      PaperHeight = 279.400000000000000000
+      PaperSize = 1
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      object PageHeader2: TfrxPageHeader
+        Height = 139.842610000000000000
+        Top = 18.897650000000000000
+        Width = 740.409927000000000000
+        object Memo47: TfrxMemoView
+          Width = 740.787489450000000000
+          Height = 109.606370000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          ParentFont = False
+        end
+        object Picture2: TfrxPictureView
+          Left = 3.779530000000000000
+          Top = 3.779530000000001000
+          Width = 113.385900000000000000
+          Height = 86.929190000000000000
+          ShowHint = False
+          DataField = 'Imagen'
+          DataSet = ClientModule1.fdsOrganizacion
+          DataSetName = 'fdsOrganizacion'
+          HightQuality = False
+          Transparent = False
+          TransparentColor = clWhite
+        end
+        object Memo48: TfrxMemoView
+          Left = 128.504020000000000000
+          Top = 7.559059999999999000
+          Width = 608.503939450000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[fdsOrganizacion."nombreorganizacion"]')
+          ParentFont = False
+        end
+        object Memo49: TfrxMemoView
+          Left = 128.504020000000000000
+          Top = 26.456710000000000000
+          Width = 608.503939450000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[fdsOrganizacion."tituloorganizacion"]')
+          ParentFont = False
+        end
+        object Memo50: TfrxMemoView
+          Left = 128.504020000000000000
+          Top = 64.252010000000000000
+          Width = 608.503939450000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'COTIZACION')
+          ParentFont = False
+        end
+        object Memo51: TfrxMemoView
+          Left = 3.779530000000000000
+          Top = 90.708720000000000000
+          Width = 113.385900000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[fdsOrganizacion."Etiqueta"]')
+          ParentFont = False
+        end
+      end
+      object GroupHeader1: TfrxGroupHeader
+        Height = 22.677180000000000000
+        Top = 219.212740000000000000
+        Width = 740.409927000000000000
+        Condition = 'frxCotizacionDatosUpt."IdCotizacion"'
+        object Memo7: TfrxMemoView
+          Left = 3.779530000000000000
+          Width = 94.488250000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            'C'#243'digo')
+          ParentFont = False
+        end
+        object Memo8: TfrxMemoView
+          Left = 98.267780000000000000
+          Width = 192.756030000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Insumo')
+          ParentFont = False
+        end
+        object Memo9: TfrxMemoView
+          Left = 291.023810000000000000
+          Width = 71.811070000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Marca')
+          ParentFont = False
+        end
+        object Memo10: TfrxMemoView
+          Left = 362.834880000000000000
+          Width = 64.252010000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          DisplayFormat.FormatStr = '%2.4n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Cantidad')
+          ParentFont = False
+        end
+        object Memo11: TfrxMemoView
+          Left = 427.086890000000000000
+          Width = 94.488250000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Presentaci'#243'n')
+          ParentFont = False
+        end
+        object Memo12: TfrxMemoView
+          Left = 521.575140000000000000
+          Width = 94.488250000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Precio')
+          ParentFont = False
+        end
+        object Memo13: TfrxMemoView
+          Left = 616.063390000000000000
+          Width = 94.488250000000000000
+          Height = 15.118120000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Costo')
+          ParentFont = False
+        end
+      end
+      object MasterData1: TfrxMasterData
+        Height = 22.677180000000000000
+        Top = 264.567100000000000000
+        Width = 740.409927000000000000
+        DataSet = frxCotizacionDatosUpt
+        DataSetName = 'frxCotizacionDatosUpt'
+        RowCount = 0
+        object Memo1: TfrxMemoView
+          Left = 3.779530000000000000
+          Width = 94.488250000000000000
+          Height = 11.338590000000000000
+          ShowHint = False
+          DataField = 'hCodigoInsumo'
+          DataSet = frxCotizacionDatosUpt
+          DataSetName = 'frxCotizacionDatosUpt'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -8
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxCotizacionDatosUpt."hCodigoInsumo"]')
+          ParentFont = False
+        end
+        object Memo2: TfrxMemoView
+          Left = 98.267780000000000000
+          Width = 192.756030000000000000
+          Height = 11.338590000000000000
+          ShowHint = False
+          DataField = 'hNombreInsumo'
+          DataSet = frxCotizacionDatosUpt
+          DataSetName = 'frxCotizacionDatosUpt'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -8
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxCotizacionDatosUpt."hNombreInsumo"]')
+          ParentFont = False
+        end
+        object Memo3: TfrxMemoView
+          Left = 362.834880000000000000
+          Width = 64.252010000000000000
+          Height = 11.338590000000000000
+          ShowHint = False
+          DataSet = frxCotizacionDatosUpt
+          DataSetName = 'frxCotizacionDatosUpt'
+          DisplayFormat.FormatStr = '%2.4n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -8
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxCotizacionDatosUpt."Cantidad"]')
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          Left = 427.086890000000000000
+          Width = 94.488250000000000000
+          Height = 11.338590000000000000
+          ShowHint = False
+          DataField = 'hTituloPresentacion'
+          DataSet = frxCotizacionDatosUpt
+          DataSetName = 'frxCotizacionDatosUpt'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -8
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxCotizacionDatosUpt."hTituloPresentacion"]')
+          ParentFont = False
+        end
+        object Memo5: TfrxMemoView
+          Left = 291.023810000000000000
+          Width = 71.811070000000000000
+          Height = 11.338590000000000000
+          ShowHint = False
+          DataField = 'hTituloMarca'
+          DataSet = frxCotizacionDatosUpt
+          DataSetName = 'frxCotizacionDatosUpt'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -8
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxCotizacionDatosUpt."hTituloMarca"]')
+          ParentFont = False
+        end
+        object Memo6: TfrxMemoView
+          Left = 521.575140000000000000
+          Width = 94.488250000000000000
+          Height = 11.338590000000000000
+          ShowHint = False
+          DataField = 'PrecioU'
+          DataSet = frxCotizacionDatosUpt
+          DataSetName = 'frxCotizacionDatosUpt'
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -8
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxCotizacionDatosUpt."PrecioU"]')
+          ParentFont = False
+        end
+        object Memo14: TfrxMemoView
+          Left = 616.063390000000000000
+          Width = 94.488250000000000000
+          Height = 11.338590000000000000
+          ShowHint = False
+          DataField = 'Costo'
+          DataSet = frxCotizacionDatosUpt
+          DataSetName = 'frxCotizacionDatosUpt'
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -8
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxCotizacionDatosUpt."Costo"]')
+          ParentFont = False
+        end
+      end
+    end
+  end
+  object frxCotizacionDatosUpt: TfrxDBDataset
+    UserName = 'frxCotizacionDatosUpt'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'IdCotizacionDatos=IdCotizacionDatos'
+      'IdCotizacion=IdCotizacion'
+      'IdInsumo=IdInsumo'
+      'CodigoInsumo=CodigoInsumo'
+      'NombreInsumo=NombreInsumo'
+      'hCodigoInsumo=hCodigoInsumo'
+      'hNombreInsumo=hNombreInsumo'
+      'Cantidad=Cantidad'
+      'iIdUnidad=iIdUnidad'
+      'sNombre=sNombre'
+      'Precio=Precio'
+      'PrecioU=PrecioU'
+      'pUtilidad=pUtilidad'
+      'Utilidad=Utilidad'
+      'CostoI=CostoI'
+      'Costo=Costo'
+      'IdMarca=IdMarca'
+      'TituloMarca=TituloMarca'
+      'hTituloMarca=hTituloMarca'
+      'IdPresentacion=IdPresentacion'
+      'TituloPresentacion=TituloPresentacion'
+      'hTituloPresentacion=hTituloPresentacion')
+    DataSet = cdCotizacionDatosUpt
+    BCDToCurrency = False
+    Left = 176
+    Top = 312
   end
 end

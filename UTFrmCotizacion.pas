@@ -22,7 +22,7 @@ uses
   dxSkinXmas2008Blue, dxSkinscxPCPainter, cxCustomData, cxFilter, cxData,
   cxDataStorage, cxEdit, cxNavigator, cxDBData, cxGridLevel, cxClasses,
   cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxGrid, cxCalc, Menus, AdvMenus;
+  cxGrid, cxCalc, Menus, AdvMenus, frxClass, frxDBSet;
 
 type
   TFrmCotizacion = class(TForm)
@@ -59,7 +59,6 @@ type
     cdCotizacionDatosUpt: TClientDataSet;
     dsCotizacionDatosUpt: TDataSource;
     Panel7: TPanel;
-    btnCancelar: TAdvGlowButton;
     bntAceptar: TAdvGlowButton;
     tvDatos: TcxGridDBTableView;
     gridPartidasLevel1: TcxGridLevel;
@@ -79,13 +78,20 @@ type
     cdInsumo: TClientDataSet;
     ColCantidad: TcxGridDBColumn;
     ColPrecio: TcxGridDBColumn;
-    ColCosto: TcxGridDBColumn;
+    ColCostoI: TcxGridDBColumn;
     cdMarca: TClientDataSet;
     cdPresentacion: TClientDataSet;
     cdExistenciasGenerales: TClientDataSet;
     pmPartidas: TAdvPopupMenu;
     EditarPartida1: TMenuItem;
     EliminarPartida1: TMenuItem;
+    AdvGlowButton1: TAdvGlowButton;
+    ColhTituloPresentacion: TcxGridDBColumn;
+    ColpUtilidad: TcxGridDBColumn;
+    ColUtilidad: TcxGridDBColumn;
+    ColCosto: TcxGridDBColumn;
+    repCotizacion: TfrxReport;
+    frxCotizacionDatosUpt: TfrxDBDataset;
     procedure btnBuscarClick(Sender: TObject);
     procedure btnNuevoClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -102,6 +108,7 @@ type
     procedure EditarPartida1Click(Sender: TObject);
     procedure pmPartidasPopup(Sender: TObject);
     procedure EliminarPartida1Click(Sender: TObject);
+    procedure AdvGlowButton1Click(Sender: TObject);
   private
     TextoOriginal: String;
     function AgregaPartida: LongInt;
@@ -205,6 +212,10 @@ var
 begin
   EliminarConjunto([cdBuscarCotizacion, cdClientes, cdMarca, cdExistenciasGenerales, cdPresentacion, cdInsumo, cdElabora, cdAutoriza, cdCotizacionDatosUpt, cdCotizacionUpt]);
 
+  SetRegistry('\Ventanas', '\' + Self.Name, 'Left', IntToStr(Self.Left));
+  SetRegistry('\Ventanas', '\' + Self.Name, 'Top', IntToStr(Self.Top));
+  SetRegistry('\Ventanas', '\' + Self.Name, 'Width', IntToStr(Self.Width));
+  SetRegistry('\Ventanas', '\' + Self.Name, 'Height', IntToStr(Self.Height));
   try
     for i:= 0 to tvDatos.ColumnCount -1 do
       SetRegistry('\Ventanas', '\' + Self.Name + '\tvDatos', 'Column' + IntToStr(i), IntToStr(tvDatos.Columns[i].Width));
@@ -222,6 +233,30 @@ begin
     LocCursor := Screen.Cursor;
     try
       Screen.Cursor := crHourGlass;
+
+      try
+        Self.Top := StrToInt(VarRegistry('\Ventanas', '\' + Self.Name, 'Top'));
+      except
+        ;
+      end;
+
+      try
+        Self.Left := StrToInt(VarRegistry('\Ventanas', '\' + Self.Name, 'Left'));
+      except
+        ;
+      end;
+
+      try
+        Self.Width := StrToInt(VarRegistry('\Ventanas', '\' + Self.Name, 'Width'));
+      except
+        ;
+      end;
+
+      try
+        Self.Height := StrToInt(VarRegistry('\Ventanas', '\' + Self.Name, 'Height'));
+      except
+        ;
+      end;
 
       for i:= 0 to tvDatos.ColumnCount -1 do
         try
@@ -315,7 +350,6 @@ begin
       else
         dsInsumo.DataSet.Open;
 
-      IniciarTransaccion;
       try
         if (dsInsumo.DataSet.RecordCount > 1) or ((dsInsumo.DataSet.RecordCount = 1) and (dsInsumo.DataSet.FieldByName('Cta').AsInteger = 0)) then
         begin
@@ -344,10 +378,10 @@ begin
         if Not cdPresentacion.Active then
           cdPresentacion.Open;
 
-        if Not cdCotizacionDatosUpt.Locate('IdCotizacionDatos', IdRegistroMovimientoGeneralPartida, []) then
+        {if Not cdCotizacionDatosUpt.Locate('IdCotizacionDatos', IdRegistroMovimientoGeneralPartida, []) then
           raise InteligentException.CreateByCode(1, ['No existe el registro que aparentemente se acaba de dar de alta en el sistema.']);
 
-        cdCotizacionDatosUpt.Edit;
+        cdCotizacionDatosUpt.Edit;}
 
         Application.CreateForm(TFrmEditarCotizacionPartida, FrmEditarCotizacionPartida);
         FrmEditarCotizacionPartida.dsCotizacionDatos.DataSet := cdCotizacionDatosUpt;
@@ -362,18 +396,11 @@ begin
         begin
           cdCotizacionDatosUpt.Post;
           TClientDataSet(cdCotizacionDatosUpt).ApplyUpdates(-1);
-          ConcretarTransaccion;
         end
         else
-        begin
           cdCotizacionDatosUpt.Cancel;
-          CancelarTransaccion;
-          cdCotizacionDatosUpt.Refresh;
-        end;
       except
         cdCotizacionDatosUpt.Cancel;
-        CancelarTransaccion;
-        cdCotizacionDatosUpt.Refresh;
         raise;
       end;
     except
@@ -420,6 +447,11 @@ begin
     EliminarPartida;
 end;
 
+procedure TFrmCotizacion.AdvGlowButton1Click(Sender: TObject);
+begin
+  ClientModule1.ImprimeReporte('Cotizacion.fr3', repCotizacion);
+end;
+
 function TFrmCotizacion.AgregaPartida: LongInt;
 var
   Resultado: LongInt;
@@ -440,22 +472,22 @@ begin
     cdCotizacionDatosUpt.FieldByName('CostoI').AsFloat := 0.00;
     cdCotizacionDatosUpt.FieldByName('Costo').AsFloat := 0.00;
     cdCotizacionDatosUpt.FieldByName('iIdUnidad').AsInteger := cdInsumo.FieldByName('iIdUnidad').AsInteger;
-    cdCotizacionDatosUpt.Post;
-    cdCotizacionDatosUpt.ApplyUpdates(-1);
+    {cdCotizacionDatosUpt.Post;
+    cdCotizacionDatosUpt.ApplyUpdates(-1);}
   except
     cdCotizacionDatosUpt.Cancel;
     raise;
   end;
 
   Resultado := UltimoId;
-  try
+{  try
     // Tomar los datos como registro de Edición;
     if Not CargarDatosFiltrados(cdCotizacionDatosUpt, 'IdCotizacion', [cdCotizacionUpt.FieldByName('IdCotizacion').AsInteger]) then
       raise InteligentException.CreateByCode(6, ['Partidas de Cotización', cdCotizacionUpt.FieldByName('IdCotizacion').AsInteger, 'Id. Cotizacion']);
     cdCotizacionDatosUpt.Refresh;
   finally
     Result := Resultado;
-  end;
+  end;}
 end;
 
 procedure TFrmCotizacion.EditarPartida(ItemIndex: Word);
