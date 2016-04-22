@@ -842,8 +842,8 @@
   object cdInsumo: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 496
-    Top = 144
+    Left = 472
+    Top = 136
   end
   object dsInsumo: TDataSource
     DataSet = cdInsumo
@@ -930,8 +930,8 @@
     end
   end
   object cxStyleRepository1: TcxStyleRepository
-    Left = 456
-    Top = 152
+    Left = 432
+    Top = 184
     PixelsPerInch = 96
     object cxstyleditable: TcxStyle
       AssignedValues = [svColor]

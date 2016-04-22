@@ -137,7 +137,9 @@ uses
   UTFrmEntradaGeneralDatos in 'UTFrmEntradaGeneralDatos.pas' {FrmEntradaGeneralDatos},
   UTFrmEntradaGeneralPartidaDatos in 'UTFrmEntradaGeneralPartidaDatos.pas' {FrmEntradaGeneralPartidaDatos},
   UTFrmSelInsumo in 'UTFrmSelInsumo.pas' {FrmSelInsumo},
-  UTFrmEditarCotizacionPartida in 'UTFrmEditarCotizacionPartida.pas' {FrmEditarCotizacionPartida};
+  UTFrmEditarCotizacionPartida in 'UTFrmEditarCotizacionPartida.pas' {FrmEditarCotizacionPartida},
+  UfrmImpuestosxinsumo in 'UfrmImpuestosxinsumo.pas' {FrmImpuestosxinsumo},
+  UFrmDatosImpuestosxInsumos in 'UFrmDatosImpuestosxInsumos.pas' {FrmDatosImpuestosxinsumos};
 
 {$R *.res}
 

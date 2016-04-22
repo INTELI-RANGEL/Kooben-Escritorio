@@ -1,19 +1,17 @@
 inherited FrmDatosIVA: TFrmDatosIVA
   Caption = 'Cat'#225'logo de Impuestos'
-  ClientHeight = 310
-  ExplicitHeight = 348
+  ClientHeight = 429
+  ExplicitWidth = 562
+  ExplicitHeight = 468
   PixelsPerInch = 96
   TextHeight = 13
   inherited PanelBarraLugar: TcxGroupBox
-    Top = 279
-    inherited BtnRec: TAdvGlowButton
-      ExplicitLeft = 378
-      ExplicitTop = 1
-    end
+    Top = 398
+    ExplicitTop = 279
   end
   inherited PanelDatosLugares: TcxGroupBox
-    ExplicitWidth = 545
-    Height = 279
+    ExplicitHeight = 279
+    Height = 398
     inherited cxButton1: TcxButton
       Left = 464
       Top = 106
@@ -24,11 +22,10 @@ inherited FrmDatosIVA: TFrmDatosIVA
       Left = 3
       Top = 15
       Width = 540
-      Height = 98
+      Height = 137
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitTop = 9
       object JvLabel1: TJvLabel
         Left = 118
         Top = 13
@@ -58,9 +55,22 @@ inherited FrmDatosIVA: TFrmDatosIVA
       object JvLabel2: TJvLabel
         Left = 125
         Top = 39
-        Width = 32
+        Width = 47
         Height = 13
-        Caption = 'T'#237'tulo:'
+        Caption = 'Impuesto'
+        Transparent = True
+        HotTrackFont.Charset = DEFAULT_CHARSET
+        HotTrackFont.Color = clWindowText
+        HotTrackFont.Height = -11
+        HotTrackFont.Name = 'Tahoma'
+        HotTrackFont.Style = []
+      end
+      object JvLabel3: TJvLabel
+        Left = 68
+        Top = 91
+        Width = 73
+        Height = 13
+        Caption = 'Impuesto SAT:'
         Transparent = True
         HotTrackFont.Charset = DEFAULT_CHARSET
         HotTrackFont.Color = clWindowText
@@ -98,52 +108,59 @@ inherited FrmDatosIVA: TFrmDatosIVA
         DataSource = dsDatos
         TabOrder = 1
       end
+      object dblkcbbIdTipoImpuesto: TDBLookupComboBox
+        Left = 185
+        Top = 91
+        Width = 339
+        Height = 21
+        DataField = 'IdImpuestoSAT'
+        DataSource = dsDatos
+        KeyField = 'IdImpuestoSAT'
+        ListField = 'Impuesto'
+        ListSource = dsSAT
+        TabOrder = 3
+      end
     end
     object Panel2: TPanel
       Left = 3
-      Top = 113
+      Top = 152
       Width = 540
-      Height = 156
+      Height = 236
       Align = alClient
       BevelOuter = bvNone
       Padding.Right = 16
       TabOrder = 2
-      ExplicitLeft = 208
-      ExplicitTop = 208
-      ExplicitWidth = 185
-      ExplicitHeight = 41
+      ExplicitTop = 113
+      ExplicitHeight = 156
       object Panel3: TPanel
         Left = 0
         Top = 0
         Width = 121
-        Height = 156
+        Height = 236
         Align = alLeft
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitHeight = 156
       end
       object Panel4: TPanel
         Left = 121
         Top = 0
         Width = 403
-        Height = 156
+        Height = 236
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitLeft = 176
-        ExplicitTop = 56
-        ExplicitWidth = 185
-        ExplicitHeight = 41
+        ExplicitHeight = 156
         object cxGrid1: TcxGrid
           Left = 64
           Top = 0
           Width = 339
-          Height = 156
+          Height = 236
           Align = alClient
           TabOrder = 0
-          ExplicitLeft = 144
-          ExplicitTop = -24
-          ExplicitWidth = 250
-          ExplicitHeight = 200
+          ExplicitLeft = 70
+          ExplicitTop = 45
+          ExplicitHeight = 275
           object tvAplicacionImpuesto: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             OnCellDblClick = tvAplicacionImpuestoCellDblClick
@@ -179,12 +196,11 @@ inherited FrmDatosIVA: TFrmDatosIVA
           Left = 0
           Top = 0
           Width = 64
-          Height = 156
+          Height = 236
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 1
-          ExplicitLeft = -6
-          ExplicitTop = -3
+          ExplicitHeight = 156
           object btnNuevo: TButton
             Left = 0
             Top = 18
@@ -260,5 +276,16 @@ inherited FrmDatosIVA: TFrmDatosIVA
     DataSet = cdUnidad
     Left = 176
     Top = 208
+  end
+  object cdSAT: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 112
+    Top = 304
+  end
+  object dsSAT: TDataSource
+    DataSet = cdSAT
+    Left = 64
+    Top = 304
   end
 end

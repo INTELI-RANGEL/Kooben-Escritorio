@@ -53,6 +53,10 @@ type
     ColsNombre: TcxGridDBColumn;
     cdUnidad: TClientDataSet;
     dsUnidad: TDataSource;
+    JvLabel3: TJvLabel;
+    dblkcbbIdTipoImpuesto: TDBLookupComboBox;
+    cdSAT: TClientDataSet;
+    dsSAT: TDataSource;
     procedure BtnAddNewClick(Sender: TObject);
     procedure BtnRecClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -267,6 +271,12 @@ begin
 
     if Not CrearConjunto(cdUnidad, 'nuc_unidades', ccCatalog) then
       raise InteligentException.CreateByCode(5, ['Unidades de Medida']);
+
+    if Not CrearConjunto(cdSAT, 'nuc_impuestosat', ccCatalog) then
+      raise InteligentException.CreateByCode(5, ['Catálogo de impuestos del SAT']);
+
+    cdSAT.Open;
+
 
     cdTipoImpuesto.Open;
     if cdTipoImpuesto.RecordCount = 0 then

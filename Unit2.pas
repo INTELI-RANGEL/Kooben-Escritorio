@@ -397,7 +397,7 @@ uses UInteliDialog, Frm_Conectando, UTFrmSeleccion, UTFrmInsumos,
   UTFrmConsultaPrecios, UTFrmPrecioBajo, UTFrmContratos, UTFrmUsuarioPermisos,
   UTFrmRolPermisos, UTFrmComparaPrecios, UTFrmAlmacenes, UTFrmIVA,
   UTFrmTiposImpuesto, UTFrmCotizacion, UTFrmImpuestoxInsumo,
-  UTFrmEntradaGeneral;
+  UTFrmEntradaGeneral, UFrmImpuestosxInsumo;
 
 {$R *.dfm}
 
@@ -1312,7 +1312,7 @@ end;
 
 procedure TForm2.btnImpuestoxInsumoClick(Sender: TObject);
 begin
-  IniciarForm(TFrmImpuestoxInsumo, FrmImpuestoxInsumo, False);
+  IniciarForm(TFrmImpuestosxInsumo, FrmImpuestosxInsumo, False);
 end;
 
 procedure TForm2.btnMarcas1Click(Sender: TObject);
