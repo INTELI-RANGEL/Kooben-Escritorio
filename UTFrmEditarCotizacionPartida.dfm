@@ -3,7 +3,7 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Partida de Cotizaci'#243'n'
-  ClientHeight = 236
+  ClientHeight = 239
   ClientWidth = 816
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -34,7 +34,7 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   end
   object JvLabel2: TJvLabel
     Left = 17
-    Top = 88
+    Top = 96
     Width = 35
     Height = 13
     Caption = 'Precio:'
@@ -69,7 +69,7 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   end
   object JvLabel4: TJvLabel
     Left = 590
-    Top = 153
+    Top = 161
     Width = 59
     Height = 13
     Caption = 'Costo Final:'
@@ -82,7 +82,7 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   end
   object JvLabel5: TJvLabel
     Left = 401
-    Top = 88
+    Top = 96
     Width = 55
     Height = 13
     Caption = '% Utilidad:'
@@ -95,7 +95,7 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   end
   object JvLabel6: TJvLabel
     Left = 615
-    Top = 85
+    Top = 93
     Width = 34
     Height = 13
     Caption = 'Costo:'
@@ -108,7 +108,7 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   end
   object JvLabel7: TJvLabel
     Left = 608
-    Top = 112
+    Top = 120
     Width = 41
     Height = 13
     Caption = 'Utilidad:'
@@ -131,7 +131,7 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   end
   object Panel1: TPanel
     Left = 0
-    Top = 195
+    Top = 198
     Width = 816
     Height = 41
     Align = alBottom
@@ -231,7 +231,7 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   end
   object Precio: TRxDBCalcEdit
     Left = 59
-    Top = 85
+    Top = 93
     Width = 121
     Height = 21
     Margins.Left = 4
@@ -273,7 +273,7 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   end
   object pnlCosto: TPanel
     Left = 655
-    Top = 153
+    Top = 161
     Width = 131
     Height = 29
     BevelOuter = bvNone
@@ -296,7 +296,7 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   end
   object pUtilidad: TRxDBCalcEdit
     Left = 463
-    Top = 85
+    Top = 93
     Width = 90
     Height = 21
     Margins.Left = 4
@@ -311,7 +311,7 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   end
   object Panel2: TPanel
     Left = 601
-    Top = 143
+    Top = 151
     Width = 185
     Height = 2
     BevelOuter = bvNone
@@ -321,7 +321,7 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   end
   object CostoI: TJvDBCalcEdit
     Left = 655
-    Top = 85
+    Top = 93
     Width = 121
     Height = 21
     TabStop = False
@@ -333,7 +333,7 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   end
   object Utilidad: TJvDBCalcEdit
     Left = 655
-    Top = 112
+    Top = 120
     Width = 121
     Height = 21
     TabStop = False
@@ -345,7 +345,7 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   end
   object rgPrecios: TRadioGroup
     Left = 186
-    Top = 72
+    Top = 80
     Width = 185
     Height = 94
     Caption = 'Precios de Insumo:'
@@ -354,26 +354,26 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   end
   object dsInsumo: TDataSource
     Left = 192
-    Top = 160
+    Top = 168
   end
   object dsCotizacionDatos: TDataSource
     Left = 440
-    Top = 176
+    Top = 184
   end
   object dsPresentacion: TDataSource
     Left = 344
-    Top = 160
+    Top = 168
   end
   object dsMarca: TDataSource
     Left = 520
-    Top = 160
+    Top = 168
   end
   object dsExistenciasGenerales: TDataSource
     Left = 88
-    Top = 128
+    Top = 136
   end
   object dsVerificaCotizacion: TDataSource
     Left = 72
-    Top = 176
+    Top = 184
   end
 end

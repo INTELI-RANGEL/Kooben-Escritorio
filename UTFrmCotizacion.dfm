@@ -3,7 +3,7 @@ object FrmCotizacion: TFrmCotizacion
   Top = 0
   Caption = 'Cotizaci'#243'n'
   ClientHeight = 398
-  ClientWidth = 653
+  ClientWidth = 664
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,10 +20,11 @@ object FrmCotizacion: TFrmCotizacion
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 653
+    Width = 664
     Height = 41
     Align = alTop
     TabOrder = 0
+    ExplicitWidth = 653
     object JvLabel1: TJvLabel
       Left = 8
       Top = 11
@@ -120,18 +121,52 @@ object FrmCotizacion: TFrmCotizacion
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
     end
+    object btnEncabezado: TAdvGlowButton
+      Left = 546
+      Top = 6
+      Width = 107
+      Height = 27
+      Caption = '&Encabezado'
+      ImageIndex = 41
+      Images = ClientModule1.ImagelistMenu
+      NotesFont.Charset = DEFAULT_CHARSET
+      NotesFont.Color = clWindowText
+      NotesFont.Height = -11
+      NotesFont.Name = 'Tahoma'
+      NotesFont.Style = []
+      TabOrder = 3
+      OnClick = btnEncabezadoClick
+      Appearance.ColorChecked = 16111818
+      Appearance.ColorCheckedTo = 16367008
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 16111818
+      Appearance.ColorDownTo = 16367008
+      Appearance.ColorHot = 16117985
+      Appearance.ColorHotTo = 16372402
+      Appearance.ColorMirrorHot = 16107693
+      Appearance.ColorMirrorHotTo = 16775412
+      Appearance.ColorMirrorDown = 16102556
+      Appearance.ColorMirrorDownTo = 16768988
+      Appearance.ColorMirrorChecked = 16102556
+      Appearance.ColorMirrorCheckedTo = 16768988
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+      Enabled = False
+    end
   end
   object Panel2: TPanel
     Left = 0
     Top = 41
-    Width = 653
+    Width = 664
     Height = 357
     Align = alClient
     TabOrder = 1
+    ExplicitWidth = 653
     object Splitter1: TSplitter
       Left = 1
       Top = 188
-      Width = 651
+      Width = 662
       Height = 3
       Cursor = crVSplit
       Align = alTop
@@ -141,20 +176,22 @@ object FrmCotizacion: TFrmCotizacion
     object pnlGenerales: TPanel
       Left = 1
       Top = 1
-      Width = 651
+      Width = 662
       Height = 128
       Align = alTop
       DoubleBuffered = True
       ParentDoubleBuffered = False
       TabOrder = 0
+      ExplicitWidth = 651
       object Panel3: TPanel
         Left = 1
         Top = 1
-        Width = 649
+        Width = 660
         Height = 25
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitWidth = 649
         object JvLabel2: TJvLabel
           Left = 16
           Top = 5
@@ -187,13 +224,14 @@ object FrmCotizacion: TFrmCotizacion
       object Panel4: TPanel
         Left = 1
         Top = 26
-        Width = 649
+        Width = 660
         Height = 54
         Align = alClient
         BevelOuter = bvNone
         Enabled = False
         Padding.Right = 6
         TabOrder = 1
+        ExplicitWidth = 649
         object Panel5: TPanel
           Left = 0
           Top = 0
@@ -206,7 +244,7 @@ object FrmCotizacion: TFrmCotizacion
         object DomicilioCliente: TDBMemo
           Left = 65
           Top = 0
-          Width = 578
+          Width = 589
           Height = 54
           TabStop = False
           Align = alClient
@@ -224,16 +262,18 @@ object FrmCotizacion: TFrmCotizacion
           ParentFont = False
           ReadOnly = True
           TabOrder = 1
+          ExplicitWidth = 578
         end
       end
       object Panel6: TPanel
         Left = 1
         Top = 80
-        Width = 649
+        Width = 660
         Height = 47
         Align = alBottom
         BevelOuter = bvNone
         TabOrder = 2
+        ExplicitWidth = 649
         object JvLabel3: TJvLabel
           Left = 20
           Top = 6
@@ -265,12 +305,13 @@ object FrmCotizacion: TFrmCotizacion
         object pnlFirmas: TPanel
           Left = 0
           Top = 24
-          Width = 649
+          Width = 660
           Height = 23
           Align = alBottom
           BevelOuter = bvNone
           TabOrder = 0
           OnResize = pnlFirmasResize
+          ExplicitWidth = 649
           object pnlElabora: TPanel
             Left = 0
             Top = 0
@@ -311,11 +352,12 @@ object FrmCotizacion: TFrmCotizacion
           object Panel9: TPanel
             Left = 249
             Top = 0
-            Width = 400
+            Width = 411
             Height = 23
             Align = alClient
             BevelOuter = bvNone
             TabOrder = 1
+            ExplicitWidth = 400
             object NombreAutoriza: TDBText
               Left = 58
               Top = 2
@@ -351,14 +393,15 @@ object FrmCotizacion: TFrmCotizacion
     object pnlPartidas: TPanel
       Left = 1
       Top = 191
-      Width = 651
+      Width = 662
       Height = 165
       Align = alClient
       TabOrder = 1
+      ExplicitWidth = 651
       object Panel7: TPanel
         Left = 1
         Top = 123
-        Width = 649
+        Width = 660
         Height = 41
         Align = alBottom
         Padding.Left = 6
@@ -366,8 +409,9 @@ object FrmCotizacion: TFrmCotizacion
         Padding.Right = 6
         Padding.Bottom = 4
         TabOrder = 0
+        ExplicitWidth = 649
         object bntAceptar: TAdvGlowButton
-          Left = 542
+          Left = 553
           Top = 5
           Width = 100
           Height = 31
@@ -399,6 +443,7 @@ object FrmCotizacion: TFrmCotizacion
           Appearance.ColorMirrorCheckedTo = 16768988
           Appearance.ColorMirrorDisabled = 11974326
           Appearance.ColorMirrorDisabledTo = 15921906
+          ExplicitLeft = 542
         end
         object btnImprimir: TAdvGlowButton
           Left = 7
@@ -438,10 +483,11 @@ object FrmCotizacion: TFrmCotizacion
       object gridPartidas: TcxGrid
         Left = 1
         Top = 1
-        Width = 649
+        Width = 660
         Height = 122
         Align = alClient
         TabOrder = 1
+        ExplicitWidth = 649
         object tvDatos: TcxGridDBTableView
           PopupMenu = pmPartidas
           OnKeyDown = tvDatosKeyDown
@@ -494,13 +540,19 @@ object FrmCotizacion: TFrmCotizacion
           end
           object ColUtilidad: TcxGridDBColumn
             DataBinding.FieldName = 'Utilidad'
+            PropertiesClassName = 'TcxCalcEditProperties'
+            Properties.DisplayFormat = ',0.00'
           end
           object ColPrecioU: TcxGridDBColumn
             Caption = 'Precio Unitario'
             DataBinding.FieldName = 'PrecioU'
+            PropertiesClassName = 'TcxCalcEditProperties'
+            Properties.DisplayFormat = ',0.00'
           end
           object ColCosto: TcxGridDBColumn
             DataBinding.FieldName = 'Costo'
+            PropertiesClassName = 'TcxCalcEditProperties'
+            Properties.DisplayFormat = ',0.00'
           end
         end
         object gridPartidasLevel1: TcxGridLevel
@@ -511,23 +563,25 @@ object FrmCotizacion: TFrmCotizacion
     object Panel8: TPanel
       Left = 1
       Top = 129
-      Width = 651
+      Width = 662
       Height = 59
       Align = alTop
       BevelOuter = bvNone
       Padding.Top = 10
       Padding.Right = 6
       TabOrder = 2
+      ExplicitWidth = 651
       object IdInsumo: TEdit
         Left = 56
         Top = 10
-        Width = 589
+        Width = 600
         Height = 21
         Align = alClient
         TabOrder = 0
         OnEnter = IdInsumoEnter
         OnExit = IdInsumoExit
         OnKeyPress = IdInsumoKeyPress
+        ExplicitWidth = 589
       end
       object Panel10: TPanel
         Left = 0
@@ -554,11 +608,12 @@ object FrmCotizacion: TFrmCotizacion
       object Panel11: TPanel
         Left = 0
         Top = 31
-        Width = 645
+        Width = 656
         Height = 28
         Align = alBottom
         BevelOuter = bvNone
         TabOrder = 2
+        ExplicitWidth = 645
         object NombreInsumo: TDBText
           Left = 202
           Top = 6
@@ -618,6 +673,8 @@ object FrmCotizacion: TFrmCotizacion
   object cdCotizacionUpt: TClientDataSet
     Aggregates = <>
     Params = <>
+    AfterOpen = cdCotizacionUptAfterOpen
+    AfterClose = cdCotizacionUptAfterClose
     Left = 184
     Top = 120
   end

@@ -98,6 +98,7 @@ type
     cdCotizacionDatos: TClientDataSet;
     cdVerificaCotizacion: TClientDataSet;
     ColTituloMarca: TcxGridDBColumn;
+    btnEncabezado: TAdvGlowButton;
     procedure btnBuscarClick(Sender: TObject);
     procedure btnNuevoClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -118,6 +119,9 @@ type
     procedure repCotizacionGetValue(const VarName: string; var Value: Variant);
     procedure cdCotizacionDatosAfterOpen(DataSet: TDataSet);
     procedure bntAceptarClick(Sender: TObject);
+    procedure btnEncabezadoClick(Sender: TObject);
+    procedure cdCotizacionUptAfterOpen(DataSet: TDataSet);
+    procedure cdCotizacionUptAfterClose(DataSet: TDataSet);
   private
     TextoOriginal: String;
     CostoTotal: Extended;
@@ -168,6 +172,44 @@ begin
         cdCotizacionDatos.Open;
 
       IdInsumo.SetFocus;
+    end;
+  except
+    on e:InteligentException do
+      InteliDialog.ShowModal(e.Title, e.Message, e.MsgType, [mbOk], 0);
+
+    on e:Exception do
+      InteliDialog.ShowModal(IDTituloError, IDLabelError + e.Message, mtError, [mbOk], 0);
+  end;
+end;
+
+procedure TFrmCotizacion.btnEncabezadoClick(Sender: TObject);
+var
+  LocCursor: TCursor;
+begin
+  try
+    LocCursor := Screen.Cursor;
+    try
+      Screen.Cursor := crHourGlass;
+
+      if cdClientes.Active then
+        cdClientes.Refresh
+      else
+        cdClientes.Open;
+
+      // Editar la cabecera
+      cdCotizacionUpt.Edit;
+
+      Application.CreateForm(TFrmCotizacionDatos, FrmCotizacionDatos);
+      FrmCotizacionDatos.dsCotizacionUpt.DataSet := cdCotizacionUpt;
+      FrmCotizacionDatos.dsClientes.DataSet := cdClientes;
+      FrmCotizacionDatos.dsElabora.DataSet := cdElabora;
+      FrmCotizacionDatos.dsAutoriza.DataSet := cdAutoriza;
+      if FrmCotizacionDatos.ShowModal = mrOk then
+      begin
+
+      end;
+    finally
+      Screen.Cursor := LocCursor;
     end;
   except
     on e:InteligentException do
@@ -230,6 +272,16 @@ begin
     cdImpuestosxCotizacion.Refresh
   else
     cdImpuestosxCotizacion.Open;
+end;
+
+procedure TFrmCotizacion.cdCotizacionUptAfterClose(DataSet: TDataSet);
+begin
+  btnEncabezado.Enabled := False;
+end;
+
+procedure TFrmCotizacion.cdCotizacionUptAfterOpen(DataSet: TDataSet);
+begin
+  btnEncabezado.Enabled := True;
 end;
 
 procedure TFrmCotizacion.FormClose(Sender: TObject; var Action: TCloseAction);
