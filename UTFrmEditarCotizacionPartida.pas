@@ -23,7 +23,7 @@ uses
   dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
   cxNavigator, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  cxDBLookupComboBox, JvDBControls, CheckLst;
+  cxDBLookupComboBox, JvDBControls, CheckLst, JvSpin, JvDBSpinEdit;
 
 type
   TObjPrecio = class
@@ -60,6 +60,7 @@ type
     Utilidad: TJvDBCalcEdit;
     dsExistenciasGenerales: TDataSource;
     rgPrecios: TRadioGroup;
+    dsVerificaCotizacion: TDataSource;
     procedure CodigoInsumoEnter(Sender: TObject);
     procedure CodigoInsumoExit(Sender: TObject);
     procedure CodigoInsumoKeyPress(Sender: TObject; var Key: Char);
@@ -194,7 +195,7 @@ begin
         raise InteligentException.CreateByCode(18, ['Cantidad']);
       end;
 
-      if IdPresentacion.KeyValue = Null then
+{      if IdPresentacion.KeyValue = Null then
       begin
         Obj := IdPresentacion;
         raise InteligentException.CreateByCode(18, ['Presentación']);
@@ -205,7 +206,7 @@ begin
         Obj := IdMarca;
         raise InteligentException.CreateByCode(18, ['Marca']);
       end;
-
+}
       if Precio.Value <= 0 then
       begin
         Obj := Precio;
@@ -225,15 +226,28 @@ begin
       end;
 
       // Verificar que no se repita la misma partida en esta cotización
-      if Not CargarDatosFiltrados(TClientDataSet(dsCotizacionDatos.DataSet), 'IdCotizacion,IdInsumo,IdPresentacion,IdMarca', [dsCotizacionDatos.DataSet.FieldByName('IdCotizacion').AsInteger, dsCotizacionDatos.DataSet.FieldByName('IdInsumo').AsInteger, dsPresentacion.DataSet.FieldByName('IdPresentacion').AsInteger, dsMarca.DataSet.FieldByName('IdMarca').AsInteger]) then
+      if Not CargarDatosFiltrados(TClientDataSet(dsVerificaCotizacion.DataSet), 'IdCotizacion,IdInsumo,IdPresentacion,IdMarca', [dsCotizacionDatos.DataSet.FieldByName('IdCotizacion').AsInteger, dsCotizacionDatos.DataSet.FieldByName('IdInsumo').AsInteger, dsPresentacion.DataSet.FieldByName('IdPresentacion').AsInteger, dsMarca.DataSet.FieldByName('IdMarca').AsInteger]) then
         raise InteligentException.CreateByCode(16, ['Partidas de Cotizacion']);
 
+      if dsVerificaCotizacion.DataSet.Active then
+        dsVerificaCotizacion.DataSet.Refresh
+      else
+        dsVerificaCotizacion.DataSet.Open;
+
+      // Si existe un registro y es edición, verificar si no soy yo mismo o bien, si es una insersión y existe un registro
       try
-        if CuantosRegistros(TClientDataSet(dsCotizacionDatos.DataSet)) > 0 then
-          raise InteligentException.CreateByCode(17, ['Partidas de Cotizacion', dsCotizacionDatos.DataSet.FieldByName('hNombreInsumo').AsString + ', Marca: ' + dsMarca.DataSet.FieldByName('TituloMarca').AsString + ', Presentación: ' + dsPresentacion.DataSet.FieldByName('TituloPresentacion').AsString]);
+        if ((dsCotizacionDatos.DataSet.State = dsEdit) and (dsVerificaCotizacion.DataSet.RecordCount = 1) and (dsVerificaCotizacion.DataSet.FieldByName('IdCotizacionDatos').AsInteger <> dsCotizacionDatos.DataSet.FieldByName('IdCotizacionDatos').AsInteger)) or
+           ((dsCotizacionDatos.DataSet.State = dsInsert) and (dsVerificaCotizacion.DataSet.RecordCount = 1)) then
+        begin
+          Obj := IdPresentacion;
+          raise InteligentException.CreateByCode(24, ['Ya existe una partida de Cotización con los parametros de:' + #10 + #10 +
+                                                      'Insumo: ' + dsCotizacionDatos.DataSet.FieldByName('NombreInsumo').AsString + #10 +
+                                                      'Marca: ' + dsMarca.DataSet.FieldByName('TituloMarca').AsString + #10 +
+                                                      'Presentacion: ' + dsPresentacion.DataSet.FieldByName('TituloPresentacion').AsString + #10 + #10 +
+                                                      'No es posible regsitrar dos o más partidas con estas mismas caracteristicas, verifique esto e intente de nuevo']);
+        end;
       finally
-        if Not CargarDatosFiltrados(TClientDataSet(dsCotizacionDatos.DataSet), 'IdCotizacion,IdInsumo,IdPresentacion,IdMarca', [dsCotizacionDatos.DataSet.FieldByName('IdCotizacion').AsInteger, dsCotizacionDatos.DataSet.FieldByName('IdInsumo').AsInteger, dsPresentacion.DataSet.FieldByName('IdPresentacion').AsInteger, dsMarca.DataSet.FieldByName('IdMarca').AsInteger]) then
-          raise InteligentException.CreateByCode(16, ['Partidas de Cotizacion']);
+        dsVerificaCotizacion.DataSet.Close;
       end;
 
       CanClose := True;
@@ -351,14 +365,17 @@ procedure TFrmEditarCotizacionPartida.CambiaCosto;
 var
   fCosto: Extended;
 begin
-  CostoI.Value := Round(Cantidad.Value * Precio.Value * 100) / 100;
-  Utilidad.Value := Round(CostoI.Value * pUtilidad.Value) / 100;
-  fCosto := CostoI.Value + Utilidad.Value;
-  if Cantidad.Value = 0 then
-    dsCotizacionDatos.DataSet.FieldByName('PrecioU').AsFloat := 0
-  else
-    dsCotizacionDatos.DataSet.FieldByName('PrecioU').AsFloat := Round((fCosto / Cantidad.Value) * 100) / 100;
-  Costo.Value := dsCotizacionDatos.DataSet.FieldByName('PrecioU').AsFloat * Cantidad.Value;
+  if Assigned(dsCotizacionDatos.DataSet) and (dsCotizacionDatos.DataSet.State in [dsEdit, dsInsert]) then
+  begin
+    CostoI.Value := Round(Cantidad.Value * Precio.Value * 100) / 100;
+    Utilidad.Value := Round(CostoI.Value * pUtilidad.Value) / 100;
+    fCosto := CostoI.Value + Utilidad.Value;
+    if Cantidad.Value = 0 then
+      dsCotizacionDatos.DataSet.FieldByName('PrecioU').AsFloat := 0
+    else
+      dsCotizacionDatos.DataSet.FieldByName('PrecioU').AsFloat := Round((fCosto / Cantidad.Value) * 100) / 100;
+    Costo.Value := dsCotizacionDatos.DataSet.FieldByName('PrecioU').AsFloat * Cantidad.Value;
+  end;
 end;
 
 procedure TFrmEditarCotizacionPartida.CargarPrecios;

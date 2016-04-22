@@ -13,7 +13,7 @@ uses
   BaseGrid, AdvGrid, DBAdvGrid,AdvEdit, tmsAdvGridExcel, tmsUFlxFormats,
   ButtonGroup, AdvShapeButton, jvdbimage,advglowbutton, DBGrids, JvCombobox,
   AdvSmoothButton, frxPreview, InterClases, GDIPPictureContainer, Windows,
-  Messages, AdvToolBar, AdvMenus, cxGrid, cxGridDBTableView, IdContext,
+  Messages, AdvToolBar, AdvMenus, cxGrid, cxGridDBTableView, IdContext, Math,
   IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdCmdTCPClient,
   cxDropDownEdit, UEstructuraDatos, cxGraphics, dxLayoutLookAndFeels, cxClasses;
 
@@ -416,6 +416,7 @@ function LlenarComboBox(ComboBox: TcxCustomComboBox; NombreTabla: String; Nombre
 procedure VerificaDataSetEmbarcacion;
 procedure VerificaDataSetUnidades;
 function VerificaPermisos(Tabla: String; Permiso: Array Of TClasePermisos; TipoMensaje: TErrorAccesoDatos = EADMessage): Boolean;
+function xNumerosToLletres(Numero: currency): string;
 
 implementation
 
@@ -5226,6 +5227,88 @@ begin
     if TipoMensaje = EADError then
       raise InteligentWarning.CreateByCode(33, [StringReplace(NoCuenta.CommaText, ',', #10, [rfReplaceAll, rfIgnoreCase])]);
   end;
+end;
+
+function xxIntToLletres(Valor: LongInt): string;
+const
+  aUnitat: array[1..15] of string = ('UN', 'DOS', 'TRES', 'CUATRO', 'CINCO', 'SEIS',
+    'SIETE', 'OCHO', 'NUEVE', 'DIEZ', 'ONCE', 'DOCE',
+    'TRECE', 'CATORCE', 'QUINCE');
+  aCentena: array[1..9] of string = ('CIENTO', 'DOSCIENTOS', 'TRESCIENTOS',
+    'CUATROCIENTOS', 'QUINIENTOS', 'SEISCIENTOS',
+    'SETECIENTOS', 'OCHOCIENTOS', 'NOVECIENTOS');
+  aDecena: array[1..9] of string = ('DIECI', 'VEINTI', 'TREINTA', 'CUARENTA', 'CINCUENTA',
+    'SESENTA', 'SETENTA', 'OCHENTA', 'NOVENTA');
+var
+  Centena, Decena, Unitat, Doble: LongInt;
+  Linea: string;
+begin
+  if valor = 100 then Linea := ' CIEN ' {Maximo Valor sera 999, ejemplo con 123}
+  else begin
+    Linea := '';
+    Centena := Valor div 100; {1 }
+    Doble := Valor - (Centena * 100); {23}
+    Decena := (Valor div 10) - (Centena * 10); {2 }
+    Unitat := Valor - (Decena * 10) - (Centena * 100); {3 }
+    if Centena > 0 then Linea := Linea + Acentena[centena] + ' ';
+    if Doble > 0 then begin
+      if Doble = 20 then Linea := Linea + ' VEINTE '
+      else begin
+        if doble < 16 then Linea := Linea + Aunitat[Doble]
+        else begin
+          Linea := Linea + ' ' + Adecena[Decena];
+          if (Decena > 2) and (Unitat <> 0) then Linea := Linea + ' Y ';
+          if Unitat > 0 then Linea := Linea + Aunitat[Unitat];
+        end;
+      end;
+    end;
+  end;
+  Result := Linea;
+end;
+
+function xIntToLletres(Numero: LongInt): string;
+var
+  Millions, mils, unitats: Longint;
+  Linea: string;
+begin
+     {Inicializamos el string que contendra las letras segun el valor numerico}
+  if numero = 0 then Linea := 'CERO'
+  else if numero < 0 then Linea := 'MENOS '
+  else if numero > 0 then Linea := '';
+     {Determinamos el Nº de millones, miles, i unidades de numero en positivo}
+  Numero := Abs(Numero);
+  millions := numero div 1000000;
+  mils := (numero - (millions * 1000000)) div 1000;
+  unitats := numero - ((millions * 1000000) + (mils * 1000));
+     {Vamos poniendot en el string las cadenas de los numeros(llamando a subfuncion)}
+  if millions = 1 then Linea := Linea + ' UN MILLON '
+  else if millions > 1 then Linea := Linea + xxIntToLletres(millions) + ' MILLONES ';
+  if mils = 1 then Linea := Linea + ' MIL '
+  else if mils > 1 then Linea := Linea + xxIntToLletres(mils) + ' MIL ';
+  if unitats > 0 then Linea := Linea + xxIntToLletres(unitats);
+  xIntToLletres := Linea;
+end;
+
+function xNumerosToLletres(Numero: currency): string;
+Var
+    iEntero  : Longint ;
+    iDecimal : Longint ;
+
+    iValorNumerico, tNumerico: LongInt;
+    Resultado: Real;
+begin
+    iEntero := trunc(Numero) ;
+    iDecimal := Trunc(Frac(Numero)*100)  ;
+
+    iValorNumerico := Trunc(Numero);
+    Resultado := roundto(Numero - iValorNumerico, -2);
+    Resultado := Resultado * 100;
+    iValorNumerico := Trunc(Resultado);
+    result :=  xIntToLletres(iEntero) + ' PESOS ' ;
+    if iValorNumerico > 0 then
+        result := result + IntToStr(iValorNumerico) + '/100 M.N. '
+    Else
+        result := result + '00/100 M.N. ' ;
 end;
 
 end.

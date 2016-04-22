@@ -1248,7 +1248,9 @@ end;
 
 procedure TForm2.btnConversiones2Click(Sender: TObject);
 begin
-  IniciarForm(TFrmConversion, FrmConversion, False);
+  Application.CreateForm(TFrmConversion, FrmConversion);
+  FrmConversion.ShowModal;
+  //IniciarForm(TFrmConversion, FrmConversion, False);
 end;
 
 procedure TForm2.btnConversionesClick(Sender: TObject);

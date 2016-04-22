@@ -57,15 +57,15 @@ type
     NombreAutoriza: TDBText;
     JvLabel5: TJvLabel;
     cdCotizacionDatosUpt: TClientDataSet;
-    dsCotizacionDatosUpt: TDataSource;
+    dsCotizacionDatos: TDataSource;
     Panel7: TPanel;
     bntAceptar: TAdvGlowButton;
     tvDatos: TcxGridDBTableView;
     gridPartidasLevel1: TcxGridLevel;
     gridPartidas: TcxGrid;
     Splitter1: TSplitter;
-    ColhCodigoInsumo: TcxGridDBColumn;
-    ColhNombreInsumo: TcxGridDBColumn;
+    ColCodigoInsumo: TcxGridDBColumn;
+    ColNombreInsumo: TcxGridDBColumn;
     Panel8: TPanel;
     IdInsumo: TEdit;
     Panel10: TPanel;
@@ -85,14 +85,19 @@ type
     pmPartidas: TAdvPopupMenu;
     EditarPartida1: TMenuItem;
     EliminarPartida1: TMenuItem;
-    AdvGlowButton1: TAdvGlowButton;
-    ColhTituloPresentacion: TcxGridDBColumn;
+    btnImprimir: TAdvGlowButton;
+    ColTituloPresentacion: TcxGridDBColumn;
     ColpUtilidad: TcxGridDBColumn;
     ColUtilidad: TcxGridDBColumn;
     ColCosto: TcxGridDBColumn;
     repCotizacion: TfrxReport;
-    frxCotizacionDatosUpt: TfrxDBDataset;
+    frxCotizacionDatos: TfrxDBDataset;
     ColPrecioU: TcxGridDBColumn;
+    cdImpuestosxCotizacion: TClientDataSet;
+    frxImpuestos: TfrxDBDataset;
+    cdCotizacionDatos: TClientDataSet;
+    cdVerificaCotizacion: TClientDataSet;
+    ColTituloMarca: TcxGridDBColumn;
     procedure btnBuscarClick(Sender: TObject);
     procedure btnNuevoClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -109,9 +114,13 @@ type
     procedure EditarPartida1Click(Sender: TObject);
     procedure pmPartidasPopup(Sender: TObject);
     procedure EliminarPartida1Click(Sender: TObject);
-    procedure AdvGlowButton1Click(Sender: TObject);
+    procedure btnImprimirClick(Sender: TObject);
+    procedure repCotizacionGetValue(const VarName: string; var Value: Variant);
+    procedure cdCotizacionDatosAfterOpen(DataSet: TDataSet);
+    procedure bntAceptarClick(Sender: TObject);
   private
     TextoOriginal: String;
+    CostoTotal: Extended;
     function AgregaPartida: LongInt;
     procedure EditarPartida(ItemIndex: Word);
     procedure EliminarPartida;
@@ -130,6 +139,11 @@ Uses
   UTFrmBuscarCotizacion, UTFrmCotizacionDatos, UTFrmSelInsumo,
   UTFrmEditarCotizacionPartida;
 
+procedure TFrmCotizacion.bntAceptarClick(Sender: TObject);
+begin
+  Close;
+end;
+
 procedure TFrmCotizacion.btnBuscarClick(Sender: TObject);
 begin
   try
@@ -140,7 +154,7 @@ begin
       if Not CargarDatosFiltrados(cdCotizacionUpt, 'IdCotizacion', [cdBuscarCotizacion.FieldByName('IdCotizacion').AsInteger]) then
         raise InteligentException.CreateByCode(6, ['Cotizaciones', cdBuscarCotizacion.FieldByName('IdCotizacion').AsInteger, 'Id. Cotizacion']);
 
-      if Not CargarDatosFiltrados(cdCotizacionDatosUpt, 'IdCotizacion', [cdBuscarCotizacion.FieldByName('IdCotizacion').AsInteger]) then
+      if Not CargarDatosFiltrados(cdCotizacionDatos, 'IdCotizacion', [cdBuscarCotizacion.FieldByName('IdCotizacion').AsInteger]) then
         raise InteligentException.CreateByCode(6, ['Partidas de Cotización', cdBuscarCotizacion.FieldByName('IdCotizacion').AsInteger, 'Id. Cotizacion']);
 
       if cdCotizacionUpt.Active then
@@ -148,10 +162,10 @@ begin
       else
         cdCotizacionUpt.Open;
 
-      if cdCotizacionDatosUpt.Active then
-        cdCotizacionDatosUpt.Refresh
+      if cdCotizacionDatos.Active then
+        cdCotizacionDatos.Refresh
       else
-        cdCotizacionDatosUpt.Open;
+        cdCotizacionDatos.Open;
 
       IdInsumo.SetFocus;
     end;
@@ -207,11 +221,22 @@ begin
   end;
 end;
 
+procedure TFrmCotizacion.cdCotizacionDatosAfterOpen(DataSet: TDataSet);
+begin
+  // Abrir el catálogo de impuestos
+  if Not CargarDatosFiltrados(cdImpuestosxCotizacion, 'IdCotizacion', [cdCotizacionDatos.FieldByName('IdCotizacion').AsInteger]) then
+    raise InteligentException.CreateByCode(6, ['Impuestos por Cotización', cdCotizacionDatos.FieldByName('IdCotizacion').AsInteger, 'Id. Cotización']);
+  if cdImpuestosxCotizacion.Active then
+    cdImpuestosxCotizacion.Refresh
+  else
+    cdImpuestosxCotizacion.Open;
+end;
+
 procedure TFrmCotizacion.FormClose(Sender: TObject; var Action: TCloseAction);
 var
   i: Integer;
 begin
-  EliminarConjunto([cdBuscarCotizacion, cdClientes, cdMarca, cdExistenciasGenerales, cdPresentacion, cdInsumo, cdElabora, cdAutoriza, cdCotizacionDatosUpt, cdCotizacionUpt]);
+  EliminarConjunto([cdBuscarCotizacion, cdVerificaCotizacion, cdClientes, cdMarca, cdExistenciasGenerales, cdPresentacion, cdInsumo, cdElabora, cdAutoriza, cdCotizacionDatos, cdCotizacionDatosUpt, cdCotizacionUpt, cdImpuestosxCotizacion]);
 
   SetRegistry('\Ventanas', '\' + Self.Name, 'Left', IntToStr(Self.Left));
   SetRegistry('\Ventanas', '\' + Self.Name, 'Top', IntToStr(Self.Top));
@@ -278,6 +303,9 @@ begin
       if Not CrearConjunto(cdCotizacionUpt, 'cmt_cotizacion', ccUpdate) then
         raise InteligentException.CreateByCode(5, ['*Cotizaciones']);
 
+      if Not CrearConjunto(cdCotizacionDatos, 'cmt_cotizaciondatos', ccCatalog) then
+        raise InteligentException.CreateByCode(5, ['Partidas de Cotización']);
+
       if Not CrearConjunto(cdCotizacionDatosUpt, 'cmt_cotizaciondatos', ccUpdate) then
         raise InteligentException.CreateByCode(5, ['Partidas de Cotización']);
 
@@ -292,6 +320,12 @@ begin
 
       if Not CrearConjunto(cdExistenciasGenerales, 'cmt_existenciasgenerales', ccSelect) then
         raise InteligentException.CreateByCode(5, ['Existencias Generales']);
+
+      if Not CrearConjunto(cdImpuestosxCotizacion, 'cmt_impuestosxcotizacion', ccSelect) then
+        raise InteligentException.CreateByCode(5, ['Impuestos por Cotización']);
+
+      if Not CrearConjunto(cdVerificaCotizacion, 'cmt_cotizaciondatos', ccCatalog) then
+        raise InteligentException.CreateByCode(5, ['Impuestos por Cotización']);
 
       cdElabora.Open;
       if cdElabora.RecordCount = 0 then
@@ -385,21 +419,24 @@ begin
         cdCotizacionDatosUpt.Edit;}
 
         Application.CreateForm(TFrmEditarCotizacionPartida, FrmEditarCotizacionPartida);
-        FrmEditarCotizacionPartida.dsCotizacionDatos.DataSet := cdCotizacionDatosUpt;
         FrmEditarCotizacionPartida.IdxColumn := 0;
         FrmEditarCotizacionPartida.dsInsumo.DataSet := cdInsumo;
         FrmEditarCotizacionPartida.dsCotizacionDatos.DataSet := cdCotizacionDatosUpt;
         FrmEditarCotizacionPartida.dsPresentacion.DataSet := cdPresentacion;
         FrmEditarCotizacionPartida.dsMarca.DataSet := cdMarca;
         FrmEditarCotizacionPartida.dsExistenciasGenerales.DataSet := cdExistenciasGenerales;
+        FrmEditarCotizacionPartida.dsVerificaCotizacion.DataSet := cdVerificaCotizacion;
         FrmEditarCotizacionPartida.CodigoInsumo.Text := cdInsumo.FieldByName('CodigoInsumo').AsString;
         if FrmEditarCotizacionPartida.ShowModal = mrOk then
         begin
           cdCotizacionDatosUpt.Post;
           TClientDataSet(cdCotizacionDatosUpt).ApplyUpdates(-1);
+          cdCotizacionDatos.Refresh;
         end
         else
           cdCotizacionDatosUpt.Cancel;
+
+        cdCotizacionDatosUpt.Close;
       except
         cdCotizacionDatosUpt.Cancel;
         raise;
@@ -424,13 +461,20 @@ end;
 
 procedure TFrmCotizacion.pmPartidasPopup(Sender: TObject);
 begin
-  EditarPartida1.Enabled := cdCotizacionDatosUpt.RecordCount > 0;
-  EliminarPartida1.Enabled := cdCotizacionDatosUpt.RecordCount > 0;
+  EditarPartida1.Enabled := cdCotizacionDatos.RecordCount > 0;
+  EliminarPartida1.Enabled := cdCotizacionDatos.RecordCount > 0;
 end;
 
 procedure TFrmCotizacion.pnlFirmasResize(Sender: TObject);
 begin
   pnlElabora.Width := pnlFirmas.Width div 2;
+end;
+
+procedure TFrmCotizacion.repCotizacionGetValue(const VarName: string;
+  var Value: Variant);
+begin
+  if CompareText(VarName, 'NumeroALetras') = 0 then
+    Value := xNumerosToLletres(CostoTotal);
 end;
 
 procedure TFrmCotizacion.tvDatosCellDblClick(Sender: TcxCustomGridTableView;
@@ -448,8 +492,40 @@ begin
     EliminarPartida;
 end;
 
-procedure TFrmCotizacion.AdvGlowButton1Click(Sender: TObject);
+procedure TFrmCotizacion.btnImprimirClick(Sender: TObject);
+var
+  Posicion: TBookMark;
 begin
+  // Obtener los totales
+  CostoTotal := 0;
+  Posicion := cdCotizacionDatos.Bookmark;
+  cdCotizacionDatos.DisableControls;
+  try
+    cdCotizacionDatos.First;
+    while not cdCotizacionDatos.Eof do
+    begin
+      CostoTotal := CostoTotal + cdCotizacionDatos.FieldByName('Costo').AsFloat;
+      cdCotizacionDatos.Next;
+    end;
+  finally
+    cdCotizacionDatos.GotoBookMark(Posicion);
+    cdCotizacionDatos.EnableControls;
+  end;
+
+  Posicion := cdImpuestosxCotizacion.Bookmark;
+  cdImpuestosxCotizacion.DisableControls;
+  try
+    cdImpuestosxCotizacion.First;
+    while Not cdImpuestosxCotizacion.Eof do
+    begin
+      CostoTotal := CostoTotal + cdImpuestosxCotizacion.FieldByName('Impuesto').AsFloat;
+      cdImpuestosxCotizacion.Next;
+    end;
+  finally
+    cdImpuestosxCotizacion.GotoBookMark(Posicion);
+    cdImpuestosxCotizacion.EnableControls;
+  end;
+
   ClientModule1.ImprimeReporte('Cotizacion.fr3', repCotizacion);
 end;
 
@@ -458,6 +534,14 @@ var
   Resultado: LongInt;
 begin
   Resultado := -9;
+
+  if Not CargarDatosFiltrados(cdCotizacionDatosUpt, 'IdCotizacionDatos', [-9]) then
+    raise InteligentException.CreateByCode(16, ['Partidas de Cotizacion']);
+
+  if cdCotizacionDatosUpt.Active then
+    cdCotizacionDatosUpt.Refresh
+  else
+    cdCotizacionDatosUpt.Open;
 
   try
     cdCotizacionDatosUpt.Append;
@@ -473,65 +557,78 @@ begin
     cdCotizacionDatosUpt.FieldByName('CostoI').AsFloat := 0.00;
     cdCotizacionDatosUpt.FieldByName('Costo').AsFloat := 0.00;
     cdCotizacionDatosUpt.FieldByName('iIdUnidad').AsInteger := cdInsumo.FieldByName('iIdUnidad').AsInteger;
-    {cdCotizacionDatosUpt.Post;
-    cdCotizacionDatosUpt.ApplyUpdates(-1);}
   except
     cdCotizacionDatosUpt.Cancel;
     raise;
   end;
 
   Resultado := UltimoId;
-{  try
-    // Tomar los datos como registro de Edición;
-    if Not CargarDatosFiltrados(cdCotizacionDatosUpt, 'IdCotizacion', [cdCotizacionUpt.FieldByName('IdCotizacion').AsInteger]) then
-      raise InteligentException.CreateByCode(6, ['Partidas de Cotización', cdCotizacionUpt.FieldByName('IdCotizacion').AsInteger, 'Id. Cotizacion']);
-    cdCotizacionDatosUpt.Refresh;
-  finally
-    Result := Resultado;
-  end;}
 end;
 
 procedure TFrmCotizacion.EditarPartida(ItemIndex: Word);
 var
   LocCursor: TCursor;
 begin
-  if cdCotizacionDatosUpt.RecordCount > 0 then
+  if cdCotizacionDatos.RecordCount > 0 then
   try
     LocCursor := Screen.Cursor;
     try
       Screen.Cursor := crHourGlass;
 
       // Seleccionar la partida clicada y asignarla en el dataset del insumo
-      if Not CargarDatosFiltrados(cdInsumo, 'IdInsumo', [cdCotizacionDatosUpt.FieldByName('IdInsumo').AsInteger]) then
-        raise InteligentException.CreateByCode(6, ['Partidas de Cotización', cdCotizacionDatosUpt.FieldByName('IdInsumo').AsInteger, 'Id. Insumo']);
+      if Not CargarDatosFiltrados(cdInsumo, 'IdInsumo', [cdCotizacionDatos.FieldByName('IdInsumo').AsInteger]) then
+        raise InteligentException.CreateByCode(6, ['Partidas de Cotización', cdCotizacionDatos.FieldByName('IdInsumo').AsInteger, 'Id. Insumo']);
       if cdInsumo.Active then
         cdInsumo.Refresh
       else
         cdInsumo.Open;
 
       // Editar el registro seleccionado
-      cdCotizacionDatosUpt.Edit;
-
-      Application.CreateForm(TFrmEditarCotizacionPartida, FrmEditarCotizacionPartida);
-      FrmEditarCotizacionPartida.dsCotizacionDatos.DataSet := cdCotizacionDatosUpt;
-      FrmEditarCotizacionPartida.IdxColumn := ItemIndex;
-      FrmEditarCotizacionPartida.dsInsumo.DataSet := cdInsumo;
-      FrmEditarCotizacionPartida.dsCotizacionDatos.DataSet := cdCotizacionDatosUpt;
-      FrmEditarCotizacionPartida.dsPresentacion.DataSet := cdPresentacion;
-      FrmEditarCotizacionPartida.dsMarca.DataSet := cdMarca;
-      FrmEditarCotizacionPartida.dsExistenciasGenerales.DataSet := cdExistenciasGenerales;
-      FrmEditarCotizacionPartida.CodigoInsumo.Text := cdInsumo.FieldByName('CodigoInsumo').AsString;
+      if Not CargarDatosFiltrados(cdCotizacionDatosUpt, 'IdCotizacionDatos', [cdCotizacionDatos.FieldByName('IdCotizacionDatos').AsInteger]) then
+        raise InteligentException.CreateByCode(6, ['Partidas de Cotización', cdCotizacionDatos.FieldByName('IdCotizacionDatos').AsInteger, 'Id. Partida Cotización']);
     finally
       Screen.Cursor := LocCursor;
     end;
 
-    if FrmEditarCotizacionPartida.ShowModal = mrOk then
-    begin
-      cdCotizacionDatosUpt.Post;
-      TClientDataSet(cdCotizacionDatosUpt).ApplyUpdates(-1);
-    end
-    else
-      cdCotizacionDatosUpt.Cancel;
+    try
+      Screen.Cursor := crHourGlass;
+      try
+        if cdCotizacionDatosUpt.Active then
+          cdCotizacionDatosUpt.Refresh
+        else
+          cdCotizacionDatosUpt.Open;
+
+        if cdCotizacionDatosUpt.RecordCount = 0 then
+          raise InteligentException.CreateByCode(13, [cdCotizacionDatos.FieldByName('CodigoInsumo').AsString, 'Partidas de Cotización']);
+
+        cdCotizacionDatosUpt.Edit;
+
+        Application.CreateForm(TFrmEditarCotizacionPartida, FrmEditarCotizacionPartida);
+        FrmEditarCotizacionPartida.IdxColumn := ItemIndex;
+        FrmEditarCotizacionPartida.dsInsumo.DataSet := cdInsumo;
+        FrmEditarCotizacionPartida.dsCotizacionDatos.DataSet := cdCotizacionDatosUpt;
+        FrmEditarCotizacionPartida.dsPresentacion.DataSet := cdPresentacion;
+        FrmEditarCotizacionPartida.dsMarca.DataSet := cdMarca;
+        FrmEditarCotizacionPartida.dsExistenciasGenerales.DataSet := cdExistenciasGenerales;
+        FrmEditarCotizacionPartida.dsVerificaCotizacion.DataSet := cdVerificaCotizacion;
+        FrmEditarCotizacionPartida.CodigoInsumo.Text := cdInsumo.FieldByName('CodigoInsumo').AsString;
+      finally
+        Screen.Cursor := LocCursor;
+      end;
+
+      if FrmEditarCotizacionPartida.ShowModal = mrOk then
+      begin
+        //cdCotizacionDatosUpt.FieldByName('IdPresentacion').AsInteger := 24;
+        cdCotizacionDatosUpt.Post;
+        cdCotizacionDatosUpt.ApplyUpdates(-1);
+        cdCotizacionDatos.Refresh;
+      end
+      else
+        cdCotizacionDatosUpt.Cancel;
+    finally
+      if cdCotizacionDatosUpt.Active then
+        cdCotizacionDatosUpt.Close;
+    end;
   except
     on e:InteligentException do
       InteliDialog.ShowModal(e.Title, e.Message, e.MsgType, [mbOk], 0);
@@ -546,12 +643,12 @@ var
   LocCursor: TCursor;
 begin
   if InteliDialog.ShowModal('Borrar registro', 'Está a punto de eliminar la partida de Cotizacion:' + #10 + #10 +
-                            cdCotizacionDatosUpt.FieldByName('CodigoInsumo').AsString + ' - ' + cdCotizacionDatosUpt.FieldByName('NombreInsumo').AsString + #10 +
-                            'Cantidad: ' + cdCotizacionDatosUpt.FieldByName('Cantidad').AsString + #10 +
-                            'Precio: ' + cdCotizacionDatosUpt.FieldByName('Precio').AsString + #10 +
-                            'Costo: ' + cdCotizacionDatosUpt.FieldByName('CostoI').AsString + #10 +
-                            'Utilidad (' + cdCotizacionDatosUpt.FieldByName('pUtilidad').AsString + '%): ' + cdCotizacionDatosUpt.FieldByName('Utilidad').AsString + #10 +
-                            'Costo Final:' + cdCotizacionDatosUpt.FieldByName('Costo').AsString + #10 + #10 +
+                            cdCotizacionDatos.FieldByName('CodigoInsumo').AsString + ' - ' + cdCotizacionDatos.FieldByName('NombreInsumo').AsString + #10 +
+                            'Cantidad: ' + cdCotizacionDatos.FieldByName('Cantidad').AsString + #10 +
+                            'Precio: ' + cdCotizacionDatos.FieldByName('Precio').AsString + #10 +
+                            'Costo: ' + cdCotizacionDatos.FieldByName('CostoI').AsString + #10 +
+                            'Utilidad (' + cdCotizacionDatos.FieldByName('pUtilidad').AsString + '%): ' + cdCotizacionDatos.FieldByName('Utilidad').AsString + #10 +
+                            'Costo Final:' + cdCotizacionDatos.FieldByName('Costo').AsString + #10 + #10 +
                             '¿Está seguro que desea eliminarla en este momento?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   begin
     try

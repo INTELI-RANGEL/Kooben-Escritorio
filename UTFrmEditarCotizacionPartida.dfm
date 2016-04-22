@@ -1,9 +1,10 @@
 object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   Left = 0
   Top = 0
+  BorderStyle = bsDialog
   Caption = 'Partida de Cotizaci'#243'n'
-  ClientHeight = 226
-  ClientWidth = 806
+  ClientHeight = 236
+  ClientWidth = 816
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,6 +13,7 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
+  Position = poMainFormCenter
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
@@ -129,8 +131,8 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   end
   object Panel1: TPanel
     Left = 0
-    Top = 185
-    Width = 806
+    Top = 195
+    Width = 816
     Height = 41
     Align = alBottom
     Padding.Left = 6
@@ -138,8 +140,10 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
     Padding.Right = 6
     Padding.Bottom = 4
     TabOrder = 7
+    ExplicitTop = 185
+    ExplicitWidth = 806
     object btnAceptar: TAdvGlowButton
-      Left = 599
+      Left = 609
       Top = 5
       Width = 100
       Height = 31
@@ -171,9 +175,10 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
       Appearance.ColorMirrorCheckedTo = 16768988
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
+      ExplicitLeft = 599
     end
     object btnCancelar: TAdvGlowButton
-      Left = 699
+      Left = 709
       Top = 5
       Width = 100
       Height = 31
@@ -206,6 +211,7 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
       Appearance.ColorMirrorCheckedTo = 16768988
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
+      ExplicitLeft = 699
     end
   end
   object Cantidad: TRxDBCalcEdit
@@ -365,5 +371,9 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
   object dsExistenciasGenerales: TDataSource
     Left = 88
     Top = 128
+  end
+  object dsVerificaCotizacion: TDataSource
+    Left = 72
+    Top = 176
   end
 end
