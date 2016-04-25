@@ -68,10 +68,6 @@ type
     cxColInsumo: TcxGridDBColumn;
     cxColCantidad: TcxGridDBColumn;
     cxColPrecio: TcxGridDBColumn;
-    pmPartidas: TJvPopupMenu;
-    AgregarPartida1: TMenuItem;
-    EditarPartida1: TMenuItem;
-    EliminarPartida1: TMenuItem;
     cdInsumo: TClientDataSet;
     Panel8: TPanel;
     dsInsumo: TDataSource;
@@ -140,6 +136,7 @@ type
       AButtonIndex: Integer);
     procedure btnCancelarClick(Sender: TObject);
     procedure bntAceptarClick(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
   private
     TextoOriginal: String;
     function AgregaPartida: LongInt;
@@ -199,8 +196,7 @@ begin
       end;
     end;
 
-    if (dsInsumo.DataSet.RecordCount = 1) and (dsInsumo.DataSet.FieldByName('Cta').AsInteger = 1) then
-      //IdRegistroMovimientoGeneralPartida := AgregaPartida;
+   
   except
     on e:InteligentException do
     begin
@@ -251,10 +247,11 @@ begin
         else
           cdEntradaGeneralDatosUpt.Open;
 
-        IdInsumo.SetFocus;
       end;
     finally
       habilitaPanel;
+      if cxspincantidad.CanFocus then
+        cxSpincantidad.SetFocus;
     end;
   except
     on e:InteligentException do
@@ -431,7 +428,7 @@ begin
       end;
     finally
       habilitaPanel;
-      if cxSpinCantidad.CanFocus then
+      if (key = 13) and (Length(Trim(CodigoCotizacion.Text))>0) and cxSpinCantidad.CanFocus then
           cxSpinCantidad.SetFocus;
       Screen.Cursor := Cursor;
     end;
@@ -475,7 +472,7 @@ var
 begin
   try
     Cursor := Screen.Cursor;
-    if cdEntradaGeneralDatosUpt.RecordCount > 0 then
+    if dsEntradaGeneralUpt.DataSet.active and (dsEntradaGeneralUpt.DataSet.RecordCount > 0) then
     try
       Screen.Cursor := crHourGlass;
       cdEntradaGeneralUpt.edit;
@@ -551,6 +548,25 @@ procedure TFrmEntradaGeneral.FormClose(Sender: TObject;
 begin
   EliminarConjunto([cdBuscarEntradaGeneral, cdProveedores, cdInsumo, cdRecibio, cdAutorizo, cdEntradaGeneralDatosUpt, cdEntradaGeneralUpt]);
   Action := caFree;
+end;
+
+procedure TFrmEntradaGeneral.FormCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+  var
+  res: integer;
+begin
+  res := -1;
+  CanClose := True;
+  if cdEntradaGeneralDatosUpt.Active and (cdEntradaGeneralDatosUpt.ChangeCount <> 0) then
+    begin
+      res := InteliDialog.ShowModal('Aviso', 'Hay cambios que no se han guardado ¿Dedeas guardarlos?', mtConfirmation, [mbYes,mbNo,mbCancel],0);
+      case res of
+        mrYes: cdEntradaGeneralDatosUpt.ApplyUpdates(-1);
+        mrNo: ;
+        mrCancel: CanClose := False;
+      end;
+    end;
+
 end;
 
 procedure TFrmEntradaGeneral.FormShow(Sender: TObject);
@@ -703,6 +719,15 @@ begin
 
         raise InteligentException.Create('Debes seleccionar un insumo para agregar a la partida.');
       end;
+
+      if cdinsumo.active  and (cdinsumo.RecordCount = 0) then
+      begin
+        if idInsumo.CanFocus then
+          idInsumo.SetFocus;
+
+        raise InteligentException.Create('Debes seleccionar un insumo válido para agregar a la partida.');
+      end;
+
 
       if (Length(trim(btnMarca.Text)) = 0) then
       begin

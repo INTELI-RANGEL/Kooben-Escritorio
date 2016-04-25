@@ -12,6 +12,7 @@
   Font.Style = []
   OldCreateOrder = False
   OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -455,8 +456,9 @@
     Width = 707
     Height = 229
     Align = alClient
-    PopupMenu = pmPartidas
     TabOrder = 3
+    ExplicitLeft = 1
+    ExplicitTop = 370
     object tvPartidas: TcxGridDBTableView
       Navigator.Buttons.OnButtonClick = tvPartidasNavigatorButtonsButtonClick
       Navigator.Buttons.CustomButtons = <
@@ -495,6 +497,7 @@
         DataBinding.FieldName = 'Registrado'
         PropertiesClassName = 'TcxSpinEditProperties'
         Properties.ImmediatePost = True
+        Properties.MinValue = 0.000100000000000000
         Properties.ValueType = vtFloat
         Styles.Content = cxstyleditable
         Width = 47
@@ -520,8 +523,8 @@
       object cxColPrecio: TcxGridDBColumn
         DataBinding.FieldName = 'Precio'
         PropertiesClassName = 'TcxCurrencyEditProperties'
-        Properties.AssignedValues.MinValue = True
         Properties.DecimalPlaces = 4
+        Properties.MinValue = 0.000100000000000000
         Properties.ReadOnly = False
         Styles.Content = cxstyleditable
         Width = 57
@@ -776,14 +779,14 @@
   object cdBuscarEntradaGeneral: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 496
+    Left = 400
     Top = 88
   end
   object cdEntradaGeneralDatosUpt: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 560
-    Top = 144
+    Left = 552
+    Top = 152
   end
   object dsEntradaGeneralDatosUpt: TDataSource
     DataSet = cdEntradaGeneralDatosUpt
@@ -810,34 +813,14 @@
   object cdAutorizo: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 608
-    Top = 144
+    Left = 640
+    Top = 128
   end
   object cdProveedores: TClientDataSet
     Aggregates = <>
     Params = <>
     Left = 560
     Top = 40
-  end
-  object pmPartidas: TJvPopupMenu
-    ImageMargin.Left = 0
-    ImageMargin.Top = 0
-    ImageMargin.Right = 0
-    ImageMargin.Bottom = 0
-    ImageSize.Height = 0
-    ImageSize.Width = 0
-    Left = 296
-    Top = 104
-    object AgregarPartida1: TMenuItem
-      Caption = '&Agregar Partida'
-      OnClick = AgregarPartida1Click
-    end
-    object EditarPartida1: TMenuItem
-      Caption = '&Editar Partida'
-    end
-    object EliminarPartida1: TMenuItem
-      Caption = '&Eliminar Partida'
-    end
   end
   object cdInsumo: TClientDataSet
     Aggregates = <>
