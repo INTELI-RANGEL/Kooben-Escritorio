@@ -139,7 +139,17 @@ uses
   UTFrmSelInsumo in 'UTFrmSelInsumo.pas' {FrmSelInsumo},
   UTFrmEditarCotizacionPartida in 'UTFrmEditarCotizacionPartida.pas' {FrmEditarCotizacionPartida},
   UfrmImpuestosxinsumo in 'UfrmImpuestosxinsumo.pas' {FrmImpuestosxinsumo},
-  UFrmDatosImpuestosxInsumos in 'UFrmDatosImpuestosxInsumos.pas' {FrmDatosImpuestosxinsumos};
+  UFrmDatosImpuestosxInsumos in 'UFrmDatosImpuestosxInsumos.pas' {FrmDatosImpuestosxinsumos},
+  UTfrmRequisicionDatos in 'UTfrmRequisicionDatos.pas' {FrmRequisicionDatos},
+  UTFrmBuscarRequisicion in 'UTFrmBuscarRequisicion.pas' {FrmBuscarRequisicion},
+  UTFrmRequisicion in 'UTFrmRequisicion.pas' {FrmRequisicion},
+  UTFrmEditarRequisicionPartida in 'UTFrmEditarRequisicionPartida.pas' {FrmEditarRequisicionPartida},
+  UTFrmOrdenCompra in 'UTFrmOrdenCompra.pas' {FrmOrdenCompra},
+  UTFrmSolCotizacion in 'UTFrmSolCotizacion.pas' {FrmSolCotizacion},
+  UTFrmBuscarSolCotizacion in 'UTFrmBuscarSolCotizacion.pas' {FrmBuscarSolCotizacion},
+  UTFrmSolCotizacionDatos in 'UTFrmSolCotizacionDatos.pas' {FrmSolCotizacionDatos},
+  UTFrmEditarSolCotizacionPartida in 'UTFrmEditarSolCotizacionPartida.pas' {FrmEditarSolCotizacionPartida},
+  UTFrmSolCotizacionxProveedor in 'UTFrmSolCotizacionxProveedor.pas' {FrmSolCotizacionxProveedor};
 
 {$R *.res}
 

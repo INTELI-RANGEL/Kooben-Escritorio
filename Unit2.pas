@@ -218,6 +218,11 @@ type
     barEntradasGral: TdxBar;
     btnEntradas: TdxBarLargeButton;
     btnSalidasGral: TdxBarLargeButton;
+    btnRequisicion: TdxBarLargeButton;
+    btnOrdenCompra: TdxBarLargeButton;
+    BarSolicitudCotizacion: TdxBar;
+    btnSolCotizacion: TdxBarLargeButton;
+    btnRegistrarCotizacion: TdxBarLargeButton;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnInsumosClick(Sender: TObject);
@@ -324,6 +329,8 @@ type
     procedure btnCotizacionClick(Sender: TObject);
     procedure btnImpuestoxInsumoClick(Sender: TObject);
     procedure btnEntradasClick(Sender: TObject);
+    procedure btnRequisicionClick(Sender: TObject);
+    procedure btnSolCotizacionClick(Sender: TObject);
   private
     IdentificadorSistema: String;
     ListaChat,
@@ -397,7 +404,8 @@ uses UInteliDialog, Frm_Conectando, UTFrmSeleccion, UTFrmInsumos,
   UTFrmConsultaPrecios, UTFrmPrecioBajo, UTFrmContratos, UTFrmUsuarioPermisos,
   UTFrmRolPermisos, UTFrmComparaPrecios, UTFrmAlmacenes, UTFrmIVA,
   UTFrmTiposImpuesto, UTFrmCotizacion, UTFrmImpuestoxInsumo,
-  UTFrmEntradaGeneral, UFrmImpuestosxInsumo;
+  UTFrmEntradaGeneral, UFrmImpuestosxInsumo, UTFrmRequisicion,
+  UTFrmSolCotizacion;
 
 {$R *.dfm}
 
@@ -883,6 +891,12 @@ begin
   FrmReportesIngredientes.ModoReporte := TdxBarLargeButton(Sender).Tag;
   FrmReportesIngredientes.Caption := TdxBarLargeButton(Sender).Hint;
   FrmReportesIngredientes.ShowModal;
+end;
+
+procedure TForm2.btnRequisicionClick(Sender: TObject);
+begin
+  Application.CreateForm(TFrmRequisicion, FrmRequisicion);
+  FrmRequisicion.ShowModal;
 end;
 
 procedure TForm2.tbVentanasOptionClick(Sender: TObject; ClientPoint,
@@ -1668,6 +1682,13 @@ begin
   Application.CreateForm(TFrmSalidasAlmacen, FrmSalidasAlmacen);
   FrmSalidasAlmacen.ShowModal;
   //IniciarForm(TFrmSalidasAlmacen, FrmSalidasAlmacen, False);
+end;
+
+procedure TForm2.btnSolCotizacionClick(Sender: TObject);
+begin
+  {Application.CreateForm(TFrmSolCotizacion, FrmSolCotizacion);
+  FrmSolCotizacion.ShowModal;}
+  IniciarForm(TFrmSolCotizacion, FrmSolCotizacion, False);
 end;
 
 procedure TForm2.btnSolicitudesClick(Sender: TObject);
