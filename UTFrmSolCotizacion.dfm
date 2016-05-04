@@ -833,7 +833,7 @@ object FrmSolCotizacion: TFrmSolCotizacion
     PrintOptions.Printer = 'Por defecto'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42307.250641423600000000
-    ReportOptions.LastChange = 42494.386156921300000000
+    ReportOptions.LastChange = 42494.390842685180000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -988,30 +988,32 @@ object FrmSolCotizacion: TFrmSolCotizacion
       end
       object MasterData1: TfrxMasterData
         Height = 18.897650000000000000
-        Top = 253.228510000000000000
+        Top = 249.448980000000000000
         Width = 978.898270000000000000
         DataSet = fdsSolCotizacionDatos
         DataSetName = 'fdsSolCotizacionDatos'
         RowCount = 0
         Stretched = True
         object Memo6: TfrxMemoView
-          Width = 287.244280000000000000
+          Width = 113.385900000000000000
           Height = 18.897650000000000000
           ShowHint = False
           StretchMode = smMaxHeight
+          DataField = 'CodigoInsumo'
+          DataSet = fdsSolCotizacionDatos
+          DataSetName = 'fdsSolCotizacionDatos'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = [ftLeft, ftBottom]
           Memo.UTF8W = (
-            
-              '[fdsSolCotizacionDatos."CodigoInsumo"] - [fdsSolCotizacionDatos.' +
-              '"NombreInsumo"]')
+            '[fdsSolCotizacionDatos."CodigoInsumo"]')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
-          Left = 646.299630000000000000
+          Left = 884.410020000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           ShowHint = False
@@ -1020,11 +1022,11 @@ object FrmSolCotizacion: TFrmSolCotizacion
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
           ParentFont = False
         end
         object Memo8: TfrxMemoView
-          Left = 551.811380000000000000
+          Left = 789.921770000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           ShowHint = False
@@ -1033,12 +1035,12 @@ object FrmSolCotizacion: TFrmSolCotizacion
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftTop, ftBottom]
+          Frame.Typ = [ftLeft, ftBottom]
           ParentFont = False
         end
         object Memo9: TfrxMemoView
-          Left = 287.244280000000000000
-          Width = 132.283550000000000000
+          Left = 374.173470000000000000
+          Width = 154.960629920000000000
           Height = 18.897650000000000000
           ShowHint = False
           StretchMode = smMaxHeight
@@ -1050,13 +1052,35 @@ object FrmSolCotizacion: TFrmSolCotizacion
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = [ftLeft, ftBottom]
           Memo.UTF8W = (
             '[fdsSolCotizacionDatos."TituloMarca"]')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
-          Left = 419.527830000000000000
-          Width = 132.283550000000000000
+          Left = 529.134199999999900000
+          Width = 105.826840000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          StretchMode = smMaxHeight
+          DataSet = fdsSolCotizacionDatos
+          DataSetName = 'fdsSolCotizacionDatos'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftBottom]
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[fdsSolCotizacionDatos."Cantidad"]')
+          ParentFont = False
+        end
+        object Memo11: TfrxMemoView
+          Left = 634.961040000000000000
+          Width = 154.960730000000000000
           Height = 18.897650000000000000
           ShowHint = False
           StretchMode = smMaxHeight
@@ -1068,16 +1092,65 @@ object FrmSolCotizacion: TFrmSolCotizacion
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = [ftLeft, ftBottom]
           Memo.UTF8W = (
             '[fdsSolCotizacionDatos."TituloPresentacion"]')
           ParentFont = False
         end
+        object Memo12: TfrxMemoView
+          Left = 113.385900000000000000
+          Width = 260.787570000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          StretchMode = smMaxHeight
+          DataField = 'NombreInsumo'
+          DataSet = fdsSolCotizacionDatos
+          DataSetName = 'fdsSolCotizacionDatos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftBottom]
+          Memo.UTF8W = (
+            '[fdsSolCotizacionDatos."NombreInsumo"]')
+          ParentFont = False
+        end
       end
       object GroupHeader1: TfrxGroupHeader
-        Height = 22.677180000000000000
+        Height = 18.897650000000000000
         Top = 207.874150000000000000
         Width = 978.898270000000000000
         Condition = 'fdsSolCotizacionDatos."IdSolCotizacion"'
+        object Memo13: TfrxMemoView
+          Width = 113.385900000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftTop, ftBottom]
+          Memo.UTF8W = (
+            'C'#243'digo')
+          ParentFont = False
+        end
+        object Memo14: TfrxMemoView
+          Left = 113.385900000000000000
+          Width = 260.787570000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftTop, ftBottom]
+          Memo.UTF8W = (
+            'C'#243'digo')
+          ParentFont = False
+        end
       end
     end
   end
