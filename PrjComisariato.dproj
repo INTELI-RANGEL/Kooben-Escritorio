@@ -437,6 +437,7 @@
 			<DCCReference Include="UFrmDatosImpuestosxInsumos.pas">
 				<Form>FrmDatosImpuestosxinsumos</Form>
 			</DCCReference>
+
 			<DCCReference Include="UTFrmSalidasAlmacen.pas">
 				<Form>FrmSalidasAlmacen</Form>
 			</DCCReference>
@@ -445,6 +446,37 @@
 			</DCCReference>
 			<DCCReference Include="UTFrmSalidaGeneral.pas">
 				<Form>FrmSalidaGeneral</Form>
+
+			<DCCReference Include="UTfrmRequisicionDatos.pas">
+				<Form>FrmRequisicionDatos</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmBuscarRequisicion.pas">
+				<Form>FrmBuscarRequisicion</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmRequisicion.pas">
+				<Form>FrmRequisicion</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmEditarRequisicionPartida.pas">
+				<Form>FrmEditarRequisicionPartida</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmOrdenCompra.pas">
+				<Form>FrmOrdenCompra</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmSolCotizacion.pas">
+				<Form>FrmSolCotizacion</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmBuscarSolCotizacion.pas">
+				<Form>FrmBuscarSolCotizacion</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmSolCotizacionDatos.pas">
+				<Form>FrmSolCotizacionDatos</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmEditarSolCotizacionPartida.pas">
+				<Form>FrmEditarSolCotizacionPartida</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmSolCotizacionxProveedor.pas">
+				<Form>FrmSolCotizacionxProveedor</Form>
+
 			</DCCReference>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>

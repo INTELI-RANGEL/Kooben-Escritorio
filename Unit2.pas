@@ -218,6 +218,11 @@ type
     barEntradasGral: TdxBar;
     btnEntradas: TdxBarLargeButton;
     btnSalidasGral: TdxBarLargeButton;
+    btnRequisicion: TdxBarLargeButton;
+    btnOrdenCompra: TdxBarLargeButton;
+    BarSolicitudCotizacion: TdxBar;
+    btnSolCotizacion: TdxBarLargeButton;
+    btnRegistrarCotizacion: TdxBarLargeButton;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnInsumosClick(Sender: TObject);
@@ -325,6 +330,9 @@ type
     procedure btnImpuestoxInsumoClick(Sender: TObject);
     procedure btnEntradasClick(Sender: TObject);
     procedure btnSalidasGralClick(Sender: TObject);
+    procedure btnRequisicionClick(Sender: TObject);
+    procedure btnSolCotizacionClick(Sender: TObject);
+
   private
     IdentificadorSistema: String;
     ListaChat,
@@ -398,7 +406,9 @@ uses UInteliDialog, Frm_Conectando, UTFrmSeleccion, UTFrmInsumos,
   UTFrmConsultaPrecios, UTFrmPrecioBajo, UTFrmContratos, UTFrmUsuarioPermisos,
   UTFrmRolPermisos, UTFrmComparaPrecios, UTFrmAlmacenes, UTFrmIVA,
   UTFrmTiposImpuesto, UTFrmCotizacion, UTFrmImpuestoxInsumo,
-  UTFrmEntradaGeneral, UFrmImpuestosxInsumo, UTFrmSalidaGeneral;
+  UTFrmEntradaGeneral, UFrmImpuestosxInsumo, UTFrmRequisicion,
+  UTFrmSolCotizacion,UTFrmSalidaGeneral;
+
 
 {$R *.dfm}
 
@@ -428,7 +438,7 @@ end;
 begin
   Try
     Try
-      // Analizar si se requiere validar la ejecución previa del formulario
+      // Analizar si se requiere validar la ejecuciï¿½n previa del formulario
       if Not Multiple then
       begin
         Try
@@ -451,8 +461,8 @@ begin
               AccedeACoordenadas;  // Acceder a las poislbes coordenadas anteriores
               if Assigned(Inicializar) then
                 Inicializar(formulario);
-              formulario.show;    // Mostrar la ventana en la posición indicada
-              // Registrar la utilización de la ventana
+              formulario.show;    // Mostrar la ventana en la posiciï¿½n indicada
+              // Registrar la utilizaciï¿½n de la ventana
               Try
 
 
@@ -525,7 +535,7 @@ end;
 
 procedure TForm2.LogMsg(const s: string);
 begin
-  // Enviar cadena para que sea decodificada y ejecute la acción correspondiente
+  // Enviar cadena para que sea decodificada y ejecute la acciï¿½n correspondiente
   CadenaServidor(s);
 end;
 
@@ -666,7 +676,7 @@ Begin
     form2.Repaint;
   except
       on e:exception do
-      raise Exception.Create('No se ha podido cargar la configuración de colores debido a lo siguiente:' + #10 + #10 + e.message);
+      raise Exception.Create('No se ha podido cargar la configuraciï¿½n de colores debido a lo siguiente:' + #10 + #10 + e.message);
   end;
 End;
 
@@ -704,7 +714,7 @@ begin
       ForzarSalir := True;
       ObligaCerrar := True;
 
-      //ShowMessage('No se pueden enviar mensajes al servidor.'+' Error al tratar de comunicarse con el puerto 81, puede que tenga otro cliente iniciado o bien el puerto está cerrado.');
+      //ShowMessage('No se pueden enviar mensajes al servidor.'+' Error al tratar de comunicarse con el puerto 81, puede que tenga otro cliente iniciado o bien el puerto estï¿½ cerrado.');
     end;
   End;
 
@@ -781,7 +791,7 @@ begin
     begin
       ForzarSalir := True;
       Globales.Free;
-      InteliDialog.ShowModal('No se ha podido iniciar el sistema', 'No se ha podido iniciar el sistema por la siguiente razón:' + #10 + #10 +
+      InteliDialog.ShowModal('No se ha podido iniciar el sistema', 'No se ha podido iniciar el sistema por la siguiente razï¿½n:' + #10 + #10 +
                              e.message, mtError, [mbOk], 0);
       PostMessage(Self.Handle, WM_CLOSE, 0, 0);
     end;
@@ -886,6 +896,12 @@ begin
   FrmReportesIngredientes.ShowModal;
 end;
 
+procedure TForm2.btnRequisicionClick(Sender: TObject);
+begin
+  Application.CreateForm(TFrmRequisicion, FrmRequisicion);
+  FrmRequisicion.ShowModal;
+end;
+
 procedure TForm2.tbVentanasOptionClick(Sender: TObject; ClientPoint,
   ScreenPoint: TPoint);
 begin
@@ -973,7 +989,7 @@ begin
     Application.CreateForm(TFrmConectando, FrmConectando);
     FrmConectando.ListaPar := ListaPar;
     if FrmConectando.ShowModal = mrCancel then
-      raise InteligentConnection.Create('***');   // Si se ha cancelado en la ventana de conecta se deber cerrar la ventana aquí
+      raise InteligentConnection.Create('***');   // Si se ha cancelado en la ventana de conecta se deber cerrar la ventana aquï¿½
   Finally
     FreeAndNil(FrmConectando);
     ListaPar.Free;
@@ -981,7 +997,7 @@ begin
 
   // Verificar si se ha podido conectar con la base de datos
   if Not ClientModule1.SQLConnection1.Connected then
-    raise Exception.Create('No se ha podido establecer la comunicación con la base de datos');
+    raise Exception.Create('No se ha podido establecer la comunicaciï¿½n con la base de datos');
 
   if ClientModule1.cdNucConfiguracion.Active then
   begin
@@ -993,7 +1009,7 @@ begin
   PrecargaColores(ClientModule1.cdNucConfiguracion);
   ClientModule1.ComponentColor(Self);
 
-  // Acceder a las imagenes de la configuración para actualizar el archivo local
+  // Acceder a las imagenes de la configuraciï¿½n para actualizar el archivo local
   Try
     // Cargar la imagen a memoria
     Crearconjunto(cdImagen, 'nuc_configuracion_imagen1', ccUpdate);
@@ -1003,11 +1019,11 @@ begin
     raise;
   End;
 
-  ModificarIconoAplicacion;   // Buscar la imagen guardada en la configuración para sustituirla
+  ModificarIconoAplicacion;   // Buscar la imagen guardada en la configuraciï¿½n para sustituirla
 
-  AsignarDireccionServidor;   // Asignar la direccion del servidor a los objetos de comunicación
+  AsignarDireccionServidor;   // Asignar la direccion del servidor a los objetos de comunicaciï¿½n
 
-  //añadiendo formularios
+  //aï¿½adiendo formularios
   CrearConjunto(cdOrganizaciones, cOrganizacion, providername, ccUpdate);
   cdOrganizaciones.Open;
   if CdOrganizaciones.RecordCount < 1 then
@@ -1023,18 +1039,18 @@ begin
   end;
 
   Try
-  /// OJO AQUÍ RANGEL..... ESTABAS PROBANDO EL TFRMSELECCIONDX
+  /// OJO AQUï¿½ RANGEL..... ESTABAS PROBANDO EL TFRMSELECCIONDX
     Application.CreateForm(TFrmSeleccion, FrmSeleccion);
     Case FrmSeleccion.ShowModal of
       mrOk: ;
-      mrNo: raise Exception.Create('No se ha podido activar la ventana de selección de estructura de acceso al sistema');
+      mrNo: raise Exception.Create('No se ha podido activar la ventana de selecciï¿½n de estructura de acceso al sistema');
       mrCancel: raise InteligentConnection.Create('***');
     End;
 
   Finally
     FreeAndNil(FrmSeleccion);
   End;
-  // Fin formularios añadidos
+  // Fin formularios aï¿½adidos
   Form2.BringToFront;   // Traer la ventana hacia el frente
 
   //verificar proceso de solicitud
@@ -1070,7 +1086,7 @@ begin
   ///////////////////////////////////////////////////////////////////////
   ObtenerPrefijo(ListaComa);
   // Buscar ahora los prefijos de los sistemas a los cuales tiene permiso y dejar solo aquellos
-  // validos según los permisos asignados al rol
+  // validos segï¿½n los permisos asignados al rol
   if not GodMode then
   begin
     ListaTmp := TStringList.Create;
@@ -1108,13 +1124,13 @@ begin
     end;
   end;
 
-  //verificando tamaño de fuente
+  //verificando tamaï¿½o de fuente
   try
     if Length(trim(ClientModule1.ConfigGetValor('Datos',ClientModule1.cdNucConfiguracion))) < 1 then
       raise Exception.Create('');
   except
     begin
-      if not ClientModule1.SetNewValorConfig('Datos','Tamaño de fuente.','9') then
+      if not ClientModule1.SetNewValorConfig('Datos','Tamaï¿½o de fuente.','9') then
         ClientModule1.EditValorConfig('Datos','9');
     end;
   end;
@@ -1124,7 +1140,7 @@ begin
       raise Exception.Create('');
   except
     begin
-      if not ClientModule1.SetNewValorConfig('Ventana','Tamaño de fuente.','8') then
+      if not ClientModule1.SetNewValorConfig('Ventana','Tamaï¿½o de fuente.','8') then
         ClientModule1.EditValorConfig('Ventana','8');
     end;
   end;
@@ -1145,8 +1161,8 @@ begin
     StatusBar1.Panels[5].Width := Trunc(StatusBar1.Canvas.TextWidth(StatusBar1.Panels[5].Text) * 1.4);
   end;
 
-  // Actualizar estado anterior de la ventana de comunicación
-  ProviderName := VarRegistry( '\Ambiente\Principal', '\Comunicación', 'Estado');
+  // Actualizar estado anterior de la ventana de comunicaciï¿½n
+  ProviderName := VarRegistry( '\Ambiente\Principal', '\Comunicaciï¿½n', 'Estado');
   //if ProviderName = 'Anclado' then
 
   //if (TipoCliente = '2') or (TipoCliente = '3') then
@@ -1333,7 +1349,7 @@ end;
 
 procedure TForm2.btnMovimientoInsumosClick(Sender: TObject);
 begin
-  InteliDialog.ShowModal('Opción pendiente', 'Esta opción esta pendiente', mtInformation, [mbOk], 0);
+  InteliDialog.ShowModal('Opciï¿½n pendiente', 'Esta opciï¿½n esta pendiente', mtInformation, [mbOk], 0);
 end;
 
 procedure TForm2.btnMovimientoPreciosClick(Sender: TObject);
@@ -1671,9 +1687,17 @@ begin
   //IniciarForm(TFrmSalidasAlmacen, FrmSalidasAlmacen, False);
 end;
 
+
 procedure TForm2.btnSalidasGralClick(Sender: TObject);
 begin
   IniciarForm(TFrmSalidaGeneral, FrmSalidaGeneral, False);
+end;
+
+procedure TForm2.btnSolCotizacionClick(Sender: TObject);
+begin
+  {Application.CreateForm(TFrmSolCotizacion, FrmSolCotizacion);
+  FrmSolCotizacion.ShowModal;}
+  IniciarForm(TFrmSolCotizacion, FrmSolCotizacion, False);
 end;
 
 procedure TForm2.btnSolicitudesClick(Sender: TObject);
@@ -1884,7 +1908,7 @@ end;
 
 procedure TForm2.AsignarDireccionServidor;
 begin
-  // Asignar el mismo host que se le especificó a la conexión del servidor datasnap
+  // Asignar el mismo host que se le especificï¿½ a la conexiï¿½n del servidor datasnap
   DSClientCallbackChannelManager1.DSHostname := ClientModule1.SQLConnection1.Params.Values['HostName'];
   DSTCPIPClientCallbackChannelManager1.DSHostname := ClientModule1.SQLConnection1.Params.Values['HostName'];
 end;
