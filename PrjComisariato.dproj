@@ -331,9 +331,6 @@
 			<DCCReference Include="UTFrmEntradasAlmacenDX.pas">
 				<Form>FrmEntradasAlmacenDX</Form>
 			</DCCReference>
-			<DCCReference Include="UTFrmSalidasAlmacen.pas">
-				<Form>FrmSalidasAlmacen</Form>
-			</DCCReference>
 			<DCCReference Include="UTFrmEstadoInventarios.pas">
 				<Form>FrmEstadoInventarios</Form>
 			</DCCReference>
@@ -439,6 +436,15 @@
 			</DCCReference>
 			<DCCReference Include="UFrmDatosImpuestosxInsumos.pas">
 				<Form>FrmDatosImpuestosxinsumos</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmSalidasAlmacen.pas">
+				<Form>FrmSalidasAlmacen</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmSalidaGeneralDatos.pas">
+				<Form>FrmSalidaGeneralDatos</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmSalidaGeneral.pas">
+				<Form>FrmSalidaGeneral</Form>
 			</DCCReference>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>

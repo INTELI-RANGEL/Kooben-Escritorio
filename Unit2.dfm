@@ -191,7 +191,7 @@ object Form2: TForm2
         Progress.ShowBorder = False
         Progress.Stacked = False
         Style = psTime
-        Text = '01:14:55 a. m.'
+        Text = '10:20:25 a. m.'
         TimeFormat = 'hh:mm:ss AMPM'
         Width = 90
       end
@@ -279,6 +279,7 @@ object Form2: TForm2
       Index = 3
     end
     object TabAlmacenGeneral: TdxRibbonTab
+      Active = True
       Caption = 'Almac'#233'n General'
       Groups = <
         item
@@ -307,7 +308,6 @@ object Form2: TForm2
       Index = 5
     end
     object TabCatalogos: TdxRibbonTab
-      Active = True
       Caption = 'Cat'#225'logos '
       Groups = <
         item
@@ -12347,6 +12347,7 @@ object Form2: TForm2
       Hint = 'Salidas'
       Visible = ivAlways
       LargeImageIndex = 39
+      OnClick = btnSalidasGralClick
     end
   end
   object cxImageList16x16: TcxImageList

@@ -1,4 +1,4 @@
-unit UTFrmEntradaGeneralDatos;
+unit UTFrmSalidaGeneralDatos;
 
 interface
 
@@ -9,12 +9,12 @@ uses
   AdvGlowButton, ExtCtrls;
 
 type
-  TFrmEntradaGeneralDatos = class(TForm)
+  TFrmSalidaGeneralDatos = class(TForm)
     dsRecibio: TDataSource;
     dsAutorizo: TDataSource;
     dsEntradaGeneralUpt: TDataSource;
     CodigoRegistroMovimientoGeneral: TDBEdit;
-    lblEntrada: TJvLabel;
+    JvLabel1: TJvLabel;
     JvLabel2: TJvLabel;
     Aplicacion: TJvDBDateEdit;
     Panel1: TPanel;
@@ -31,7 +31,7 @@ type
     IdProveedor: TEdit;
     sNombreCorto: TDBText;
     sRazonSocial: TDBText;
-    lblProveedor: TJvLabel;
+    JvLabel7: TJvLabel;
     lblGuion: TJvLabel;
     dsProveedores: TDataSource;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -48,12 +48,11 @@ type
     TextoOriginal: String;
     procedure GrabarElPedo;
   public
-    CambiarModoSalida: Boolean;
     { Public declarations }
   end;
 
 var
-  FrmEntradaGeneralDatos: TFrmEntradaGeneralDatos;
+  FrmSalidaGeneralDatos: TFrmSalidaGeneralDatos;
 
 implementation
 
@@ -61,31 +60,31 @@ uses UTFrmSeleccionarCliente;
 
 {$R *.dfm}
 
-procedure TFrmEntradaGeneralDatos.AplicacionChange(Sender: TObject);
+procedure TFrmSalidaGeneralDatos.AplicacionChange(Sender: TObject);
 begin
   NecesitaGrabar := True;
 end;
 
-procedure TFrmEntradaGeneralDatos.CodigoRegistroMovimientoGeneralChange(
+procedure TFrmSalidaGeneralDatos.CodigoRegistroMovimientoGeneralChange(
   Sender: TObject);
 begin
   NecesitaGrabar := True;
 end;
 
-procedure TFrmEntradaGeneralDatos.dsProveedoresDataChange(Sender: TObject;
+procedure TFrmSalidaGeneralDatos.dsProveedoresDataChange(Sender: TObject;
   Field: TField);
 begin
   lblGuion.Left := sNombreCorto.Left + sNombreCorto.Width + 2;
   sRazonSocial.Left := lblGuion.Left + lblGuion.Width + 2;
 end;
 
-procedure TFrmEntradaGeneralDatos.FormClose(Sender: TObject;
+procedure TFrmSalidaGeneralDatos.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   Action := caFree;
 end;
 
-procedure TFrmEntradaGeneralDatos.FormCloseQuery(Sender: TObject;
+procedure TFrmSalidaGeneralDatos.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 var
   cClose: Boolean;
@@ -128,7 +127,7 @@ begin
   end;
 end;
 
-procedure TFrmEntradaGeneralDatos.FormShow(Sender: TObject);
+procedure TFrmSalidaGeneralDatos.FormShow(Sender: TObject);
 begin
   NecesitaGrabar := False;
 
@@ -149,7 +148,7 @@ begin
   end;
 end;
 
-procedure TFrmEntradaGeneralDatos.GrabarElPedo;
+procedure TFrmSalidaGeneralDatos.GrabarElPedo;
 var
   Obj: TWinControl;
   Id: Integer;
@@ -220,19 +219,19 @@ begin
   end;
 end;
 
-procedure TFrmEntradaGeneralDatos.IdProveedorEnter(Sender: TObject);
+procedure TFrmSalidaGeneralDatos.IdProveedorEnter(Sender: TObject);
 begin
   IdProveedor.Text := TextoOriginal;
 end;
 
-procedure TFrmEntradaGeneralDatos.IdProveedorExit(Sender: TObject);
+procedure TFrmSalidaGeneralDatos.IdProveedorExit(Sender: TObject);
 begin
   TextoOriginal := IdProveedor.Text;
   if dsProveedores.DataSet.Active and (dsProveedores.Dataset.RecordCount > 0) then
     IdProveedor.Text := dsProveedores.DataSet.FieldByName('sNombreCorto').AsString + ' - ' + dsProveedores.DataSet.FieldByName('sRazonSocial').AsString;
 end;
 
-procedure TFrmEntradaGeneralDatos.IdProveedorKeyPress(Sender: TObject;
+procedure TFrmSalidaGeneralDatos.IdProveedorKeyPress(Sender: TObject;
   var Key: Char);
 var
   Valor: String;

@@ -1,8 +1,8 @@
-object FrmEntradaGeneralDatos: TFrmEntradaGeneralDatos
+object FrmSalidaGeneralDatos: TFrmSalidaGeneralDatos
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  Caption = 'Datos Generales de Entrada al almac'#233'n general'
+  Caption = 'Datos Generales de Salida al almac'#233'n general'
   ClientHeight = 299
   ClientWidth = 513
   Color = clBtnFace
@@ -18,12 +18,12 @@ object FrmEntradaGeneralDatos: TFrmEntradaGeneralDatos
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object lblEntrada: TJvLabel
+  object JvLabel1: TJvLabel
     Left = 8
     Top = 8
-    Width = 80
+    Width = 70
     Height = 13
-    Caption = 'C'#243'digo Entrada:'
+    Caption = 'C'#243'digo Salida:'
     Transparent = True
     HotTrackFont.Charset = DEFAULT_CHARSET
     HotTrackFont.Color = clWindowText
@@ -126,12 +126,12 @@ object FrmEntradaGeneralDatos: TFrmEntradaGeneralDatos
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object lblProveedor: TJvLabel
+  object JvLabel7: TJvLabel
     Left = 32
     Top = 32
-    Width = 56
+    Width = 39
     Height = 13
-    Caption = 'Proveedor:'
+    Caption = 'Cliente:'
     Transparent = True
     HotTrackFont.Charset = DEFAULT_CHARSET
     HotTrackFont.Color = clWindowText
@@ -318,20 +318,20 @@ object FrmEntradaGeneralDatos: TFrmEntradaGeneralDatos
     OnKeyPress = IdProveedorKeyPress
   end
   object dsRecibio: TDataSource
-    Left = 80
+    Left = 192
     Top = 248
   end
   object dsAutorizo: TDataSource
-    Left = 136
+    Left = 112
     Top = 248
   end
   object dsEntradaGeneralUpt: TDataSource
-    Left = 216
+    Left = 24
     Top = 248
   end
   object dsProveedores: TDataSource
     OnDataChange = dsProveedoresDataChange
-    Left = 16
-    Top = 248
+    Left = 248
+    Top = 240
   end
 end

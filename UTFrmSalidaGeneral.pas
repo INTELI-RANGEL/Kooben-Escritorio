@@ -1,4 +1,4 @@
-unit UTFrmEntradaGeneral;
+ï»¿unit UTFrmSalidaGeneral;
 
 interface
 
@@ -28,7 +28,7 @@ uses
   cxPropertiesStore, StrUtils, dxLayoutLookAndFeels, cxLabel;
 
 type
-  TFrmEntradaGeneral = class(TForm)
+  TFrmSalidaGeneral = class(TForm)
     Panel1: TPanel;
     Panel2: TPanel;
     JvLabel1: TJvLabel;
@@ -83,7 +83,6 @@ type
     cxColQuitar: TcxGridDBColumn;
     cxImageList1: TcxImageList;
     cxColMarca: TcxGridDBColumn;
-    cxColPresentación: TcxGridDBColumn;
     dxLayControlPartidasGroup1: TdxLayoutAutoCreatedGroup;
     cxPropertiesStore1: TcxPropertiesStore;
     cdMarca: TClientDataSet;
@@ -149,23 +148,24 @@ type
   end;
 
 var
-  FrmEntradaGeneral: TFrmEntradaGeneral;
+  FrmSalidaGeneral: TFrmSalidaGeneral;
 
 implementation
 
 {$R *.dfm}
 
 uses
-  UTFrmBuscarEntradaGeneral, UTFrmEntradaGeneralDatos,
-  UTFrmEntradaGeneralPartidaDatos, UTFrmSelInsumo, UTfrmSelMarcas, UTFrmSelPresentacion;
+  UTFrmBuscarEntradaGeneral, UTFrmSalidaGeneralDatos,
+  UTFrmEntradaGeneralPartidaDatos, UTFrmSelInsumo, UTfrmSelMarcas, UTFrmSelPresentacion,
+  UTFrmEntradaGeneralDatos;
 
-procedure TFrmEntradaGeneral.AgregarInsumo;
+procedure TFrmSalidaGeneral.AgregarInsumo;
 var
   Valor: String;
   IdRegistroMovimientoGeneralPartida: LongInt;
 begin
   try
-      // Verificar por código o parte del texto
+      // Verificar por cï¿½digo o parte del texto
     if Trim(IdInsumo.Text) = '' then
       Valor := '-1'
     else
@@ -180,7 +180,7 @@ begin
 
     if (dsInsumo.DataSet.RecordCount > 1) or ((dsInsumo.DataSet.RecordCount = 1) and (dsInsumo.DataSet.FieldByName('Cta').AsInteger = 0)) then
     begin
-      // Poner la ventana de selección de datos multiples
+      // Poner la ventana de selecciï¿½n de datos multiples
       Application.CreateForm(TFrmSelInsumo, FrmSelInsumo);
       try
         FrmSelInsumo.Caption := 'Seleccionar Insumo';
@@ -196,7 +196,7 @@ begin
       end;
     end;
 
-   
+
   except
     on e:InteligentException do
     begin
@@ -212,7 +212,7 @@ begin
   end;
 end;
 
-procedure TFrmEntradaGeneral.AgregarPartida1Click(Sender: TObject);
+procedure TFrmSalidaGeneral.AgregarPartida1Click(Sender: TObject);
 begin
   Application.CreateForm(TFrmEntradaGeneralPartidaDatos, FrmEntradaGeneralPartidaDatos);
   FrmEntradaGeneralPartidaDatos.dsEntradaGeneralDatosUpt.DataSet := cdEntradaGeneralDatosUpt;
@@ -223,20 +223,20 @@ begin
   FrmEntradaGeneralPartidaDatos.ShowModal;
 end;
 
-procedure TFrmEntradaGeneral.btnBuscarClick(Sender: TObject);
+procedure TFrmSalidaGeneral.btnBuscarClick(Sender: TObject);
 begin
   try
     try
       Application.CreateForm(TFrmBuscarEntradaGeneral, FrmBuscarEntradaGeneral);
       FrmBuscarEntradaGeneral.dsBuscarEntradaGeneral.DataSet := cdBuscarEntradaGeneral;
-      FrmBuscarEntradaGeneral.vTipoBuscar := 'ENTRADA';
+      FrmBuscarEntradaGeneral.vTipoBuscar := 'SALIDA';
       if FrmBuscarEntradaGeneral.ShowModal = mrOk then
       begin
         if Not CargarDatosFiltrados(cdEntradaGeneralUpt, 'IdRegistroMovimientoGeneral', [cdBuscarEntradaGeneral.FieldByName('IdRegistroMovimientoGeneral').AsInteger]) then
-          raise InteligentException.CreateByCode(6, ['Entradas al Almacén General', cdBuscarEntradaGeneral.FieldByName('IdEntradaGeneral').AsInteger, 'Id. Entrada General']);
+          raise InteligentException.CreateByCode(6, ['Entradas al Almacï¿½n General', cdBuscarEntradaGeneral.FieldByName('IdEntradaGeneral').AsInteger, 'Id. Entrada General']);
 
         if Not CargarDatosFiltrados(cdEntradaGeneralDatosUpt, 'IdRegistroMovimientoGeneral', [cdBuscarEntradaGeneral.FieldByName('IdRegistroMovimientoGeneral').AsInteger]) then
-          raise InteligentException.CreateByCode(6, ['Partidas de Entradas al Almacén General', cdBuscarEntradaGeneral.FieldByName('IdEntradaGeneral').AsInteger, 'Id. Entrada General']);
+          raise InteligentException.CreateByCode(6, ['Partidas de Entradas al Almacï¿½n General', cdBuscarEntradaGeneral.FieldByName('IdEntradaGeneral').AsInteger, 'Id. Entrada General']);
 
         if cdEntradaGeneralUpt.Active then
           cdEntradaGeneralUpt.Refresh
@@ -263,12 +263,12 @@ begin
   end;
 end;
 
-procedure TFrmEntradaGeneral.btnCancelarClick(Sender: TObject);
+procedure TFrmSalidaGeneral.btnCancelarClick(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TFrmEntradaGeneral.btnMarcaPropertiesButtonClick(Sender: TObject;
+procedure TFrmSalidaGeneral.btnMarcaPropertiesButtonClick(Sender: TObject;
   AButtonIndex: Integer);
 begin
 
@@ -284,7 +284,7 @@ begin
   end;
 end;
 
-procedure TFrmEntradaGeneral.btnNuevoClick(Sender: TObject);
+procedure TFrmSalidaGeneral.btnNuevoClick(Sender: TObject);
 var
   LocCursor: TCursor;
 begin
@@ -293,9 +293,9 @@ begin
     try
       Screen.Cursor := crHourGlass;
 
-      // Crear una nueva Cotización
+      // Crear una nueva Cotizaciï¿½n
       if Not CargarDatosFiltrados(cdEntradaGeneralUpt, 'IdRegistroMovimientoGeneral', [-9]) then
-        raise InteligentException.CreateByCode(16, ['*Entrada Almacén General']);
+        raise InteligentException.CreateByCode(16, ['*Entrada Almacï¿½n General']);
 
       if cdEntradaGeneralUpt.Active then
         cdEntradaGeneralUpt.Refresh
@@ -305,14 +305,14 @@ begin
       cdEntradaGeneralUpt.Append;
       cdEntradaGeneralUpt.FieldByName('IdRegistroMovimientoGeneral').AsInteger := 0;
       cdEntradaGeneralUpt.FieldByName('Aplicacion').AsDateTime := Now;
-      cdEntradaGeneralUpt.FieldByName('TipoMovimiento').AsString := 'ENTRADA';
+      cdEntradaGeneralUpt.FieldByName('TipoMovimiento').AsString := 'SALIDA';
 
-      Application.CreateForm(TFrmEntradaGeneralDatos, FrmEntradaGeneralDatos);
-      FrmEntradaGeneralDatos.dsEntradaGeneralUpt.DataSet := cdEntradaGeneralUpt;
-      FrmEntradaGeneralDatos.dsProveedores.DataSet := cdProveedores;
-      FrmEntradaGeneralDatos.dsRecibio.DataSet := cdRecibio;
-      FrmEntradaGeneralDatos.dsAutorizo.DataSet := cdAutorizo;
-      if FrmEntradaGeneralDatos.ShowModal = mrOk then
+      Application.CreateForm(TFrmSalidaGeneralDatos, FrmSalidaGeneralDatos);
+      FrmSalidaGeneralDatos.dsEntradaGeneralUpt.DataSet := cdEntradaGeneralUpt;
+      FrmSalidaGeneralDatos.dsProveedores.DataSet := cdProveedores;
+      FrmSalidaGeneralDatos.dsRecibio.DataSet := cdRecibio;
+      FrmSalidaGeneralDatos.dsAutorizo.DataSet := cdAutorizo;
+      if FrmSalidaGeneralDatos.ShowModal = mrOk then
       begin
 
       end;
@@ -329,11 +329,11 @@ begin
   end;
 end;
 
-procedure TfrmEntradaGeneral.GenerarListaMarcas;
+procedure TFrmSalidaGeneral.GenerarListaMarcas;
 var
   CadPaso: String;
 begin
-  // Generar la cadena de Marcas correspondientes a este insumo (Solo en caso de edición)
+  // Generar la cadena de Marcas correspondientes a este insumo (Solo en caso de ediciï¿½n)
   Try
     cdMarca.First;
     CadPaso := '';
@@ -354,7 +354,7 @@ begin
   End;
 end;
 
-procedure TFrmEntradaGeneral.habilitaPanel;
+procedure TFrmSalidaGeneral.habilitaPanel;
 var
   estado: Boolean;
 begin
@@ -367,7 +367,7 @@ begin
   lyAgregar.Enabled := estado;
 end;
 
-procedure TFrmEntradaGeneral.btnPresentacionPropertiesButtonClick(
+procedure TFrmSalidaGeneral.btnPresentacionPropertiesButtonClick(
   Sender: TObject; AButtonIndex: Integer);
 begin
     Application.CreateForm(TFrmSelPresentacion, FrmSelPresentacion);
@@ -382,7 +382,7 @@ begin
     end;
 end;
 
-procedure TFrmEntradaGeneral.CodigoCotizacionKeyDown(Sender: TObject;
+procedure TFrmSalidaGeneral.CodigoCotizacionKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 var
   cursor: TCursor;
@@ -396,10 +396,10 @@ begin
       begin
         if cdBuscarEntradaGeneral.ProviderName = '' then
           if Not CrearConjunto(cdBuscarEntradaGeneral, 'cmt_registromovimientogeneral', ccSelect) then
-            raise InteligentException.CreateByCode(5, ['Entradas Almacén General']);
+            raise InteligentException.CreateByCode(5, ['Entradas Almacï¿½n General']);
 
         if Not CargarDatosFiltrados(cdBuscarEntradaGeneral, 'CodigoRegistroMovimientoGeneral', [CodigoCotizacion.Text]) then
-          raise InteligentException.CreateByCode(6, ['Partidas de Entradas al Almacén General', cdBuscarEntradaGeneral.FieldByName('IdEntradaGeneral').AsInteger, 'Id. Entrada General']);
+          raise InteligentException.CreateByCode(6, ['Partidas de Entradas al Almacï¿½n General', cdBuscarEntradaGeneral.FieldByName('IdEntradaGeneral').AsInteger, 'Id. Entrada General']);
 
         if cdBuscarEntradaGeneral.Active then
           cdBuscarEntradaGeneral.Refresh
@@ -409,10 +409,10 @@ begin
         if cdBuscarEntradaGeneral.RecordCount = 1 then
         begin
           if Not CargarDatosFiltrados(cdEntradaGeneralUpt, 'IdRegistroMovimientoGeneral', [cdBuscarEntradaGeneral.FieldByName('IdRegistroMovimientoGeneral').AsInteger]) then
-            raise InteligentException.CreateByCode(6, ['Entradas al Almacén General', cdBuscarEntradaGeneral.FieldByName('IdEntradaGeneral').AsInteger, 'Id. Entrada General']);
+            raise InteligentException.CreateByCode(6, ['Entradas al Almacï¿½n General', cdBuscarEntradaGeneral.FieldByName('IdEntradaGeneral').AsInteger, 'Id. Entrada General']);
 
           if Not CargarDatosFiltrados(cdEntradaGeneralDatosUpt, 'IdRegistroMovimientoGeneral', [cdBuscarEntradaGeneral.FieldByName('IdRegistroMovimientoGeneral').AsInteger]) then
-            raise InteligentException.CreateByCode(6, ['Partidas de Entradas al Almacén General', cdBuscarEntradaGeneral.FieldByName('IdEntradaGeneral').AsInteger, 'Id. Entrada General']);
+            raise InteligentException.CreateByCode(6, ['Partidas de Entradas al Almacï¿½n General', cdBuscarEntradaGeneral.FieldByName('IdEntradaGeneral').AsInteger, 'Id. Entrada General']);
 
           if cdEntradaGeneralUpt.Active then
             cdEntradaGeneralUpt.Refresh
@@ -443,7 +443,7 @@ begin
 
 end;
 
-procedure TFrmEntradaGeneral.bntAceptarClick(Sender: TObject);
+procedure TFrmSalidaGeneral.bntAceptarClick(Sender: TObject);
 begin
   try
     if cdEntradaGeneralDatosUpt.Active then
@@ -462,12 +462,12 @@ begin
   end;
 end;
 
-procedure TFrmEntradaGeneral.btnaddClick(Sender: TObject);
+procedure TFrmSalidaGeneral.btnaddClick(Sender: TObject);
 begin
   AgregaPartida;
 end;
 
-procedure TFrmEntradaGeneral.cxButton1Click(Sender: TObject);
+procedure TFrmSalidaGeneral.cxButton1Click(Sender: TObject);
 var
   Cursor: TCursor;
 begin
@@ -502,11 +502,11 @@ begin
   end;
 end;
 
-procedure TFrmEntradaGeneral.cxColQuitarPropertiesButtonClick(Sender: TObject;
+procedure TFrmSalidaGeneral.cxColQuitarPropertiesButtonClick(Sender: TObject;
   AButtonIndex: Integer);
 begin
   //ShowMessage('BORRAR'+ cdEntradaGeneralDatosUpt.FieldByName('IdregistroMovimientoGeneralPartida').AsString);
-  if InteliDialog.ShowModal('Aviso','¿Eliminar ' + cdEntradaGeneralDatosUpt.FieldByName('NombreInsumo').AsString + '?', mtConfirmation, [mbYes,mbNo], 0) = mrYes then
+  if InteliDialog.ShowModal('Aviso','ï¿½Eliminar ' + cdEntradaGeneralDatosUpt.FieldByName('NombreInsumo').AsString + '?', mtConfirmation, [mbYes,mbNo], 0) = mrYes then
   begin
     cdEntradaGeneralDatosUpt.Delete;
     cdEntradaGeneralDatosUpt.ApplyUpdates(-1);
@@ -514,7 +514,7 @@ begin
 
 end;
 
-procedure TFrmEntradaGeneral.cxCurrencyPrecioKeyDown(Sender: TObject;
+procedure TFrmSalidaGeneral.cxCurrencyPrecioKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
   if key = 13 then
@@ -523,7 +523,7 @@ begin
   end;
 end;
 
-procedure TFrmEntradaGeneral.cxSpinCantidadKeyDown(Sender: TObject;
+procedure TFrmSalidaGeneral.cxSpinCantidadKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
   if key = 13 then
@@ -532,26 +532,26 @@ begin
   end;
 end;
 
-procedure TFrmEntradaGeneral.cxTextEdit1Enter(Sender: TObject);
+procedure TFrmSalidaGeneral.cxTextEdit1Enter(Sender: TObject);
 begin
   application.CreateForm(TFrmSelMarcas, FrmSelMarcas);
   frmSelMarcas.ShowModal;
 end;
 
-procedure TFrmEntradaGeneral.cxTextPresentacionEnter(Sender: TObject);
+procedure TFrmSalidaGeneral.cxTextPresentacionEnter(Sender: TObject);
 begin
   application.CreateForm(TFrmSelPresentacion, FrmSelPresentacion);
   FrmSelPresentacion.ShowModal;
 end;
 
-procedure TFrmEntradaGeneral.FormClose(Sender: TObject;
+procedure TFrmSalidaGeneral.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   EliminarConjunto([cdBuscarEntradaGeneral, cdProveedores, cdInsumo, cdRecibio, cdAutorizo, cdEntradaGeneralDatosUpt, cdEntradaGeneralUpt]);
   Action := caFree;
 end;
 
-procedure TFrmEntradaGeneral.FormCloseQuery(Sender: TObject;
+procedure TFrmSalidaGeneral.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
   var
   res: integer;
@@ -560,7 +560,7 @@ begin
   CanClose := True;
   if cdEntradaGeneralDatosUpt.Active and (cdEntradaGeneralDatosUpt.ChangeCount <> 0) then
     begin
-      res := InteliDialog.ShowModal('Aviso', 'Hay cambios que no se han guardado ¿Dedeas guardarlos?', mtConfirmation, [mbYes,mbNo,mbCancel],0);
+      res := InteliDialog.ShowModal('Aviso', 'Hay cambios que no se han guardado ï¿½Dedeas guardarlos?', mtConfirmation, [mbYes,mbNo,mbCancel],0);
       case res of
         mrYes: cdEntradaGeneralDatosUpt.ApplyUpdates(-1);
         mrNo: ;
@@ -570,7 +570,7 @@ begin
 
 end;
 
-procedure TFrmEntradaGeneral.FormShow(Sender: TObject);
+procedure TFrmSalidaGeneral.FormShow(Sender: TObject);
 var
   LocCursor: TCursor;
 begin
@@ -586,10 +586,10 @@ begin
         raise InteligentException.CreateByCode(5, ['Usuarios (Elabora)']);
 
       if Not CrearConjunto(cdAutorizo, 'usuarios', ccCatalog) then
-        raise InteligentException.CreateByCode(5, ['Usuarios (Autorizó)']);
+        raise InteligentException.CreateByCode(5, ['Usuarios (Autorizï¿½)']);
 
       if Not CrearConjunto(cdEntradaGeneralUpt, 'cmt_registromovimientogeneral', ccUpdate) then
-        raise InteligentException.CreateByCode(5, ['*Entradas Almacén General']);
+        raise InteligentException.CreateByCode(5, ['*Entradas Almacï¿½n General']);
 
       if Not CrearConjunto(cdEntradaGeneralDatosUpt, 'cmt_registromovimientogeneralpartida', ccUpdate) then
         raise InteligentException.CreateByCode(5, ['Partidas de Entradas Generales']);
@@ -616,7 +616,7 @@ begin
 
       cdRecibio.Open;
       if cdRecibio.RecordCount = 0 then
-        raise InteligentException.CreateByCode(22, ['Usuarios (Recibió)']);
+        raise InteligentException.CreateByCode(22, ['Usuarios (Recibiï¿½)']);
 
       cdAutorizo.Open;
       if cdAutorizo.RecordCount = 0 then
@@ -641,19 +641,19 @@ begin
   end;
 end;
 
-procedure TFrmEntradaGeneral.IdInsumoEnter(Sender: TObject);
+procedure TFrmSalidaGeneral.IdInsumoEnter(Sender: TObject);
 begin
   IdInsumo.Text := TextoOriginal;
 end;
 
-procedure TFrmEntradaGeneral.IdInsumoExit(Sender: TObject);
+procedure TFrmSalidaGeneral.IdInsumoExit(Sender: TObject);
 begin
   TextoOriginal := IdInsumo.Text;
   if dsInsumo.DataSet.Active and (dsInsumo.Dataset.RecordCount > 0) then
     IdInsumo.Text := dsInsumo.DataSet.FieldByName('Nombreinsumo').AsString + ' - ' + dsInsumo.DataSet.FieldByName('DescripcionInsumo').AsString;
 end;
 
-procedure TFrmEntradaGeneral.IdInsumoKeyPress(Sender: TObject; var Key: Char);
+procedure TFrmSalidaGeneral.IdInsumoKeyPress(Sender: TObject; var Key: Char);
 
 begin
   if Key = #13 then
@@ -665,7 +665,7 @@ begin
     dsInsumo.DataSet.Close;
 end;
 
-procedure TFrmEntradaGeneral.limpiarControles;
+procedure TFrmSalidaGeneral.limpiarControles;
 begin
   cxSpinCantidad.value := 0;
   IdInsumo.Text := '';
@@ -674,12 +674,12 @@ begin
   cxCurrencyPrecio.Text := '';
 end;
 
-procedure TFrmEntradaGeneral.pnlFirmasResize(Sender: TObject);
+procedure TFrmSalidaGeneral.pnlFirmasResize(Sender: TObject);
 begin
   pnlElabora.Width := pnlFirmas.Width div 2;
 end;
 
-procedure TFrmEntradaGeneral.tvPartidasNavigatorButtonsButtonClick(
+procedure TFrmSalidaGeneral.tvPartidasNavigatorButtonsButtonClick(
   Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
 begin
   //ShowMessage(intToStr(aButtonIndex));
@@ -689,7 +689,7 @@ begin
   end;
 end;
 
-function TFrmEntradaGeneral.AgregaPartida: LongInt;
+function TFrmSalidaGeneral.AgregaPartida: LongInt;
 var
   Resultado: LongInt;
   Cursor: TCursor;
@@ -726,7 +726,7 @@ begin
         if idInsumo.CanFocus then
           idInsumo.SetFocus;
 
-        raise InteligentException.Create('Debes seleccionar un insumo válido para agregar a la partida.');
+        raise InteligentException.Create('Debes seleccionar un insumo vï¿½lido para agregar a la partida.');
       end;
 
 
@@ -743,7 +743,7 @@ begin
         if btnPresentacion.CanFocus then
           btnPresentacion.SetFocus;
 
-        raise InteligentException.Create('Selecciona una presentación para el insumo.');
+        raise InteligentException.Create('Selecciona una presentaciï¿½n para el insumo.');
       end;
 
       if Length(trim(cxCurrencyPrecio.Text)) = 0 then
@@ -776,8 +776,8 @@ begin
 
       Resultado := cdEntradaGeneralUpt.FieldByName('IdregistroMovimientoGeneral').AsInteger;
       try
-        // Tomar los datos como registro de Edición;
-        cdEntradaGeneralDatosUpt.close;         //esto lo puse, aunque no queria por que me está dando pedos con el dataset
+        // Tomar los datos como registro de Ediciï¿½n;
+        cdEntradaGeneralDatosUpt.close;         //esto lo puse, aunque no queria por que me estï¿½ dando pedos con el dataset
         if Not CargarDatosFiltrados(cdEntradaGeneralDatosUpt, 'IdRegistroMovimientoGeneral', [Resultado]) then
           raise InteligentException.CreateByCode(6, ['Partidas de Entrada General', Resultado, 'IdRegistroMovimientoGeneralPartida']);
 

@@ -140,8 +140,6 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
     Padding.Right = 6
     Padding.Bottom = 4
     TabOrder = 7
-    ExplicitTop = 185
-    ExplicitWidth = 806
     object btnAceptar: TAdvGlowButton
       Left = 609
       Top = 5
@@ -175,7 +173,6 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
       Appearance.ColorMirrorCheckedTo = 16768988
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
-      ExplicitLeft = 599
     end
     object btnCancelar: TAdvGlowButton
       Left = 709
@@ -211,7 +208,6 @@ object FrmEditarCotizacionPartida: TFrmEditarCotizacionPartida
       Appearance.ColorMirrorCheckedTo = 16768988
       Appearance.ColorMirrorDisabled = 11974326
       Appearance.ColorMirrorDisabledTo = 15921906
-      ExplicitLeft = 699
     end
   end
   object Cantidad: TRxDBCalcEdit

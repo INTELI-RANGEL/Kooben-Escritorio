@@ -55,9 +55,11 @@ type
     procedure tvBuscarCellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
+    procedure FormCreate(Sender: TObject);
   private
     procedure AbrirDatos;
   public
+    vTipoBuscar: String;
     { Public declarations }
   end;
 
@@ -97,6 +99,11 @@ begin
   for i:= 0 to tvBuscar.ColumnCount -1 do
     SetRegistry('\Ventanas', '\' + Self.Name + '\tvBuscar', 'Column' + IntToStr(i), IntToStr(tvBuscar.Columns[i].Width));
   Action := caFree;
+end;
+
+procedure TFrmBuscarEntradaGeneral.FormCreate(Sender: TObject);
+begin
+  vTipoBuscar := '-1';
 end;
 
 procedure TFrmBuscarEntradaGeneral.FormShow(Sender: TObject);
@@ -140,15 +147,18 @@ begin
           tvBuscar.Columns[i].Width := 100;
         end;
 
+
+        self.caption := 'Buscar ' + lowercase(VTipoBuscar) + ' general.';
+
       if Not CrearConjunto(cdAnios, 'cmt_registromovimientogeneral_anio', ccSelect) then
         raise InteligentException.CreateByCode(5, ['Años de Cotizaciones']);
 
-      if Not CargarDatosFiltrados(cdAnios, 'TipoMovimiento', ['ENTRADA']) then
-        raise InteligentException.CreateByCode(6, ['Años de Cotizaciones', 'ENTRADA', 'Tipo de Movimiento']);
+      if Not CargarDatosFiltrados(cdAnios, 'TipoMovimiento', [vTipoBuscar]) then
+        raise InteligentException.CreateByCode(6, ['Años de Cotizaciones', vTipoBuscar, 'Tipo de Movimiento']);
 
       if TClientDataSet(dsBuscarEntradaGeneral.DataSet).ProviderName = '' then
         if Not CrearConjunto(TClientDataSet(dsBuscarEntradaGeneral.DataSet), 'cmt_registromovimientogeneral', ccSelect) then
-          raise InteligentException.CreateByCode(5, ['Entradas Almacén General']);
+          raise InteligentException.CreateByCode(5, [vTipoBuscar+' Almacén General']);
 
       cdAnios.Open;
       if cdAnios.RecordCount = 0 then
@@ -201,8 +211,8 @@ begin
     else
       iMes := cbMes.ItemIndex;
 
-    if Not CargarDatosFiltrados(TClientDataSet(dsBuscarEntradaGeneral.DataSet), 'Anio,Mes', [Anio.Text, iMes]) then
-      raise InteligentException.CreateByCode(6, ['Buscador de Entradas', Anio.Text + '/' + IntToStr(iMes), 'Anio/Mes']);
+    if Not CargarDatosFiltrados(TClientDataSet(dsBuscarEntradaGeneral.DataSet), 'Anio,Mes,TipoMovimiento', [Anio.Text, iMes,vtipobuscar]) then
+      raise InteligentException.CreateByCode(6, ['Buscador de ' + vTipoBuscar, Anio.Text + '/' + IntToStr(iMes), 'Anio/Mes']);
 
     if dsBuscarEntradaGeneral.DataSet.Active then
       dsBuscarEntradaGeneral.DataSet.Refresh

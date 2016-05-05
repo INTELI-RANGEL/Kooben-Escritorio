@@ -324,6 +324,7 @@ type
     procedure btnCotizacionClick(Sender: TObject);
     procedure btnImpuestoxInsumoClick(Sender: TObject);
     procedure btnEntradasClick(Sender: TObject);
+    procedure btnSalidasGralClick(Sender: TObject);
   private
     IdentificadorSistema: String;
     ListaChat,
@@ -397,7 +398,7 @@ uses UInteliDialog, Frm_Conectando, UTFrmSeleccion, UTFrmInsumos,
   UTFrmConsultaPrecios, UTFrmPrecioBajo, UTFrmContratos, UTFrmUsuarioPermisos,
   UTFrmRolPermisos, UTFrmComparaPrecios, UTFrmAlmacenes, UTFrmIVA,
   UTFrmTiposImpuesto, UTFrmCotizacion, UTFrmImpuestoxInsumo,
-  UTFrmEntradaGeneral, UFrmImpuestosxInsumo;
+  UTFrmEntradaGeneral, UFrmImpuestosxInsumo, UTFrmSalidaGeneral;
 
 {$R *.dfm}
 
@@ -1668,6 +1669,11 @@ begin
   Application.CreateForm(TFrmSalidasAlmacen, FrmSalidasAlmacen);
   FrmSalidasAlmacen.ShowModal;
   //IniciarForm(TFrmSalidasAlmacen, FrmSalidasAlmacen, False);
+end;
+
+procedure TForm2.btnSalidasGralClick(Sender: TObject);
+begin
+  IniciarForm(TFrmSalidaGeneral, FrmSalidaGeneral, False);
 end;
 
 procedure TForm2.btnSolicitudesClick(Sender: TObject);

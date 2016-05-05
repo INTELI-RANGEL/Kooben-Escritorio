@@ -103,7 +103,6 @@ uses
   UTFrmBuscarExistencia in 'UTFrmBuscarExistencia.pas' {FrmBuscarExistencia},
   UTFrmSeleccionarInsumo in 'UTFrmSeleccionarInsumo.pas' {FrmSeleccionarInsumo},
   UTFrmEntradasAlmacenDX in 'UTFrmEntradasAlmacenDX.pas' {FrmEntradasAlmacenDX},
-  UTFrmSalidasAlmacen in 'UTFrmSalidasAlmacen.pas' {FrmSalidasAlmacen},
   UTFrmEstadoInventarios in 'UTFrmEstadoInventarios.pas' {FrmEstadoInventarios},
   UTFrmBuscarMovimiento in 'UTFrmBuscarMovimiento.pas' {FrmBuscarMovimiento},
   UTFrmOrganizacion in 'GENERALES\UTFrmOrganizacion.pas',
@@ -139,7 +138,10 @@ uses
   UTFrmSelInsumo in 'UTFrmSelInsumo.pas' {FrmSelInsumo},
   UTFrmEditarCotizacionPartida in 'UTFrmEditarCotizacionPartida.pas' {FrmEditarCotizacionPartida},
   UfrmImpuestosxinsumo in 'UfrmImpuestosxinsumo.pas' {FrmImpuestosxinsumo},
-  UFrmDatosImpuestosxInsumos in 'UFrmDatosImpuestosxInsumos.pas' {FrmDatosImpuestosxinsumos};
+  UFrmDatosImpuestosxInsumos in 'UFrmDatosImpuestosxInsumos.pas' {FrmDatosImpuestosxinsumos},
+  UTFrmSalidasAlmacen in 'UTFrmSalidasAlmacen.pas' {FrmSalidasAlmacen},
+  UTFrmSalidaGeneralDatos in 'UTFrmSalidaGeneralDatos.pas' {FrmSalidaGeneralDatos},
+  UTFrmSalidaGeneral in 'UTFrmSalidaGeneral.pas' {FrmSalidaGeneral};
 
 {$R *.res}
 
@@ -149,5 +151,8 @@ begin
   Application.CreateForm(TForm2, Form2);
   Application.CreateForm(TClientModule1, ClientModule1);
   Application.CreateForm(TInteliDialog, InteliDialog);
+  Application.CreateForm(TFrmSalidasAlmacen, FrmSalidasAlmacen);
+  Application.CreateForm(TFrmSalidaGeneralDatos, FrmSalidaGeneralDatos);
+  Application.CreateForm(TFrmSalidaGeneral, FrmSalidaGeneral);
   Application.Run;
 end.

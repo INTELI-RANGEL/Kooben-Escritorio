@@ -1,7 +1,7 @@
-﻿object FrmEntradaGeneral: TFrmEntradaGeneral
+﻿object FrmSalidaGeneral: TFrmSalidaGeneral
   Left = 0
   Top = 0
-  Caption = 'Entradas Almac'#233'n General'
+  Caption = 'Salidas Almac'#233'n General'
   ClientHeight = 639
   ClientWidth = 707
   Color = clBtnFace
@@ -250,9 +250,9 @@
     object JvLabel1: TJvLabel
       Left = 8
       Top = 11
-      Width = 72
+      Width = 58
       Height = 19
-      Caption = 'Entrada:'
+      Caption = 'Salida:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clNavy
       Font.Height = -16
@@ -284,7 +284,7 @@
       Left = 471
       Top = 6
       Width = 26
-      Height = 29
+      Height = 27
       Hint = 'Haga click aqu'#237' para buscar Cotizaci'#243'n'
       ImageIndex = 20
       Images = ClientModule1.PngImageList1
