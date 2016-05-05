@@ -141,9 +141,8 @@ uses
   UFrmDatosImpuestosxInsumos in 'UFrmDatosImpuestosxInsumos.pas' {FrmDatosImpuestosxinsumos},
   UTFrmSalidasAlmacen in 'UTFrmSalidasAlmacen.pas' {FrmSalidasAlmacen},
   UTFrmSalidaGeneralDatos in 'UTFrmSalidaGeneralDatos.pas' {FrmSalidaGeneralDatos},
-  UTFrmSalidaGeneral in 'UTFrmSalidaGeneral.pas' {FrmSalidaGeneral};
+  UTFrmSalidaGeneral in 'UTFrmSalidaGeneral.pas' {FrmSalidaGeneral},
   UTfrmRequisicionDatos in 'UTfrmRequisicionDatos.pas' {FrmRequisicionDatos},
-  UTFrmBuscarRequisicion in 'UTFrmBuscarRequisicion.pas' {FrmBuscarRequisicion},
   UTFrmRequisicion in 'UTFrmRequisicion.pas' {FrmRequisicion},
   UTFrmEditarRequisicionPartida in 'UTFrmEditarRequisicionPartida.pas' {FrmEditarRequisicionPartida},
   UTFrmOrdenCompra in 'UTFrmOrdenCompra.pas' {FrmOrdenCompra},
@@ -152,7 +151,7 @@ uses
   UTFrmSolCotizacionDatos in 'UTFrmSolCotizacionDatos.pas' {FrmSolCotizacionDatos},
   UTFrmEditarSolCotizacionPartida in 'UTFrmEditarSolCotizacionPartida.pas' {FrmEditarSolCotizacionPartida},
   UTFrmSolCotizacionxProveedor in 'UTFrmSolCotizacionxProveedor.pas' {FrmSolCotizacionxProveedor};
->>>>>>> 6cd72195baf3c907672dbec58c3e9c6d3e28005a
+
 
 {$R *.res}
 
@@ -165,5 +164,7 @@ begin
   Application.CreateForm(TFrmSalidasAlmacen, FrmSalidasAlmacen);
   Application.CreateForm(TFrmSalidaGeneralDatos, FrmSalidaGeneralDatos);
   Application.CreateForm(TFrmSalidaGeneral, FrmSalidaGeneral);
+  Application.CreateForm(TFrmRequisicionDatos, FrmRequisicionDatos);
+  Application.CreateForm(TFrmRequisicion, FrmRequisicion);
   Application.Run;
 end.

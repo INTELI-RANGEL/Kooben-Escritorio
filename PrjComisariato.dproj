@@ -331,9 +331,6 @@
 			<DCCReference Include="UTFrmEntradasAlmacenDX.pas">
 				<Form>FrmEntradasAlmacenDX</Form>
 			</DCCReference>
-			<DCCReference Include="UTFrmSalidasAlmacen.pas">
-				<Form>FrmSalidasAlmacen</Form>
-			</DCCReference>
 			<DCCReference Include="UTFrmEstadoInventarios.pas">
 				<Form>FrmEstadoInventarios</Form>
 			</DCCReference>
@@ -440,11 +437,17 @@
 			<DCCReference Include="UFrmDatosImpuestosxInsumos.pas">
 				<Form>FrmDatosImpuestosxinsumos</Form>
 			</DCCReference>
+			<DCCReference Include="UTFrmSalidasAlmacen.pas">
+				<Form>FrmSalidasAlmacen</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmSalidaGeneralDatos.pas">
+				<Form>FrmSalidaGeneralDatos</Form>
+			</DCCReference>
+			<DCCReference Include="UTFrmSalidaGeneral.pas">
+				<Form>FrmSalidaGeneral</Form>
+			</DCCReference>
 			<DCCReference Include="UTfrmRequisicionDatos.pas">
 				<Form>FrmRequisicionDatos</Form>
-			</DCCReference>
-			<DCCReference Include="UTFrmBuscarRequisicion.pas">
-				<Form>FrmBuscarRequisicion</Form>
 			</DCCReference>
 			<DCCReference Include="UTFrmRequisicion.pas">
 				<Form>FrmRequisicion</Form>
